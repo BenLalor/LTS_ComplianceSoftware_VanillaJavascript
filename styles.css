@@ -1,0 +1,172 @@
+* {
+    box-sizing: border-box;
+    font-family: Gotham Rounded, sans-serif;
+    font-weight: normal;
+    font-size: 1.1em;
+}
+body {
+    margin: 0;
+    padding: 5px;
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    background-color: #f9f9f9;
+  }
+
+  .ltsGrid{
+    background-color: lightgray;
+    border: 2px;
+    border-style: solid;
+    display: grid;
+    padding: 0;
+    margin:0;
+}
+
+.signLightingHeaderTable{
+    grid-template-columns: repeat(100, .99vw);
+    grid-template-rows: repeat(6, 10vh);
+}
+
+.ltsGrid_tableA{
+  grid-template-columns: repeat(100, .99vw);
+    grid-template-rows: repeat(5, 10vh);
+}
+
+.ltsGrid_tableB{
+    grid-template-columns: repeat(100, .99vw);
+      grid-template-rows: repeat(5, 10vh);
+  }
+
+.ltsGrid>*{
+    border-style: solid;
+    border-color:black;
+}
+
+.ltsGrid>:hover{
+    background-color:#FFFF0025;
+}
+
+.tableHeader{
+    display: flex;
+    align-items:center;
+    grid-column: span 100;
+    font-weight: bolder;
+    font-size: 1.5em;
+    background-color: lightgray;
+}
+
+.header{
+    display: flex;
+    align-items:center;
+    justify-content: right;
+    padding-right: 10px;
+    background-color: lightgray;
+    grid-column: span 25;
+}
+
+.headerNum{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    grid-column: span 5;
+    grid-row: span 1;
+}
+
+.headerDirections {
+    grid-column: span 100;
+    grid-Row: span 2;
+    display: flex;
+    align-items: center;
+}
+
+input{
+    grid-column: span 70;
+}
+
+select{
+    grid-column: span 70;
+}
+
+.groupCheckboxOuter{
+    grid-column: span 70;
+    display: flex;
+    display: flex;
+    align-items:center;
+}
+
+.span2Row {
+    grid-row: span 2;
+}
+
+.input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: scale(2);
+    padding-right: 5px;
+}
+
+.inputWrapper {
+    grid-column: span 70;
+    display: flex;
+    padding-left: 10px;
+    align-items: center;
+}
+
+label {padding: 10px;}
+
+.spaceBetweenTables{
+    visibility: hidden;
+}
+
+.headerDirections{
+    font-style: italic;
+}
+
+.headerHeader{
+    grid-column: span 20;
+}
+
+.headerInput{
+    grid-column: span 80;
+}
+
+.B01{
+    grid-column: span 20;
+}
+
+.B02{
+    grid-column: span 20;
+}
+
+.B03{
+    grid-column: span 20;
+}
+
+.B04{
+    grid-column: span 20;
+}
+
+.B05{
+    grid-column: span 20;
+}
+
+.floatTestLeft{
+    display: block;
+    float: left;
+}
+
+.floatTestLeft{
+    display: block;
+    float: right;
+}
+
+
+
+
+
+
+
+
+
+
