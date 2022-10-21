@@ -5,11 +5,7 @@
     font-size: 1em;
 }
 
-html{
-    background-color: white;
-}
-
-body {
+.fakeBody {
     border: 2px;
     border-style: solid;
     border-color: black;
@@ -19,13 +15,22 @@ body {
   }
 
   .mainHeader{
+    display: box;
     padding:5px;
+    justify-content: left;
+    font-style: italic;
   }
 
   .ltsGrid{
     background-color: lightgray;
 
     display: grid;
+}
+
+.signLightingHeader{
+    display: flexbox;
+    justify-content: left;
+    border:3px;
 }
 
 .signLightingHeaderTable{
@@ -54,6 +59,7 @@ body {
 }
 
 .tableHeader{
+    padding-left: .5vw;
     display: flex;
     align-items:center;
     grid-column: span 100;
@@ -172,15 +178,7 @@ label {padding: 10px;}
     grid-column: span 20;
 }
 
-.floatTestLeft{
-    display: block;
-    float: left;
-}
 
-.floatTestLeft{
-    display: block;
-    float: right;
-}
 
 .italic{
     font-style: italic;
@@ -202,6 +200,57 @@ label {padding: 10px;}
     padding-right: 10px;
     background-color: lightgray;
 }
+
+.left{
+    display: block;
+    justify-content: left;
+    align-items:flex-start;
+    border:5px;
+}
+
+.headerHeaderLeft{
+    display:flex;
+    justify-content: left;
+}
+
+.headerHeaderContainer{
+    display:flex;    
+    justify-content: right;
+}
+
+.HeaderInlineLeft{
+
+    display:flex;
+    width: 50%;
+    justify-content: left;
+}
+.HeaderInlineRight{
+    display:flex;
+    width: 50%;
+    justify-content: right;
+}
+
+.whiteText {
+    display: flex;
+    color: white;
+
+    margin-top: 20vh; 
+    align-items: center;
+    width: 65vw;
+    padding-left: 15vw;
+    border: 5px;
+}
+
+/* THIS IS SUPER JANKY! FIGURE OUT A BETTER WAY TO TAKE UP THE WHOLE SCREEN LIKE A FLEX BOX*/
+.homeHeight{
+    min-height: 94vh;
+}
+
+
+
+
+
+
 
 
 

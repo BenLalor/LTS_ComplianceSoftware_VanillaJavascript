@@ -11,5 +11,9 @@ def home():
 def lts():
     return render_template("lts.html")
 
+@app.route("/comingSoon")
+def comingSoon():
+    return render_template("comingSoon.html")
+
 if __name__ == "__main__":
     app.run(debug=True)

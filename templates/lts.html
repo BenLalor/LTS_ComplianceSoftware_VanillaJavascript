@@ -1,26 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/styles/styles.css" />
-    <script src="index.js" defer></script>
-    <title>2022 NRCC LTS</NRCC-LTS></title>
-</head>
-<body>
-    
+{% extends "base.html"%}
+{% block title%}
+Home Page
+{% endblock %}
+{% block content%} 
+<div class="fakeBody">
         <div class="signLightingHeader">
             <div class="mainHeader">
-                <div >STATE OF CALIFORNIA</div>
-                <div>Sign Lighting</div>
-                <span class="floatTestRight">NRCC-LTS-E</span>
-                <span class="floatTestLeft">CALIFORNIA ENERGY COMMISSION</span>
+                <div class="headerHeaderLeft" >STATE OF CALIFORNIA</div>
+                <div class="headerHeaderLeft">Sign Lighting</div>
+                <div class="headerHeaderContainer">
+                    <span class="HeaderInlineLeft">NRCC-LTS-E</span>
+                    <span class="HeaderInlineRight">CALIFORNIA ENERGY COMMISSION</span>
+                </div>
+
             </div>
         <form action="/" method="GET">
             <div class="ltsGrid signLightingHeaderTable">
                 <div class="tableHeader">Certificate Of Compliance</div>
-                <div class="headerDirections">This document is used to demonstrate compliacne with requirements in 110.9, 110.12, 130.0, 130.3. 140.8 and 141.0(b)2M for sign lighting scopes using the prescriptive path. Exit Signs and traffic signs are not required to comply with prescriptive requirements per exceptions to 140.8 and do not need to complete this compliance document.</div>
+                <div class="headerDirections">This document is used to demonstrate compliance with requirements in 110.9, 110.12, 130.0, 130.3. 140.8 and 141.0(b)2M for sign lighting scopes using the prescriptive path. Exit signs and traffic signs are not required to comply with prescriptive requirements per exceptions to 140.8 and do not need to complete this compliance document.</div>
                 <div class="headerHeader">Project Name:</div>
                 <input type="text" class="headerInput hover" name="projectName">
                 <div class="headerHeader">Project Address:</div>
@@ -110,6 +107,5 @@
                 <option value="energyVerifiedLabel">Energy Verified Label</option>
             </select>
         </div>
-    
-</body>
-</html>
+    </div>   
+{% endblock %}
