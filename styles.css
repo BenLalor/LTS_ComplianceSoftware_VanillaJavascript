@@ -2,47 +2,54 @@
     box-sizing: border-box;
     font-family: Gotham Rounded, sans-serif;
     font-weight: normal;
-    font-size: 1.1em;
+    font-size: 1em;
 }
+
+html{
+    background-color: white;
+}
+
 body {
-    margin: 0;
-    padding: 5px;
     border: 2px;
     border-style: solid;
     border-color: black;
-    background-color: #f9f9f9;
+    background-color: lightgray;
+    justify-content: center;
+    margin: 4vw;
+  }
+
+  .mainHeader{
+    padding:5px;
   }
 
   .ltsGrid{
     background-color: lightgray;
-    border: 2px;
-    border-style: solid;
+
     display: grid;
-    padding: 0;
-    margin:0;
 }
 
 .signLightingHeaderTable{
-    grid-template-columns: repeat(100, .99vw);
-    grid-template-rows: repeat(6, 10vh);
+    grid-template-columns: repeat(100, .92vw);
+    grid-template-rows: repeat(6, 5vh);
 }
 
 .ltsGrid_tableA{
-  grid-template-columns: repeat(100, .99vw);
-    grid-template-rows: repeat(5, 10vh);
+  grid-template-columns: repeat(100, .92vw);
+    grid-template-rows: repeat(5, 5vh);
 }
 
 .ltsGrid_tableB{
-    grid-template-columns: repeat(100, .99vw);
-      grid-template-rows: repeat(5, 10vh);
+    grid-template-columns: repeat(100, .92vw);
+      grid-template-rows: repeat(6, 5vh);
   }
 
 .ltsGrid>*{
+    border: 2px;
     border-style: solid;
     border-color:black;
 }
 
-.ltsGrid>:hover{
+.hover:hover{
     background-color:#FFFF0025;
 }
 
@@ -98,12 +105,16 @@ select{
     grid-row: span 2;
 }
 
-.input {
+.checkBoxA {
     display: flex;
     justify-content: center;
     align-items: center;
     transform: scale(2);
     padding-right: 5px;
+}
+
+input{
+    margin: 0;
 }
 
 .inputWrapper {
@@ -116,7 +127,11 @@ select{
 label {padding: 10px;}
 
 .spaceBetweenTables{
-    visibility: hidden;
+    border: 2px;
+    border-color: black;
+    border-style: solid;
+    color: lightgray;
+
 }
 
 .headerDirections{
@@ -124,10 +139,16 @@ label {padding: 10px;}
 }
 
 .headerHeader{
+    display: flex;
+    align-items:center;
+    justify-content: right;
+    padding-right: 10px;
+    background-color: lightgray;
     grid-column: span 20;
 }
 
 .headerInput{
+    margin: 0;
     grid-column: span 80;
 }
 
@@ -161,6 +182,26 @@ label {padding: 10px;}
     float: right;
 }
 
+.italic{
+    font-style: italic;
+}
+
+.headerA{
+    display: flex;
+    align-items:center;
+    justify-content: right;
+    padding-right: 10px;
+    background-color: lightgray;
+    grid-column: span 25;
+}
+
+.headerB{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    padding-right: 10px;
+    background-color: lightgray;
+}
 
 
 
