@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="static/styles/styles.css" />
     <script src="index.js" defer></script>
     <title>2022 NRCC LTS</NRCC-LTS></title>
 </head>
 <body>
-    <form>
+    
         <div class="signLightingHeader">
             <div class="mainHeader">
                 <div >STATE OF CALIFORNIA</div>
@@ -17,7 +17,7 @@
                 <span class="floatTestRight">NRCC-LTS-E</span>
                 <span class="floatTestLeft">CALIFORNIA ENERGY COMMISSION</span>
             </div>
-            
+        <form action="/" method="GET">
             <div class="ltsGrid signLightingHeaderTable">
                 <div class="tableHeader">Certificate Of Compliance</div>
                 <div class="headerDirections">This document is used to demonstrate compliacne with requirements in 110.9, 110.12, 130.0, 130.3. 140.8 and 141.0(b)2M for sign lighting scopes using the prescriptive path. Exit Signs and traffic signs are not required to comply with prescriptive requirements per exceptions to 140.8 and do not need to complete this compliance document.</div>
@@ -28,7 +28,10 @@
                 <div class="headerHeader">Date Prepared:</div>
                 <input type="text" class="headerInput hover" name="datePrepared">
             </div>
+            <div><button type="submit">Submit</button></div>
+        </form>
         </div>
+        
         <div class="spaceBetweenTables"> 0<br>
             0
             0
@@ -107,6 +110,6 @@
                 <option value="energyVerifiedLabel">Energy Verified Label</option>
             </select>
         </div>
-    </form>
+    
 </body>
 </html>
