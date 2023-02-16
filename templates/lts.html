@@ -10,16 +10,16 @@ Home Page
             <input type="submit" value="submit">
         </form>
     </div>
-        <div class="signLightingHeader">
-            <div class="mainHeader">
-                <div class="headerHeaderLeft" >STATE OF CALIFORNIA</div>
-                <div class="headerHeaderLeft">Sign Lighting</div>
-                <div class="headerHeaderContainer">
-                    <span class="HeaderInlineLeft">NRCC-LTS-E</span>
-                    <span class="HeaderInlineRight">CALIFORNIA ENERGY COMMISSION</span>
-                </div>
-
+    <div class="signLightingHeader">
+        <div class="mainHeader">
+            <div class="headerHeaderLeft" >STATE OF CALIFORNIA</div>
+            <div class="headerHeaderLeft">Sign Lighting</div>
+            <div class="headerHeaderContainer">
+                <span class="HeaderInlineLeft">NRCC-LTS-E</span>
+                <span class="HeaderInlineRight">CALIFORNIA ENERGY COMMISSION</span>
             </div>
+
+        </div>
         <form action="#" method="POST">
             <div class="ltsGrid signLightingHeaderTable">
                 <div class="tableHeader">Certificate Of Compliance</div>
@@ -33,85 +33,86 @@ Home Page
             </div>
             <div><button type="submit">Submit</button></div>
         </form>
-        </div>
-        
-        <div class="spaceBetweenTables"> 0<br>
+    </div>
+    <!-- JANKY! Remove this -->
+    <div class="spaceBetweenTables"> 0<br>
             0
             0
+    </div>
+    <div class="ltsGrid ltsGrid_tableA">
+        <div class="tableHeader">A. General Information</div>
+        <div class="headerNum" >01</div>
+        <div class="headerA"> Project Location (city):</div>
+        <input class="hover" type="text" name="location">
+        <div class="headerNum">02</div>
+        <div class="headerA">Climate Zone:</div>
+        <select class="hover italic" name="location">
+            <option value=""  disabled selected>(dropdown)</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="19">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+        </select>
+        <div class="headerNum span2Row">03</div>
+        <div class="header span2Row"> Occupancy Types Within Project:</div>
+        <div class="inputWrapper">
+            <input class="checkBoxA hover" type="checkbox" id="healthcare" value="healthcare" name="healthcare">
+            <label for="healthcare">Healthcare Facility</label>
         </div>
-        <div class="ltsGrid ltsGrid_tableA">
-            <div class="tableHeader">A. General Information</div>
-            <div class="headerNum" >01</div>
-            <div class="headerA"> Project Location (city):</div>
-            <input class="hover" type="text" name="location">
-            <div class="headerNum">02</div>
-            <div class="headerA">Climate Zone:</div>
-            <select class="hover italic" name="location">
-                <option value=""  disabled selected>(dropdown)</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="19">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-            </select>
-            <div class="headerNum span2Row">03</div>
-            <div class="header span2Row"> Occupancy Types Within Project:</div>
-            <div class="inputWrapper">
-                <input class="checkBoxA hover" type="checkbox" id="healthcare" value="healthcare" name="healthcare">
-                <label for="healthcare">Healthcare Facility</label>
-            </div>
-            <div class="inputWrapper">
-                <input class="checkBoxA hover" type="checkbox" id="multifamily" value="multifamily" name="multifamily">
-                <label for="multifamily">Multifamily.MF Mixed-use>=4 stories(including dormitory, senior living)</label>
-            </div>
+        <div class="inputWrapper">
+            <input class="checkBoxA hover" type="checkbox" id="multifamily" value="multifamily" name="multifamily">
+            <label for="multifamily">Multifamily.MF Mixed-use>=4 stories(including dormitory, senior living)</label>
         </div>
-        <div class="spaceBetweenTables"> 0<br>
+    </div>
+    <!-- JANKY! Remove this -->
+    <div class="spaceBetweenTables"> 0<br>
             0
             0
-        </div>
-        <div class="ltsGrid ltsGrid_tableB">
-            <div class="tableHeader">B. Project Scope</div>
-            <div class="headerDirections">This table includes illiminated signs that are within the scope fo the permit application and are demonstrating compliance using the prescriptive path outlined in 140.8/170.2(e) or 141.0b2M/180.2(b)4bvi for alterations. Exit signs and traffice signs are not required to comply with prescriptive requirements per exceptions to 140.8/170.2(e) and do not need to complete this compliance document.</div>
-            <div class="headerNum B01">01</div>
-            <div class="headerNum B02">02</div>
-            <div class="headerNum B03">03</div>
-            <div class="headerNum B04">04</div>
-            <div class="headerNum B05">05</div>
-            <div class="headerB B01">Name or Item Tag</div>
-            <div class="headerB B02">Complete Sign Description</div>
-            <div class="headerB B03">Sign Status</div>
-            <div class="headerB B04">Sign Type</div>
-            <div class="headerB B05">Compliance Method</div>
-            <input type="text" class="B01 hover" name="nameOrItem_sign">
-            <input type="text" class="B02 hover" name="descriptionSign">
-            <select class="B03 hover italic" name="status_Sign">
-                <option value="" disabled selected>(dropdown)</option>
-                <option value="new">New</option>
-                <option value="altered">Altered</option>
-            </select>
-            <select class="B04 hover italic" name="type_Sign">
-                <option value="" disabled selected>(dropdown)</option>
-                <option value="Indoor">Indoor</option>
-                <option value="Outdoor">Outdoor</option>
-                <option value="Center">Center</option>
-            </select>
-            <select class="B05 hover italic" name="compliance_Method">
-                <option value="" disabled selected>(dropdown)</option>
-                <option value="maxAllowed">Max Allowed Lighting Power</option>
-                <option value="alternateLightSources">Alternate Light Sources</option>
-                <option value="energyVerifiedLabel">Energy Verified Label</option>
-            </select>
-        </div>
-    </div>   
+    </div>
+    <div class="ltsGrid ltsGrid_tableB">
+        <div class="tableHeader">B. Project Scope</div>
+        <div class="headerDirections">This table includes illiminated signs that are within the scope fo the permit application and are demonstrating compliance using the prescriptive path outlined in 140.8/170.2(e) or 141.0b2M/180.2(b)4bvi for alterations. Exit signs and traffice signs are not required to comply with prescriptive requirements per exceptions to 140.8/170.2(e) and do not need to complete this compliance document.</div>
+        <div class="headerNum B01">01</div>
+        <div class="headerNum B02">02</div>
+        <div class="headerNum B03">03</div>
+        <div class="headerNum B04">04</div>
+        <div class="headerNum B05">05</div>
+        <div class="headerB B01">Name or Item Tag</div>
+        <div class="headerB B02">Complete Sign Description</div>
+        <div class="headerB B03">Sign Status</div>
+        <div class="headerB B04">Sign Type</div>
+        <div class="headerB B05">Compliance Method</div>
+        <input type="text" class="B01 hover" name="nameOrItem_sign">
+        <input type="text" class="B02 hover" name="descriptionSign">
+        <select class="B03 hover italic" name="status_Sign">
+            <option value="" disabled selected>(dropdown)</option>
+            <option value="new">New</option>
+            <option value="altered">Altered</option>
+        </select>
+        <select class="B04 hover italic" name="type_Sign">
+            <option value="" disabled selected>(dropdown)</option>
+            <option value="Indoor">Indoor</option>
+            <option value="Outdoor">Outdoor</option>
+            <option value="Center">Elec Message Center</option>
+        </select>
+        <select class="B05 hover italic" name="compliance_Method">
+            <option value="" disabled selected>(dropdown)</option>
+            <option value="maxAllowed">Max Allowed Lighting Power</option>
+            <option value="alternateLightSources">Alternate Light Sources</option>
+            <option value="energyVerifiedLabel">Energy Verified Label</option>
+        </select>
+    </div>
+</div>   
 {% endblock %}
