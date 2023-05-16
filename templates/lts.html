@@ -1,187 +1,503 @@
-{% extends "base.html"%}
-{% block title%}
-Home Page
-{% endblock %}
-{% block content%} 
+{% extends "base.html"%} {% block title%} Home Page {% endblock %} {% block
+content%}
 <div class="fakeBody">
-    <div class="dbTest">
-        <form action="#" method="POST">
-            <input type="text" name ="testName" placeholder="testPlaceholder">
-            <input type="submit" value="submit">
-        </form>
+  <!-- Test Submit Button -->
+  <div class="dbTest">
+    <form action="#" method="POST">
+      <input type="text" name="testName" placeholder="testPlaceholder" />
+      <input type="submit" value="submit" />
+    </form>
+  </div>
+  <!-- Header -->
+  <div class="signLightingHeader">
+    <div class="mainHeader">
+      <div class="headerHeaderLeft">STATE OF CALIFORNIA</div>
+      <div class="headerHeaderLeft">Sign Lighting</div>
+      <div class="headerHeaderContainer">
+        <span class="HeaderInlineLeft">NRCC-LTS-E</span>
+        <span class="HeaderInlineRight">CALIFORNIA ENERGY COMMISSION</span>
+      </div>
     </div>
-    <div class="signLightingHeader">
-        <div class="mainHeader">
-            <div class="headerHeaderLeft" >STATE OF CALIFORNIA</div>
-            <div class="headerHeaderLeft">Sign Lighting</div>
-            <div class="headerHeaderContainer">
-                <span class="HeaderInlineLeft">NRCC-LTS-E</span>
-                <span class="HeaderInlineRight">CALIFORNIA ENERGY COMMISSION</span>
-            </div>
+    <form action="#" method="POST">
+      <div class="ltsGrid signLightingHeaderTable">
+        <div class="tableHeader">Certificate Of Compliance</div>
+        <div class="headerDirections">
+          This document is used to demonstrate compliance with requirements in
+          110.9, 110.12, 130.0, 130.3. 140.8 and 141.0(b)2M for sign lighting
+          scopes using the prescriptive path. Exit signs and traffic signs are
+          not required to comply with prescriptive requirements per exceptions
+          to 140.8 and do not need to complete this compliance document.
+        </div>
+        <div class="headerHeader">Project Name:</div>
+        <input type="text" class="headerInput hover" name="projectName" />
+        <div class="headerHeader">Project Address:</div>
+        <input type="text" class="headerInput hover" name="projectAddress" />
+        <div class="headerHeader">Date Prepared:</div>
+        <input type="text" class="headerInput hover" name="datePrepared" />
+      </div>
+      <div><button type="submit">Submit</button></div>
+    </form>
+  </div>
+  <!-- JANKY! Remove this -->
+  <div class="spaceBetweenTables">
+    0<br />
+    0 0
+  </div>
+  <!-- Table A -->
+  <div class="ltsGrid ltsGrid_tableA">
+    <div class="tableHeader">A. General Information</div>
+    <div class="headerNum">01</div>
+    <div class="headerA">Project Location (city):</div>
+    <input class="hover" type="text" name="location" />
+    <div class="headerNum">02</div>
+    <div class="headerA">Climate Zone:</div>
+    <select class="hover italic" name="location">
+      <option value="" disabled selected>(dropdown)</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="19">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="16">16</option>
+    </select>
+    <div class="headerNum span2Row">03</div>
+    <div class="header span2Row">Occupancy Types Within Project:</div>
+    <div class="inputWrapper">
+      <input
+        class="checkBoxA hover"
+        type="checkbox"
+        id="healthcare"
+        value="healthcare"
+        name="healthcare"
+      />
+      <label for="healthcare">Healthcare Facility</label>
+    </div>
+    <div class="inputWrapper">
+      <input
+        class="checkBoxA hover"
+        type="checkbox"
+        id="multifamily"
+        value="multifamily"
+        name="multifamily"
+      />
+      <label for="multifamily"
+        >Multifamily.MF Mixed-use>=4 stories(including dormitory, senior
+        living)</label
+      >
+    </div>
+  </div>
+  <!-- JANKY! Remove this -->
+  <div class="spaceBetweenTables">
+    0<br />
+    0 0
+  </div>
+  <!-- Table B -->
+  <div class="ltsGrid ltsGrid_tableB">
+    <div class="tableHeader">B. Project Scope</div>
+    <div class="headerDirections">
+      This table includes illiminated signs that are within the scope fo the
+      permit application and are demonstrating compliance using the prescriptive
+      path outlined in 140.8/170.2(e) or 141.0b2M/180.2(b)4bvi for alterations.
+      Exit signs and traffice signs are not required to comply with prescriptive
+      requirements per exceptions to 140.8/170.2(e) and do not need to complete
+      this compliance document.
+    </div>
+    <div class="headerNum B01">01</div>
+    <div class="headerNum B02">02</div>
+    <div class="headerNum B03">03</div>
+    <div class="headerNum B04">04</div>
+    <div class="headerNum B05">05</div>
+    <div class="headerB B01">Name or Item Tag</div>
+    <div class="headerB B02">Complete Sign Description</div>
+    <div class="headerB B03">Sign Status</div>
+    <div class="headerB B04">Sign Type</div>
+    <div class="headerB B05">Compliance Method</div>
+    <input type="text" class="B01 hover" name="nameOrItem_sign" />
+    <input type="text" class="B02 hover" name="descriptionSign" />
+    <select class="B03 hover italic" name="status_Sign">
+      <option value="" disabled selected>(dropdown)</option>
+      <option value="new">New</option>
+      <option value="altered">Altered</option>
+    </select>
+    <select class="B04 hover italic" name="type_Sign">
+      <option value="" disabled selected>(dropdown)</option>
+      <option value="Indoor">Indoor</option>
+      <option value="Outdoor">Outdoor</option>
+      <option value="Center">Elec Message Center</option>
+    </select>
+    <select class="B05 hover italic" name="compliance_Method">
+      <option value="" disabled selected>(dropdown)</option>
+      <option value="maxAllowed">Max Allowed Lighting Power</option>
+      <option value="alternateLightSources">Alternate Light Sources</option>
+      <option value="energyVerifiedLabel">Energy Verified Label</option>
+    </select>
+  </div>
+  <!-- JANKY! Remove this -->
+  <div class="spaceBetweenTables">
+    0<br />
+    0 0
+  </div>
+  <!-- Table C -->
+  <div class="ltsGrid ltsGrid_tablec">
+    <div class="tableHeader">C. Compliance Results</div>
+    <div class="headerDirections">
+      Results in this table are automatically calculated from data input and
+      calculations in Tables B through H.<br />Note: If any cell on this table
+      says "COMPLIES with Exceptional Conditions" refer to Table D. Exceptional
+      Conditions for guidance or see the applicable Table referenced below.
+    </div>
+    <div class="C01 RowC1">01</div>
+    <div class="C02 RowC1">02</div>
+    <div class="C03 RowC1">03</div>
+    <div class="C-GT RowC1"></div>
+    <div class="C04 RowC1">04</div>
+    <div class="C-OR1 RowC1"></div>
+    <div class="C05 RowC1">05</div>
+    <div class="C-OR2 RowC1"></div>
+    <div class="C06 Column RowC1">06</div>
+    <div class="C07 RowC1">07</div>
+    <div class="C01 RowC2">Name or Item Tag</div>
+    <div class="C02 RowC2">Complete Sign Description</div>
+    <div class="C03 RowC2">Total Allowed<br />(Watts)</div>
+    <div class="C-GT RowC2">&#8805;</div>
+    <div class="C04 RowC2">Total Designed<br />(Watts)</div>
+    <div class="C-OR1 RowC2">OR</div>
+    <div class="C05 RowC2">Compliant Light Sources</div>
+    <div class="C-OR2 RowC2">OR</div>
+    <div class="C06 RowC2">Energy Verified Label</div>
+    <div class="C07 RowC2">Compliance Results</div>
+    <div class="C01 RowC3">(See Table B)</div>
+    <div class="C02 RowC3">(See Table B)</div>
+    <div class="C03 RowC3">(See Table F)</div>
+    <div class="C-GT RowC3"></div>
+    <div class="C04 RowC3">(See Table F)</div>
+    <div class="C-OR1 RowC3"></div>
+    <div class="C05 RowC3">(See Table G)</div>
+    <div class="C-OR2 RowC3"></div>
+    <div class="C06 RowC3">(See Table H)</div>
+    <div class="C07 RowC3"></div>
+    <input type="text" class="C01 RowC4" />
+    <input type="text" class="C02 RowC4" />
+    <input type="text" class="C03 RowC4" />
+    <div class="C-GT RowC4">&#8805;</div>
+    <input type="text" class="C04 RowC4" />
+    <div class="C-OR1 RowC4">OR</div>
+    <input type="text" class="C05 RowC4" />
+    <div class="C-OR2 RowC4">OR</div>
+    <input type="text" class="C06 RowC4" />
+    <input type="text" class="C07 RowC4" />
+  </div>
+  <!-- JANKY! Remove this -->
+  <div class="spaceBetweenTables">
+    0<br />
+    0 0
+  </div>
+  <!-- Table D -->
+  <div class="ltsGrid ltsGrid_tableD">
+    <div class="tableHeader">D. Exceptional Conditions</div>
+    <div class="headerDirections">
+      This table is auto-filled with uneditable comments because of selections
+      made or data entered in tables throughout the form
+    </div>
+    <div class="D01">This section does not apply</div>
+  </div>
+  <!-- JANKY! Remove this -->
+  <div class="spaceBetweenTables">
+    0<br />
+    0 0
+  </div>
+  <!-- Table E -->
+  <div class="ltsGrid ltsGrid_tableE">
+    <div class="tableHeader">E. Additional Remarks</div>
+    <div class="headerDirections">
+      This table includes remarks made by the permit applicant to the Authority
+      Having Jurisdiction.
+    </div>
+    <div class="E01">This section does not apply</div>
+  </div>
+  <!-- JANKY! Remove this -->
+  <div class="spaceBetweenTables">
+    0<br />
+    0 0
+  </div>
 
-        </div>
-        <form action="#" method="POST">
-            <div class="ltsGrid signLightingHeaderTable">
-                <div class="tableHeader">Certificate Of Compliance</div>
-                <div class="headerDirections">This document is used to demonstrate compliance with requirements in 110.9, 110.12, 130.0, 130.3. 140.8 and 141.0(b)2M for sign lighting scopes using the prescriptive path. Exit signs and traffic signs are not required to comply with prescriptive requirements per exceptions to 140.8 and do not need to complete this compliance document.</div>
-                <div class="headerHeader">Project Name:</div>
-                <input type="text" class="headerInput hover" name="projectName">
-                <div class="headerHeader">Project Address:</div>
-                <input type="text" class="headerInput hover" name="projectAddress">
-                <div class="headerHeader">Date Prepared:</div>
-                <input type="text" class="headerInput hover" name="datePrepared">
-            </div>
-            <div><button type="submit">Submit</button></div>
-        </form>
+  <!-- Table F -->
+  <div class="ltsGrid ltsGridTableF">
+    <div class="tableHeader">
+      Table F. Maximum Allowed Lighting Power and Controls
     </div>
-    <!-- JANKY! Remove this -->
-    <div class="spaceBetweenTables"> 0<br>
-            0
-            0
+    <div class="headerDirections">
+      This table includes illuminated signs using the Maximum Allowd Lighting
+      Power compliance method per 140.8(a)/170.2(e) as indicated on Table B of
+      this compliance document. It also demostrates compliance with mandatory
+      controls requirements from 130.3/160.5(d) by indicating control types for
+      each sign.
     </div>
-    <div class="ltsGrid ltsGrid_tableA">
-        <div class="tableHeader">A. General Information</div>
-        <div class="headerNum" >01</div>
-        <div class="headerA"> Project Location (city):</div>
-        <input class="hover" type="text" name="location">
-        <div class="headerNum">02</div>
-        <div class="headerA">Climate Zone:</div>
-        <select class="hover italic" name="location">
-            <option value=""  disabled selected>(dropdown)</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="19">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-        </select>
-        <div class="headerNum span2Row">03</div>
-        <div class="header span2Row"> Occupancy Types Within Project:</div>
-        <div class="inputWrapper">
-            <input class="checkBoxA hover" type="checkbox" id="healthcare" value="healthcare" name="healthcare">
-            <label for="healthcare">Healthcare Facility</label>
-        </div>
-        <div class="inputWrapper">
-            <input class="checkBoxA hover" type="checkbox" id="multifamily" value="multifamily" name="multifamily">
-            <label for="multifamily">Multifamily.MF Mixed-use>=4 stories(including dormitory, senior living)</label>
-        </div>
+    <div>01</div>
+    <div>02</div>
+    <div>03</div>
+    <div>04</div>
+    <div>05</div>
+    <div>06</div>
+    <div>07</div>
+    <div>08</div>
+    <div>09</div>
+    <div>Name or Item Tag</div>
+    <div>Complete Sign Description</div>
+    <div>illiminated Method</div>
+    <div>Sign Area (ft2)</div>
+    <div>Allowed Density (W/ft2)</div>
+    <div>Allowance (Watts)</div>
+    <div>Design Watts</div>
+    <div>Mandatory Controls</div>
+    <div>Field Inspector</div>
+    <div>Shut Off</div>
+    <div>Dimming</div>
+    <div>Demand Response</div>
+    <input type="text" />
+    <input type="text" />
+    <select>
+      <option value="" disabled selected>(dropdown)</option>
+      <option value="new">Iternally</option>
+      <option value="altered">Externally</option>
+    </select>
+    <input type="text" />
+    <div>NEEDS JS LOGIC</div>
+    <div>NEEDS JS LOGIC</div>
+    <input type="text" />
+    <!-- SELECT BELOW NEEDS JS LOGIC. THE OPTIONS BELOW ARE JUST FOR ONE SCENARIO-->
+    <select>
+      <option value="AutoTimer">Auto Timer</option>
+      <option value="Astrn. Timer">Astrn. Timer</option>
+      <option value="AutoTimer">Other*</option>
+    </select>
+    <select>
+      <option value="NA">NA</option>
+    </select>
+    <select>
+      <option value="NA">NA</option>
+    </select>
+    <input type="checkbox" />
+    <input type="checkbox" />
+
+    <div>EMPTY SPACE</div>
+    <div>10</div>
+    <div>11</div>
+    <div>12</div>
+    <div>13</div>
+    <div>14</div>
+    <div>Luminair Name or Item Tag</div>
+    <div>Complete Luminaire Description</div>
+    <div>Watts per Luminaire</div>
+    <div>How Wattage is Determined</div>
+    <div>Total number luminaires</div>
+    <input type="text" />
+    <input type="text" />
+    <input type="text" />
+    <select>
+      <option value="NA8">NA8 Default</option>
+      <option value="Mfr">Mfr Spec</option>
+      <option value="Alt">Alt Sources per 140.8(b)/170.2(e)</option>
+      <option value="Other">Other</option>
+    </select>
+    <div>Empty Space</div>
+    <button type="button">Add Row</button>
+    <button type="button">Delete Row</button>
+    <div>
+      * Notes: Controls with a * require a note in the space below explaining
+      how compliance is achieved. Ex: Sign within a tunnel illuminated day &
+      night; Excepetion to 130.3(a)2A
     </div>
-    <!-- JANKY! Remove this -->
-    <div class="spaceBetweenTables"> 0<br>
-            0
-            0
-    </div>
-    <div class="ltsGrid ltsGrid_tableB">
-        <div class="tableHeader">B. Project Scope</div>
-        <div class="headerDirections">This table includes illiminated signs that are within the scope fo the permit application and are demonstrating compliance using the prescriptive path outlined in 140.8/170.2(e) or 141.0b2M/180.2(b)4bvi for alterations. Exit signs and traffice signs are not required to comply with prescriptive requirements per exceptions to 140.8/170.2(e) and do not need to complete this compliance document.</div>
-        <div class="headerNum B01">01</div>
-        <div class="headerNum B02">02</div>
-        <div class="headerNum B03">03</div>
-        <div class="headerNum B04">04</div>
-        <div class="headerNum B05">05</div>
-        <div class="headerB B01">Name or Item Tag</div>
-        <div class="headerB B02">Complete Sign Description</div>
-        <div class="headerB B03">Sign Status</div>
-        <div class="headerB B04">Sign Type</div>
-        <div class="headerB B05">Compliance Method</div>
-        <input type="text" class="B01 hover" name="nameOrItem_sign">
-        <input type="text" class="B02 hover" name="descriptionSign">
-        <select class="B03 hover italic" name="status_Sign">
-            <option value="" disabled selected>(dropdown)</option>
-            <option value="new">New</option>
-            <option value="altered">Altered</option>
-        </select>
-        <select class="B04 hover italic" name="type_Sign">
-            <option value="" disabled selected>(dropdown)</option>
-            <option value="Indoor">Indoor</option>
-            <option value="Outdoor">Outdoor</option>
-            <option value="Center">Elec Message Center</option>
-        </select>
-        <select class="B05 hover italic" name="compliance_Method">
-            <option value="" disabled selected>(dropdown)</option>
-            <option value="maxAllowed">Max Allowed Lighting Power</option>
-            <option value="alternateLightSources">Alternate Light Sources</option>
-            <option value="energyVerifiedLabel">Energy Verified Label</option>
-        </select>
-    </div>
-    <!-- JANKY! Remove this -->
-    <div class="spaceBetweenTables"> 0<br>
-        0
-        0
-    </div>
-    <div class="ltsGrid ltsGrid_tablec">
-        <div class="tableHeader">C. Compliance Results</div>
-        <div class="headerDirections">Results in this table are automatically calculated from data input and calculations in Tables B through H.<br>Note: If any cell on this table says "COMPLIES with Exceptional Conditions" refer to Table D. Exceptional Conditions for guidance or see the applicable Table referenced below. </div>
-        <div class="C01 RowC1">01</div>
-        <div class="C02 RowC1">02</div>
-        <div class="C03 RowC1">03</div>
-        <div class="C-GT RowC1"></div>
-        <div class="C04 RowC1">04</div>
-        <div class="C-OR1 RowC1"></div>
-        <div class="C05 RowC1">05</div>
-        <div class="C-OR2 RowC1"></div>
-        <div class="C06 Column RowC1">06</div>
-        <div class="C07 RowC1">07</div>
-        <div class="C01 RowC2">Name or Item Tag</div>
-        <div class="C02 RowC2">Complete Sign Description</div>
-        <div class="C03 RowC2">Total Allowed<br>(Watts)</div>
-        <div class="C-GT RowC2">&#8805;</div>
-        <div class="C04 RowC2">Total Designed<br>(Watts)</div>
-        <div class="C-OR1 RowC2">OR</div>
-        <div class="C05 RowC2">Compliant Light Sources</div>
-        <div class="C-OR2 RowC2">OR</div>
-        <div class="C06 RowC2">Energy Verified Label</div>
-        <div class="C07 RowC2">Compliance Results</div>
-        <div class="C01 RowC3">(See Table B)</div>
-        <div class="C02 RowC3">(See Table B)</div>
-        <div class="C03 RowC3">(See Table F)</div>
-        <div class="C-GT RowC3"></div>
-        <div class="C04 RowC3">(See Table F)</div>
-        <div class="C-OR1 RowC3"></div>
-        <div class="C05 RowC3">(See Table G)</div>
-        <div class="C-OR2 RowC3"></div>
-        <div class="C06 RowC3">(See Table H)</div>
-        <div class="C07 RowC3"></div>
-        <input type="text" class="C01 RowC4">
-        <input type="text" class="C02 RowC4">
-        <input type="text" class="C03 RowC4">
-        <div class="C-GT RowC4">&#8805;</div>
-        <input type="text"  class="C04 RowC4">
-        <div class="C-OR1 RowC4">OR</div>
-        <input type="text" class="C05 RowC4">
-        <div class="C-OR2 RowC4">OR</div>
-        <input type="text" class="C06 RowC4">
-        <input type="text" class="C07 RowC4">
-    </div>
-     <!-- JANKY! Remove this -->
-    <div class="spaceBetweenTables"> 0<br>
-        0
-        0
-    </div>
-    <div class="ltsGrid ltsGrid_tableD">
-        <div class="tableHeader">D. Exceptional Conditions</div>
-        <div class="headerDirections">This table is auto-filled with uneditable comments because of selections made or data entered in tables throughout the form</div>
-        <div class="D01">This section does not apply</div>
-    </div>
-    <!-- JANKY! Remove this -->
-    <div class="spaceBetweenTables"> 0<br>
-        0
-        0
-    </div>
-    <div class="ltsGrid ltsGrid_tableE">
-        <div class="tableHeader">E. Additional Remarks</div>
-        <div class="headerDirections">This table includes remarks made by the permit applicant to the Authority Having Jurisdiction.</div>
-        <div class="E01">This section does not apply</div>
-    </div>
-</div>     
+    <div>NEEDS JS LOGIC</div>
+    <input type="text" />
+    <button type="button">Reset</button>
+  </div>
+  <!-- JANKY! Remove this -->
+  <div class="spaceBetweenTables">
+    0<br />
+    0 0
+  </div>
+
+  <!-- Table G -->
+  <div>G. Light Sources and Controls</div>
+  <div>
+    This table includes signs using the Alternative Sources Compliance
+    compliance method per 140.8(b)/170.29e as indicated on Table B of this
+    compliance document. It also demonstrates compliance with mandatory controls
+    requirements from 130.3/160.5(d) by indicating control types for each sign.
+  </div>
+  <div>01</div>
+  <div>02</div>
+  <div>03</div>
+  <div>04</div>
+  <div>05</div>
+  <div>Name or Item Tag</div>
+  <div>Complete Sign Description</div>
+  <div>Compliant Light Sources</div>
+  <div>Mandatory Controls</div>
+  <div>Field Inspector</div>
+  <div>Shut Off</div>
+  <div>Dimming</div>
+  <div>Demand Response</div>
+  <div>NEEDS JS LOGIC</div>
+  <div>NEEDS JS LOGIC</div>
+  <select>
+    <option value="" disabled selected>(dropdown)</option>
+    <option value="highPressure">High Pressure Sodium Lamps</option>
+    <option value="MetalHalide88">
+      Metal halide lamps (pulse start or ceramic) + ballast 88%+ efficient
+    </option>
+    <option value="MetalHalide80">
+      Metal halide lamps (pulse start that are 320 watts or smaller, are not 250
+      watt or 175 watt lamps) + ballast 80%+ efficient
+    </option>
+    <option value="Neon75">
+      Neon/cold cathod + trans/pwr (of supply output current &lt 50mA) 75%+
+      efficient
+    </option>
+    <option value="Neon68">
+      Neon/cold cathode + trans/pwr supply (of supply output current &gte 50mA)
+      75%+ efficient
+    </option>
+    <option value="flourescent">
+      Flourescent + CRI &gte 80 OR elec ballanst output freq. >20kHz
+    </option>
+    <option value="NATitle20">
+      NA: Ttile 20 compliant single voltage external power supply
+    </option>
+    <option value="compactFlourescent">
+      Compact flourescent w/o med screw based sockets
+    </option>
+  </select>
+  <select>
+    <option value="NA">NA</option>
+  </select>
+  <select>
+    <option value="NA">NA</option>
+  </select>
+  <input type="checkbox" />
+  <input type="checkbox" />
+  <div>Empty Space</div>
+  <button type="button">Add Row</button>
+  <button type="button">Delete Row</button>
+  <div>
+    Notes: Controls with a * require a note in the space below explainig how
+    compliance is acheived. EX: Sign within a tunnel illumnated day & night;
+    EXCEPTION to 140.4(a)2A
+  </div>
+  <div>NEEDS JS LOGIC</div>
+  <input type="text" />
+  <button type="button">Reset</button>
+  <!-- JANKY! Remove this -->
+  <div class="spaceBetweenTables">
+    0<br />
+    0 0
+  </div>
+
+  <!-- Table H -->
+  <div>H. Energy Verified Labeled Signs and Controls</div>
+  <div>
+    This table demonstrates compliance with mandatory controls requirements from
+    130.3/160.5(d) for illuminated signs using the ENERGY VERIFIED label
+    compliance method per 140.8(b)/170.2(e) as indicated on Table B of this
+    compliance document. This table may only be completed for signs that have
+    permanent, pre-printed, factory installed, ENERGY VERIFIED label confirmed
+    that the sign complies with the Section 140.8/170.2(e) of the California
+    2022 Title 24, part 6 standards
+  </div>
+  <div>01</div>
+  <div>02</div>
+  <div>03</div>
+  <div>04</div>
+  <div>Name or Item Tag</div>
+  <div>Complete Sign Description</div>
+  <div>Mandatory Controls</div>
+  <div>Field Inspector</div>
+  <div>Shut Off</div>
+  <div>Dimming</div>
+  <div>Demand Response</div>
+  <div>Pass</div>
+  <div>Fail</div>
+  <div>NEEDS JS LOGIC</div>
+  <div>NEEDS JS LOGIC</div>
+  <select>
+    <option value="AutoTimer">Auto Timer</option>
+    <option value="Astrn. Timer">Astrn. Timer</option>
+    <option value="AutoTimer">Other*</option>
+  </select>
+  <select>
+    <option value="NA">NA</option>
+  </select>
+  <select>
+    <option value="NA">NA</option>
+  </select>
+  <input type="checkbox" />
+  <input type="checkbox" />
+  <div>
+    * Notes: Controls with a * require a note in the space below explaining how
+    compliance is achieved. EX: Sign within a tunnel illuminated day & night;
+    EXCEPTION to 130.3(a)2A
+  </div>
+  <div>NEEDS JS LOGIC</div>
+  <input type="text" />
+  <div>
+    1 FOOTNOTE: Demand response controls are only requried for an Electroninc
+    Message Center having a new connected lighting power load greater than 15 kW
+    per 110.12(d)
+  </div>
+  <button type="button">Reset</button>
+  <!-- JANKY! Remove this -->
+  <div class="spaceBetweenTables">
+    0<br />
+    0 0
+  </div>
+
+  <!-- Table I -->
+  <div>I. Declaration of Required Certificates of Installation</div>
+  <div>
+    Selections have been made based on information in this document. If any
+    selections have been changed by the permit applicant, an explanation should
+    be included in Table E. Additional Remarks. These documents must be provided
+    to the buildign inspector during construction and can be found online at
+  </div>
+  <div>YES</div>
+  <div>NO</div>
+  <div>Form/Title</div>
+  <div>Field Inspector</div>
+  <div>Pass</div>
+  <div>Fail</div>
+  <input type="checkbox" />
+  <input type="checkbox" />
+  <div>NRCI-LTS-E - Must be submitted for all buildings.</div>
+  <input type="checkbox" />
+  <input type="checkbox" />
+  <!-- JANKY! Remove this -->
+  <div class="spaceBetweenTables">
+    0<br />
+    0 0
+  </div>
+
+  <!-- Table J -->
+  <div>J. Declaration of Required</div>
+  <div>
+    There are no Certificates of Acceptance applicable to sign lighting
+    requirements
+  </div>
+
+  <!-- JANKY! Remove this -->
+  <div class="spaceBetweenTables">
+    0<br />
+    0 0
+  </div>
+</div>
 {% endblock %}
