@@ -23,7 +23,6 @@
 
 .ltsGrid {
   background-color: lightgray;
-  display: grid;
 }
 
 .signLightingHeader {
@@ -33,6 +32,7 @@
 }
 
 .signLightingHeaderTable {
+  display: grid;
   grid-template-columns: repeat(100, 0.91vw);
   grid-template-rows: repeat(6, 5vh);
 }
@@ -52,7 +52,7 @@
 .ltsGrid_tableC {
   display: grid;
   grid-template-columns: repeat(100, 0.91vw);
-  grid-template-rows: repeat(7, 5vh);
+  grid-template-rows: repeat(7, 6vh);
 }
 
 .ltsGrid_tableD {
@@ -70,6 +70,7 @@
 .ltsGrid_tableF {
   display: grid;
   grid-template-columns: repeat(100, 0.91vw);
+
   grid-template-rows: repeat(11, 6vh);
 }
 
@@ -83,6 +84,8 @@
   display: grid;
   grid-template-columns: repeat(100, 0.91vw);
   grid-template-rows: repeat(11, 6vh);
+
+  grid-template-rows: repeat(14, 6vh);
 }
 
 .ltsGrid > * {
@@ -127,6 +130,7 @@
   grid-row: span 2;
   display: flex;
   align-items: center;
+  font-style: italic;
 }
 
 input {
@@ -156,6 +160,14 @@ select {
   padding-right: 5px;
 }
 
+.checkBoxF {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0.5);
+  padding-right: 5px;
+}
+
 input {
   margin: 0;
 }
@@ -178,10 +190,6 @@ label {
   color: lightgray;
 }
 
-.headerDirections {
-  font-style: italic;
-}
-
 .headerHeader {
   display: flex;
   align-items: center;
@@ -199,7 +207,13 @@ label {
 .fullLengthRow {
   grid-column: span 100;
 }
-ß .B01 {
+
+
+.twoRows {
+  grid-row: span 2;
+}
+
+.B01 {
   grid-column: span 20;
 }
 
@@ -224,7 +238,7 @@ label {
 }
 
 .C02 {
-  grid-column: span 17;
+  grid-column: span 19;
 }
 
 .C03 {
@@ -232,7 +246,7 @@ label {
 }
 
 .C-GT {
-  grid-column: span 6;
+  grid-column: span 2;
 }
 
 .C04 {
@@ -240,7 +254,7 @@ label {
 }
 
 .C-OR1 {
-  grid-column: span 2;
+  grid-column: span 3;
 }
 
 .C05 {
@@ -248,7 +262,7 @@ label {
 }
 
 .C-OR2 {
-  grid-column: span 2;
+  grid-column: span 3;
 }
 
 .C06 {
