@@ -71,7 +71,7 @@
   display: grid;
   grid-template-columns: repeat(100, 0.91vw);
 
-  grid-template-rows: repeat(11, 6vh);
+  grid-template-rows: repeat(14, 6vh);
 }
 
 .ltsGrid_tableG {
@@ -84,8 +84,18 @@
   display: grid;
   grid-template-columns: repeat(100, 0.91vw);
   grid-template-rows: repeat(11, 6vh);
+}
 
-  grid-template-rows: repeat(14, 6vh);
+.ltsGrid_tableI {
+  display: grid;
+  grid-template-columns: repeat(100, 0.91vw);
+  grid-template-rows: repeat(5, 6vh);
+}
+
+.ltsGrid_tableJ {
+  display: grid;
+  grid-template-columns: repeat(100, 0.91vw);
+  grid-template-rows: repeat(3, 6vh);
 }
 
 .ltsGrid > * {
@@ -207,7 +217,6 @@ label {
 .fullLengthRow {
   grid-column: span 100;
 }
-
 
 .twoRows {
   grid-row: span 2;
@@ -455,6 +464,30 @@ label {
 
 .h04_endcap {
   grid-column: span 80;
+}
+
+.i01 {
+  grid-column: span 10;
+}
+
+.i02 {
+  grid-column: span 10;
+}
+
+.i03 {
+  grid-column: span 60;
+}
+
+.i04 {
+  grid-column: span 20;
+}
+
+.i04a {
+  grid-column: span 10;
+}
+
+.i04b {
+  grid-column: span 10;
 }
 
 .button {
