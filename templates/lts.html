@@ -232,7 +232,7 @@ content%}
   </div>
 
   <!-- Table F -->
-  <div class="ltsGrid ltsGridTableF">
+  <div class="ltsGrid ltsGrid_TableF">
     <div class="tableHeader">
       Table F. Maximum Allowed Lighting Power and Controls
     </div>
@@ -243,73 +243,89 @@ content%}
       controls requirements from 130.3/160.5(d) by indicating control types for
       each sign.
     </div>
-    <div>01</div>
-    <div>02</div>
-    <div>03</div>
-    <div>04</div>
-    <div>05</div>
-    <div>06</div>
-    <div>07</div>
-    <div>08</div>
-    <div>09</div>
-    <div>Name or Item Tag</div>
-    <div>Complete Sign Description</div>
-    <div>illiminated Method</div>
-    <div>Sign Area (ft2)</div>
-    <div>Allowed Density (W/ft2)</div>
-    <div>Allowance (Watts)</div>
-    <div>Design Watts</div>
-    <div>Mandatory Controls</div>
-    <div>Field Inspector</div>
-    <div>Shut Off</div>
+    <div class="F01">01</div>
+    <div class="F02">02</div>
+    <div class="F03">03</div>
+    <div class="F04">04</div>
+    <div class="F05">05</div>
+    <div class="F06">06</div>
+    <div class="F07">07</div>
+    <div class="F08">08</div>
+    <div class="F09">09</div>
+    <div class="F01">Name or Item Tag</div>
+    <div class="F02">Complete Sign Description</div>
+    <div class="F03">illiminated Method</div>
+    <div class="F04">Sign Area (ft2)</div>
+    <div class="F05">Allowed Density (W/ft2)</div>
+    <div class="F06">Allowance (Watts)</div>
+    <div class="F07">Design Watts</div>
+    <div class="F08">Mandatory Controls</div>
+    <div class="F09">Field Inspector</div>
+    <!--<div>Shut Off</div>
     <div>Dimming</div>
-    <div>Demand Response</div>
-    <input type="text" />
-    <input type="text" />
-    <select>
+    <div>Demand Response</div>-->
+    <input type="text" class="F01" />
+    <input type="text" class="F02" />
+    <select class="F03">
       <option value="" disabled selected>(dropdown)</option>
       <option value="new">Iternally</option>
       <option value="altered">Externally</option>
     </select>
-    <input type="text" />
-    <div>NEEDS JS LOGIC</div>
-    <div>NEEDS JS LOGIC</div>
-    <input type="text" />
+    <input type="text" class="F04" />
+    <div class="F05">NEEDS JS LOGIC</div>
+    <div class="F06">NEEDS JS LOGIC</div>
+    <input type="text" class="F07" />
     <!-- SELECT BELOW NEEDS JS LOGIC. THE OPTIONS BELOW ARE JUST FOR ONE SCENARIO-->
-    <select>
+    <select class="F08">
       <option value="AutoTimer">Auto Timer</option>
       <option value="Astrn. Timer">Astrn. Timer</option>
       <option value="AutoTimer">Other*</option>
     </select>
+    <!--
     <select>
       <option value="NA">NA</option>
     </select>
     <select>
       <option value="NA">NA</option>
     </select>
+  -->
+    <input type="checkbox" class="F09" />
+    <!--
     <input type="checkbox" />
-    <input type="checkbox" />
+    -->
 
-    <div>EMPTY SPACE</div>
-    <div>10</div>
-    <div>11</div>
-    <div>12</div>
-    <div>13</div>
-    <div>14</div>
-    <div>Luminair Name or Item Tag</div>
-    <div>Complete Luminaire Description</div>
-    <div>Watts per Luminaire</div>
-    <div>How Wattage is Determined</div>
-    <div>Total number luminaires</div>
-    <input type="text" />
-    <input type="text" />
-    <input type="text" />
-    <select>
+    <div class="F01">EMPTY SPACE</div>
+    <div class="F02">EMPTY SPACE</div>
+    <div class="F03">10</div>
+    <div class="F04">11</div>
+    <div class="F05">12</div>
+    <div class="F06">13</div>
+    <div class="F07">14</div>
+    <div class="F08">DUMMY</div>
+    <div class="F09">DUMMY</div>
+    <div class="F01">DUMMY</div>
+    <div class="F02">DUMMY</div>
+    <div class="F03">Luminair Name or Item Tag</div>
+    <div class="F04">Complete Luminaire Description</div>
+    <div class="F05">Watts per Luminaire</div>
+    <div class="F06">How Wattage is Determined</div>
+    <div class="F07">Total number luminaires</div>
+    <div class="F08">DUMMY</div>
+    <div class="F09">DUMMY</div>
+    <input type="text" class="F01" />
+    <input type="text" class="F02" />
+    <input type="text" class="F03" />
+    <select class="F04">
       <option value="NA8">NA8 Default</option>
       <option value="Mfr">Mfr Spec</option>
       <option value="Alt">Alt Sources per 140.8(b)/170.2(e)</option>
       <option value="Other">Other</option>
     </select>
+    <input type="text" class="F06" />
+    <div class="F07">DUMMY</div>
+    <div class="F09">DUMMY</div>
+    <div class="F09">DUMMY?</div>
+    <!--
     <div>Empty Space</div>
     <button type="button">Add Row</button>
     <button type="button">Delete Row</button>
@@ -321,7 +337,7 @@ content%}
     <div>NEEDS JS LOGIC</div>
     <input type="text" />
     <button type="button">Reset</button>
-  </div>
+  --></div>
   <!-- JANKY! Remove this -->
   <div class="spaceBetweenTables">
     0<br />

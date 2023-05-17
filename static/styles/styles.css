@@ -23,7 +23,6 @@
 
 .ltsGrid {
   background-color: lightgray;
-  display: grid;
 }
 
 .signLightingHeader {
@@ -115,6 +114,7 @@
   grid-row: span 2;
   display: flex;
   align-items: center;
+  font-style: italic;
 }
 
 input {
@@ -164,10 +164,6 @@ label {
   border-color: black;
   border-style: solid;
   color: lightgray;
-}
-
-.headerDirections {
-  font-style: italic;
 }
 
 .headerHeader {
@@ -250,6 +246,42 @@ label {
 
 .E01 {
   grid-column: span 100;
+}
+
+.F01 {
+  grid-column: span 8;
+}
+
+.F02 {
+  grid-column: span 16;
+}
+
+.F03 {
+  grid-column: span 8;
+}
+
+.F04 {
+  grid-column: span 8;
+}
+
+.F05 {
+  grid-column: span 8;
+}
+
+.F06 {
+  grid-column: span 8;
+}
+
+.F07 {
+  grid-column: span 8;
+}
+
+.F08 {
+  grid-column: span 24;
+}
+
+.F09 {
+  grid-column: span 12;
 }
 
 .italic {
