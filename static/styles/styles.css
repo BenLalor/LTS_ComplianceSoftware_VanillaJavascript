@@ -89,7 +89,7 @@
 .ltsGrid_tableI {
   display: grid;
   grid-template-columns: repeat(100, 0.91vw);
-  grid-template-rows: repeat(5, 6vh);
+  grid-template-rows: repeat(4, 6vh);
 }
 
 .ltsGrid_tableJ {
