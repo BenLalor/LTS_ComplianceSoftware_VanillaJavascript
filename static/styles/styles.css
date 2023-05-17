@@ -23,7 +23,6 @@
 
 .ltsGrid {
   background-color: lightgray;
-  display: grid;
 }
 
 .signLightingHeader {
@@ -33,6 +32,7 @@
 }
 
 .signLightingHeaderTable {
+  display: grid;
   grid-template-columns: repeat(100, 0.91vw);
   grid-template-rows: repeat(6, 5vh);
 }
@@ -52,7 +52,7 @@
 .ltsGrid_tableC {
   display: grid;
   grid-template-columns: repeat(100, 0.91vw);
-  grid-template-rows: repeat(8, 5vh);
+  grid-template-rows: repeat(7, 6vh);
 }
 
 .ltsGrid_tableD {
@@ -67,10 +67,16 @@
   grid-template-rows: repeat(3, 5vh);
 }
 
-.ltsGrid_tableE {
+.ltsGrid_tableF {
   display: grid;
   grid-template-columns: repeat(100, 0.91vw);
-  grid-template-rows: repeat(11, 5vh);
+  grid-template-rows: repeat(14, 6vh);
+}
+
+.ltsGrid_tableG {
+  display: grid;
+  grid-template-columns: repeat(100, 0.91vw);
+  grid-template-rows: repeat(9, 6vh);
 }
 
 .ltsGrid > * {
@@ -115,6 +121,7 @@
   grid-row: span 2;
   display: flex;
   align-items: center;
+  font-style: italic;
 }
 
 input {
@@ -144,6 +151,14 @@ select {
   padding-right: 5px;
 }
 
+.checkBoxF {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0.5);
+  padding-right: 5px;
+}
+
 input {
   margin: 0;
 }
@@ -166,10 +181,6 @@ label {
   color: lightgray;
 }
 
-.headerDirections {
-  font-style: italic;
-}
-
 .headerHeader {
   display: flex;
   align-items: center;
@@ -182,6 +193,14 @@ label {
 .headerInput {
   margin: 0;
   grid-column: span 80;
+}
+
+.fullLengthRow {
+  grid-column: span 100;
+}
+
+.twoRows {
+  grid-row: span 2;
 }
 
 .B01 {
@@ -209,7 +228,7 @@ label {
 }
 
 .C02 {
-  grid-column: span 17;
+  grid-column: span 19;
 }
 
 .C03 {
@@ -217,7 +236,7 @@ label {
 }
 
 .C-GT {
-  grid-column: span 6;
+  grid-column: span 2;
 }
 
 .C04 {
@@ -225,7 +244,7 @@ label {
 }
 
 .C-OR1 {
-  grid-column: span 2;
+  grid-column: span 3;
 }
 
 .C05 {
@@ -233,7 +252,7 @@ label {
 }
 
 .C-OR2 {
-  grid-column: span 2;
+  grid-column: span 3;
 }
 
 .C06 {
@@ -250,6 +269,142 @@ label {
 
 .E01 {
   grid-column: span 100;
+}
+
+.doubleRow {
+  grid-row: span 2;
+}
+
+.F01 {
+  grid-column: span 8;
+}
+
+.F01_begincap {
+  grid-column: span 24;
+}
+
+.F01_begincap_extralong {
+  grid-column: span 80;
+}
+
+.F01_begincap_extralong2 {
+  grid-column: span 90;
+}
+
+.F02 {
+  grid-column: span 16;
+}
+
+.F02_extraLong {
+  grid-column: span 92;
+}
+
+.F03 {
+  grid-column: span 8;
+}
+
+.F04 {
+  grid-column: span 8;
+}
+
+.F04_doublewide {
+  grid-column: span 16;
+}
+
+.F05 {
+  grid-column: span 8;
+}
+
+.F06 {
+  grid-column: span 8;
+}
+
+.F07 {
+  grid-column: span 8;
+}
+
+.F07_doublewide {
+  grid-column: span 16;
+}
+
+.F08 {
+  grid-column: span 24;
+}
+
+.F08a {
+  grid-column: span 8;
+}
+
+.F08b {
+  grid-column: span 8;
+}
+
+.F08c {
+  grid-column: span 8;
+}
+
+.F08_endcap {
+  grid-column: span 20;
+}
+
+.F09 {
+  grid-column: span 12;
+}
+
+.F09a {
+  grid-column: span 6;
+}
+
+.F09b {
+  grid-column: span 6;
+}
+
+.G01 {
+  grid-column: span 20;
+}
+
+.G01_begincap {
+  grid-column: span 80;
+}
+
+.G02 {
+  grid-column: span 20;
+}
+
+.G03 {
+  grid-column: span 20;
+}
+
+.G04 {
+  grid-column: span 20;
+}
+
+.G04a {
+  grid-column: span 7;
+}
+
+.G04b {
+  grid-column: span 7;
+}
+
+.G04c {
+  grid-column: span 6;
+}
+
+.G05 {
+  grid-column: span 20;
+}
+
+.G05a {
+  grid-column: span 10;
+}
+
+.G05b {
+  grid-column: span 10;
+}
+
+.button {
+  grid-column: span 10;
 }
 
 .italic {
