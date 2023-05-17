@@ -404,17 +404,18 @@ content%}
     <input type="checkbox" class="G05a checkBoxF" />
     <input type="checkbox" class="G05b checkBoxF" />
     <div class="G01_begincap">Empty Space</div>
-    <button type="button">Add Row</button>
-    <button type="button">Delete Row</button>
-    <div>
+
+    <button type="button" class="G05a">Add Row</button>
+    <button type="button" class="G05a">Delete Row</button>
+    <div class="fullLengthRow">
+
       Notes: Controls with a * require a note in the space below explainig how
       compliance is acheived. EX: Sign within a tunnel illumnated day & night;
       EXCEPTION to 140.4(a)2A
     </div>
-    Al
-    <div>NEEDS JS LOGIC</div>
+    <div class="G01"></div>
     <input type="text" />
-    <button type="button">Reset</button>
+    <button type="button" class="button">Reset</button>
   </div>
   <!-- JANKY! Remove this -->
   <div class="spaceBetweenTables">
@@ -423,57 +424,60 @@ content%}
   </div>
 
   <!-- Table H -->
-  <div>H. Energy Verified Labeled Signs and Controls</div>
-  <div>
-    This table demonstrates compliance with mandatory controls requirements from
-    130.3/160.5(d) for illuminated signs using the ENERGY VERIFIED label
-    compliance method per 140.8(b)/170.2(e) as indicated on Table B of this
-    compliance document. This table may only be completed for signs that have
-    permanent, pre-printed, factory installed, ENERGY VERIFIED label confirmed
-    that the sign complies with the Section 140.8/170.2(e) of the California
-    2022 Title 24, part 6 standards
+  <div class="ltsGrid ltsGrid_tableH">
+    <div class="tableHeader">H. Energy Verified Labeled Signs and Controls</div>
+    <div class="headerDirections">
+      This table demonstrates compliance with mandatory controls requirements
+      from 130.3/160.5(d) for illuminated signs using the ENERGY VERIFIED label
+      compliance method per 140.8(b)/170.2(e) as indicated on Table B of this
+      compliance document. This table may only be completed for signs that have
+      permanent, pre-printed, factory installed, ENERGY VERIFIED label confirmed
+      that the sign complies with the Section 140.8/170.2(e) of the California
+      2022 Title 24, part 6 standards
+    </div>
+    <div class="h01">01</div>
+    <div class="h02">02</div>
+    <div class="h03">03</div>
+    <div class="h04">04</div>
+    <div class="h01 doubleRow">Name or Item Tag</div>
+    <div class="h02 doubleRow">Complete Sign Description</div>
+    <div class="h03">Mandatory Controls</div>
+    <div class="h04">Field Inspector</div>
+    <div class="h03a">Shut Off</div>
+    <div class="h03b">Dimming</div>
+    <div class="h03c">Demand Response</div>
+    <div class="h04a">Pass</div>
+    <div class="h04b">Fail</div>
+    <div class="h01"></div>
+    <div class="h02"></div>
+    <select class="h03a">
+      <option value="AutoTimer">Auto Timer</option>
+      <option value="Astrn. Timer">Astrn. Timer</option>
+      <option value="AutoTimer">Other*</option>
+    </select>
+    <select class="h03b">
+      <option value="NA">NA</option>
+    </select>
+    <select class="h03c">
+      <option value="NA">NA</option>
+    </select>
+    <input type="checkbox" class="h04a" />
+    <input type="checkbox" class="h04b" />
+    <div class="fullLengthRow">
+      * Notes: Controls with a * require a note in the space below explaining
+      how compliance is achieved. EX: Sign within a tunnel illuminated day &
+      night; EXCEPTION to 130.3(a)2A
+    </div>
+    <div class="h01"></div>
+    <input type="text" class="h04_endcap" />
+    <div class="fullLengthRow">
+      1 FOOTNOTE: Demand response controls are only requried for an Electroninc
+      Message Center having a new connected lighting power load greater than 15
+      kW per 110.12(d)
+    </div>
+    <div class="h01_begincap"></div>
+    <button type="button" class="button">Reset</button>
   </div>
-  <div>01</div>
-  <div>02</div>
-  <div>03</div>
-  <div>04</div>
-  <div>Name or Item Tag</div>
-  <div>Complete Sign Description</div>
-  <div>Mandatory Controls</div>
-  <div>Field Inspector</div>
-  <div>Shut Off</div>
-  <div>Dimming</div>
-  <div>Demand Response</div>
-  <div>Pass</div>
-  <div>Fail</div>
-  <div>NEEDS JS LOGIC</div>
-  <div>NEEDS JS LOGIC</div>
-  <select>
-    <option value="AutoTimer">Auto Timer</option>
-    <option value="Astrn. Timer">Astrn. Timer</option>
-    <option value="AutoTimer">Other*</option>
-  </select>
-  <select>
-    <option value="NA">NA</option>
-  </select>
-  <select>
-    <option value="NA">NA</option>
-  </select>
-  <input type="checkbox" />
-  <input type="checkbox" />
-  <div>
-    * Notes: Controls with a * require a note in the space below explaining how
-    compliance is achieved. EX: Sign within a tunnel illuminated day & night;
-    EXCEPTION to 130.3(a)2A
-  </div>
-  <div>NEEDS JS LOGIC</div>
-  <input type="text" />
-  <div>
-    1 FOOTNOTE: Demand response controls are only requried for an Electroninc
-    Message Center having a new connected lighting power load greater than 15 kW
-    per 110.12(d)
-  </div>
-  <button type="button">Reset</button>
   <!-- JANKY! Remove this -->
   <div class="spaceBetweenTables">
     0<br />
