@@ -67,12 +67,19 @@
   grid-template-rows: repeat(3, 5vh);
 }
 
+.ltsGrid_tableF {
+  display: grid;
+  grid-template-columns: repeat(100, 0.91vw);
+  grid-template-rows: repeat(11, 6vh);
+}
+
 .ltsGrid_tableG {
   display: grid;
   grid-template-columns: repeat(100, 0.91vw);
   grid-template-rows: repeat(9, 6vh);
 }
-ƒ .ltsGrid_tableF {
+
+.ltsGrid_tableH {
   display: grid;
   grid-template-columns: repeat(100, 0.91vw);
   grid-template-rows: repeat(11, 6vh);
@@ -390,6 +397,50 @@ label {
 
 .G05b {
   grid-column: span 10;
+}
+
+.h01 {
+  grid-column: span 20;
+}
+
+.h01_begincap {
+  grid-column: span 90;
+}
+
+.h02 {
+  grid-column: span 20;
+}
+
+.h03 {
+  grid-column: span 40;
+}
+
+.h03a {
+  grid-column: span 13;
+}
+
+.h03b {
+  grid-column: span 13;
+}
+
+.h03c {
+  grid-column: span 14;
+}
+
+.h04 {
+  grid-column: span 20;
+}
+
+.h04a {
+  grid-column: span 10;
+}
+
+.h04b {
+  grid-column: span 10;
+}
+
+.h04_endcap {
+  grid-column: span 80;
 }
 
 .button {
