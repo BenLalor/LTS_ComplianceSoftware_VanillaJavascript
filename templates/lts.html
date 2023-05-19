@@ -134,11 +134,21 @@ content%}
       <option value="Outdoor">Outdoor</option>
       <option value="Center">Elec Message Center</option>
     </select>
-    <select class="B05 hover italic" name="compliance_Method">
+    <select
+      class="B05 hover italic"
+      name="compliance_Method"
+      id="compliance_Method"
+    >
       <option value="" disabled selected>(dropdown)</option>
-      <option value="maxAllowed">Max Allowed Lighting Power</option>
-      <option value="alternateLightSources">Alternate Light Sources</option>
-      <option value="energyVerifiedLabel">Energy Verified Label</option>
+      <option value="maxAllowedLP" id="maxAllowedLP">
+        Max Allowed Lighting Power
+      </option>
+      <option value="alternateLightSources" id="alternateLightSources">
+        Alternate Light Sources
+      </option>
+      <option value="energyVerifiedLabel" id="energyVerifiedLabel">
+        Energy Verified Label
+      </option>
     </select>
   </div>
   <!-- JANKY! Remove this -->
@@ -231,103 +241,108 @@ content%}
   </div>
 
   <!-- Table F -->
-  <div class="ltsGrid ltsGrid_tableF">
+  <div class="ltsGrid ltsGrid_tableF" id="tableF">
     <div class="tableHeader">
       Table F. Maximum Allowed Lighting Power and Controls
     </div>
-    <div class="headerDirections">
+    <div class="headerDirections tableFApplies">
       This table includes illuminated signs using the Maximum Allowd Lighting
       Power compliance method per 140.8(a)/170.2(e) as indicated on Table B of
       this compliance document. It also demostrates compliance with mandatory
       controls requirements from 130.3/160.5(d) by indicating control types for
       each sign.
     </div>
-    <div class="F01">01</div>
-    <div class="F02">02</div>
-    <div class="F03">03</div>
-    <div class="F04">04</div>
-    <div class="F05">05</div>
-    <div class="F06">06</div>
-    <div class="F07">07</div>
-    <div class="F08">08</div>
-    <div class="F09">09</div>
-    <div class="F01 doubleRow">Name or Item Tag</div>
-    <div class="F02 doubleRow">Complete Sign Description</div>
-    <div class="F03 doubleRow">Illiminated Method</div>
-    <div class="F04 doubleRow">Sign Area (ft2)</div>
-    <div class="F05 doubleRow">Allowed Density (W/ft2)</div>
-    <div class="F06 doubleRow">Allowance (Watts)</div>
-    <div class="F07 doubleRow">Design Watts</div>
-    <div class="F08">Mandatory Controls</div>
-    <div class="F09">Field Inspector</div>
-    <div class="F08a">Shut Off</div>
-    <div class="F08b">Dimming</div>
-    <div class="F08c">Demand Response</div>
-    <div class="F09a">Pass</div>
-    <div class="F09b">Fail</div>
-    <input type="text" class="F01 hover" />
-    <input type="text" class="F02 hover" />
-    <select class="F03 hover">
+    <div class="F01 tableFApplies">01</div>
+    <div class="F02 tableFApplies">02</div>
+    <div class="F03 tableFApplies">03</div>
+    <div class="F04 tableFApplies">04</div>
+    <div class="F05 tableFApplies">05</div>
+    <div class="F06 tableFApplies">06</div>
+    <div class="F07 tableFApplies">07</div>
+    <div class="F08 tableFApplies">08</div>
+    <div class="F09 tableFApplies">09</div>
+    <div class="F01 doubleRow tableFApplies">Name or Item Tag</div>
+    <div class="F02 doubleRow tableFApplies">Complete Sign Description</div>
+    <div class="F03 doubleRow tableFApplies">Illiminated Method</div>
+    <div class="F04 doubleRow tableFApplies">Sign Area (ft2)</div>
+    <div class="F05 doubleRow tableFApplies">Allowed Density (W/ft2)</div>
+    <div class="F06 doubleRow tableFApplies">Allowance (Watts)</div>
+    <div class="F07 doubleRow tableFApplies">Design Watts</div>
+    <div class="F08 tableFApplies">Mandatory Controls</div>
+    <div class="F09 tableFApplies">Field Inspector</div>
+    <div class="F08a tableFApplies">Shut Off</div>
+    <div class="F08b tableFApplies">Dimming</div>
+    <div class="F08c tableFApplies">Demand Response</div>
+    <div class="F09a tableFApplies">Pass</div>
+    <div class="F09b tableFApplies">Fail</div>
+    <input type="text" class="F01 hover tableFApplies" />
+    <input type="text" class="F02 hover tableFApplies" />
+    <select class="F03 hover tableFApplies">
       <option value="" disabled selected>(dropdown)</option>
       <option value="new">Iternally</option>
       <option value="altered">Externally</option>
     </select>
-    <input type="text" class="F04 hover" />
-    <div class="F05"></div>
-    <div class="F06"></div>
-    <input type="text" class="F07 hover" />
+    <input type="text" class="F04 hover tableFApplies" />
+    <div class="F05 tableFApplies"></div>
+    <div class="F06 tableFApplies"></div>
+    <input type="text" class="F07 hover tableFApplies" />
     <!-- SELECT BELOW NEEDS JS LOGIC. THE OPTIONS BELOW ARE JUST FOR ONE SCENARIO-->
-    <select class="F08a hover">
+    <select class="F08a hover tableFApplies">
       <option value="AutoTimer">Auto Timer</option>
       <option value="Astrn. Timer">Astrn. Timer</option>
       <option value="AutoTimer">Other*</option>
     </select>
-    <select class="F08b hover">
+    <select class="F08b hover tableFApplies">
       <option value="NA">NA</option>
     </select>
-    <select class="F08c hover">
+    <select class="F08c hover tableFApplies">
       <option value="NA">NA</option>
     </select>
-    <input type="checkbox" class="F09a checkBoxF hover" />
-    <input type="checkbox" class="F09b checkBoxF hover" />
-    <div class="F01_begincap"></div>
-    <div class="F03">10</div>
-    <div class="F04_doublewide">11</div>
-    <div class="F06">12</div>
-    <div class="F07_doublewide">13</div>
-    <div class="F08a">14</div>
-    <div class="F08_endcap"></div>
-    <div class="F01_begincap"></div>
-    <div class="F03">Name or Item Tag</div>
-    <div class="F04_doublewide">Complete Luminaire Description</div>
-    <div class="F06">Watts per Luminaire</div>
-    <div class="F07_doublewide">How Wattage is Determined</div>
-    <div class="F07">Total number luminaires</div>
-    <div class="F08_endcap"></div>
-    <div class="F01_begincap"></div>
-    <input type="text" class="F01 hover" />
-    <input type="text" class="F02 hover" />
-    <input type="text" class="F03 hover" />
-    <select class="F07_doublewide hover">
+    <input type="checkbox" class="F09a checkBoxF hover tableFApplies" />
+    <input type="checkbox" class="F09b checkBoxF tableFApplies hover" />
+    <div class="F01_begincap tableFApplies"></div>
+    <div class="F03 tableFApplies">10</div>
+    <div class="F04_doublewide tableFApplies">11</div>
+    <div class="F06 tableFApplies">12</div>
+    <div class="F07_doublewide tableFApplies">13</div>
+    <div class="F08a tableFApplies">14</div>
+    <div class="F08_endcap tableFApplies"></div>
+    <div class="F01_begincap tableFApplies"></div>
+    <div class="F03 tableFApplies">Name or Item Tag</div>
+    <div class="F04_doublewide tableFApplies">
+      Complete Luminaire Description
+    </div>
+    <div class="F06 tableFApplies">Watts per Luminaire</div>
+    <div class="F07_doublewide tableFApplies">How Wattage is Determined</div>
+    <div class="F07 tableFApplies">Total number luminaires</div>
+    <div class="F08_endcap tableFApplies"></div>
+    <div class="F01_begincap tableFApplies"></div>
+    <input type="text" class="F01 hover tableFApplies" />
+    <input type="text" class="F02 hover tableFApplies" />
+    <input type="text" class="F03 hover tableFApplies" />
+    <select class="F07_doublewide hover tableFApplies">
       <option value="NA8">NA8 Default</option>
       <option value="Mfr">Mfr Spec</option>
       <option value="Alt">Alt Sources per 140.8(b)/170.2(e)</option>
       <option value="Other">Other</option>
     </select>
-    <input type="text" class="F06 hover" />
-    <div class="F08_endcap"></div>
-    <div class="F01_begincap_extralong"></div>
-    <button type="button" class="button">Add Row</button>
-    <button type="button" class="button">Delete Row</button>
-    <div class="fullLengthRow">
+    <input type="text" class="F06 hover tableFApplies" />
+    <div class="F08_endcap tableFApplies"></div>
+    <div class="F01_begincap_extralong tableFApplies"></div>
+    <button type="button" class="button tableFApplies">Add Row</button>
+    <button type="button" class="button tableFApplies">Delete Row</button>
+    <div class="fullLengthRow tableFApplies">
       * Notes: Controls with a * require a note in the space below explaining
       how compliance is achieved. Ex: Sign within a tunnel illuminated day &
       night; Excepetion to 130.3(a)2A
     </div>
-    <div class="F01"></div>
-    <input type="text" class="F02_extraLong hover" />
-    <div class="F01_begincap_extralong2"></div>
-    <button type="button" class="button">Reset</button>
+    <div class="F01 tableFApplies"></div>
+    <input type="text" class="F02_extraLong hover tableFApplies" />
+    <div class="F01_begincap_extralong2 tableFApplies"></div>
+    <button type="button" class="button tableFApplies">Reset</button>
+    <div class="fullLengthRow tableFDoesNotApply">
+      This section does not apply
+    </div>
   </div>
   <!-- JANKY! Remove this -->
   <div class="spaceBetweenTables">
@@ -336,33 +351,33 @@ content%}
   </div>
 
   <!-- Table G -->
-  <div class="ltsGrid ltsGrid_tableG">
+  <div class="ltsGrid ltsGrid_tableG" id="tableG">
     <div class="tableHeader">G. Light Sources and Controls</div>
-    <div class="headerDirections">
+    <div class="headerDirections tableGApplies">
       This table includes signs using the Alternative Sources Compliance
       compliance method per 140.8(b)/170.29e as indicated on Table B of this
       compliance document. It also demonstrates compliance with mandatory
       controls requirements from 130.3/160.5(d) by indicating control types for
       each sign.
     </div>
-    <div class="G01">01</div>
-    <div class="G02">02</div>
-    <div class="G03">03</div>
-    <div class="G04">04</div>
-    <div class="G05">05</div>
-    <div class="G01 doubleRow">Name or Item Tag</div>
-    <div class="G02 doubleRow">Complete Sign Description</div>
-    <div class="G03 doubleRow">Compliant Light Sources</div>
-    <div class="G04">Mandatory Controls</div>
-    <div class="G05">Field Inspector</div>
-    <div class="G04a">Shut Off</div>
-    <div class="G04b">Dimming</div>
-    <div class="G04c">Demand Response</div>
-    <div class="G05a">Pass</div>
-    <div class="G05b">Fail</div>
-    <div class="G01"></div>
-    <div class="G02"></div>
-    <select class="G03 hover">
+    <div class="G01 tableGApplies">01</div>
+    <div class="G02 tableGApplies">02</div>
+    <div class="G03 tableGApplies">03</div>
+    <div class="G04 tableGApplies">04</div>
+    <div class="G05 tableGApplies">05</div>
+    <div class="G01 doubleRow tableGApplies">Name or Item Tag</div>
+    <div class="G02 doubleRow tableGApplies">Complete Sign Description</div>
+    <div class="G03 doubleRow tableGApplies">Compliant Light Sources</div>
+    <div class="G04 tableGApplies">Mandatory Controls</div>
+    <div class="G05 tableGApplies">Field Inspector</div>
+    <div class="G04a tableGApplies">Shut Off</div>
+    <div class="G04b tableGApplies">Dimming</div>
+    <div class="G04c tableGApplies">Demand Response</div>
+    <div class="G05a tableGApplies">Pass</div>
+    <div class="G05b tableGApplies">Fail</div>
+    <div class="G01 tableGApplies"></div>
+    <div class="G02 tableGApplies"></div>
+    <select class="G03 hover tableGApplies">
       <option value="" disabled selected>(dropdown)</option>
       <option value="highPressure">High Pressure Sodium Lamps</option>
       <option value="MetalHalide88">
@@ -390,142 +405,149 @@ content%}
         Compact flourescent w/o med screw based sockets
       </option>
     </select>
-    <select class="G04a hover">
+    <select class="G04a hover tableGApplies">
       <option value="AutoTimer">Auto Timer</option>
       <option value="Astrn. Timer">Astrn. Timer</option>
       <option value="AutoTimer">Other*</option>
     </select>
-    <select class="G04b hover">
+    <select class="G04b hover tableGApplies">
       <option value="NA">NA</option>
     </select>
-    <select class="G04c hover">
+    <select class="G04c hover tableGApplies">
       <option value="NA">NA</option>
     </select>
-    <input type="checkbox" class="G05a checkBoxF hover" />
-    <input type="checkbox" class="G05b checkBoxF hover" />
-    <div class="G01_begincap">Empty Space</div>
+    <input type="checkbox" class="G05a checkBoxF hover tableGApplies" />
+    <input type="checkbox" class="G05b checkBoxF hover tableGApplies" />
+    <div class="G01_begincap tableGApplies">Empty Space</div>
 
-    <button type="button" class="G05a">Add Row</button>
-    <button type="button" class="G05a">Delete Row</button>
-    <div class="fullLengthRow">
+    <button type="button" class="G05a tableGApplies">Add Row</button>
+    <button type="button" class="G05a tableGApplies">Delete Row</button>
+    <div class="fullLengthRow tableGApplies">
       Notes: Controls with a * require a note in the space below explainig how
       compliance is acheived. EX: Sign within a tunnel illumnated day & night;
       EXCEPTION to 140.4(a)2A
     </div>
-    <div class="G01"></div>
-    <input type="text" class="hover" />
-    <button type="button" class="button">Reset</button>
+    <div class="G01 tableGApplies"></div>
+    <input type="text" class="hover tableGApplies" />
+    <button type="button" class="button tableGApplies">Reset</button>
+    <div class="fullLengthRow tableGDoesNotApply">
+      This section does not apply
+    </div>
   </div>
-  <!-- JANKY! Remove this -->
-  <div class="spaceBetweenTables">
-    0<br />
-    0 0
-  </div>
+    <!-- JANKY! Remove this -->
+    <div class="spaceBetweenTables">
+      0<br />
+      0 0
+    </div>
 
-  <!-- Table H -->
-  <div class="ltsGrid ltsGrid_tableH">
-    <div class="tableHeader">H. Energy Verified Labeled Signs and Controls</div>
-    <div class="headerDirections">
-      This table demonstrates compliance with mandatory controls requirements
-      from 130.3/160.5(d) for illuminated signs using the ENERGY VERIFIED label
-      compliance method per 140.8(b)/170.2(e) as indicated on Table B of this
-      compliance document. This table may only be completed for signs that have
-      permanent, pre-printed, factory installed, ENERGY VERIFIED label confirmed
-      that the sign complies with the Section 140.8/170.2(e) of the California
-      2022 Title 24, part 6 standards
+    <!-- Table H -->
+    <div class="ltsGrid ltsGrid_tableH" id="tableH">
+      <div class="tableHeader">
+        H. Energy Verified Labeled Signs and Controls
+      </div>
+      <div class="headerDirections">
+        This table demonstrates compliance with mandatory controls requirements
+        from 130.3/160.5(d) for illuminated signs using the ENERGY VERIFIED
+        label compliance method per 140.8(b)/170.2(e) as indicated on Table B of
+        this compliance document. This table may only be completed for signs
+        that have permanent, pre-printed, factory installed, ENERGY VERIFIED
+        label confirmed that the sign complies with the Section 140.8/170.2(e)
+        of the California 2022 Title 24, part 6 standards
+      </div>
+      <div class="h01">01</div>
+      <div class="h02">02</div>
+      <div class="h03">03</div>
+      <div class="h04">04</div>
+      <div class="h01 doubleRow">Name or Item Tag</div>
+      <div class="h02 doubleRow">Complete Sign Description</div>
+      <div class="h03">Mandatory Controls</div>
+      <div class="h04">Field Inspector</div>
+      <div class="h03a">Shut Off</div>
+      <div class="h03b">Dimming</div>
+      <div class="h03c">Demand Response</div>
+      <div class="h04a">Pass</div>
+      <div class="h04b">Fail</div>
+      <div class="h01"></div>
+      <div class="h02"></div>
+      <select class="h03a hover">
+        <option value="AutoTimer">Auto Timer</option>
+        <option value="Astrn. Timer">Astrn. Timer</option>
+        <option value="AutoTimer">Other*</option>
+      </select>
+      <select class="h03b hover">
+        <option value="NA">NA</option>
+      </select>
+      <select class="h03c hover">
+        <option value="NA">NA</option>
+      </select>
+      <input type="checkbox" class="h04a hover checkBoxF" />
+      <input type="checkbox" class="h04b hover checkBoxF" />
+      <div class="fullLengthRow">
+        * Notes: Controls with a * require a note in the space below explaining
+        how compliance is achieved. EX: Sign within a tunnel illuminated day &
+        night; EXCEPTION to 130.3(a)2A
+      </div>
+      <div class="h01"></div>
+      <input type="text" class="h04_endcap hover" />
+      <div class="fullLengthRow">
+        1 FOOTNOTE: Demand response controls are only requried for an
+        Electroninc Message Center having a new connected lighting power load
+        greater than 15 kW per 110.12(d)
+      </div>
+      <div class="h01_begincap"></div>
+      <button type="button" class="button">Reset</button>
     </div>
-    <div class="h01">01</div>
-    <div class="h02">02</div>
-    <div class="h03">03</div>
-    <div class="h04">04</div>
-    <div class="h01 doubleRow">Name or Item Tag</div>
-    <div class="h02 doubleRow">Complete Sign Description</div>
-    <div class="h03">Mandatory Controls</div>
-    <div class="h04">Field Inspector</div>
-    <div class="h03a">Shut Off</div>
-    <div class="h03b">Dimming</div>
-    <div class="h03c">Demand Response</div>
-    <div class="h04a">Pass</div>
-    <div class="h04b">Fail</div>
-    <div class="h01"></div>
-    <div class="h02"></div>
-    <select class="h03a hover">
-      <option value="AutoTimer">Auto Timer</option>
-      <option value="Astrn. Timer">Astrn. Timer</option>
-      <option value="AutoTimer">Other*</option>
-    </select>
-    <select class="h03b hover">
-      <option value="NA">NA</option>
-    </select>
-    <select class="h03c hover">
-      <option value="NA">NA</option>
-    </select>
-    <input type="checkbox" class="h04a hover checkBoxF" />
-    <input type="checkbox" class="h04b hover checkBoxF" />
-    <div class="fullLengthRow">
-      * Notes: Controls with a * require a note in the space below explaining
-      how compliance is achieved. EX: Sign within a tunnel illuminated day &
-      night; EXCEPTION to 130.3(a)2A
+    <!-- JANKY! Remove this -->
+    <div class="spaceBetweenTables">
+      0<br />
+      0 0
     </div>
-    <div class="h01"></div>
-    <input type="text" class="h04_endcap hover" />
-    <div class="fullLengthRow">
-      1 FOOTNOTE: Demand response controls are only requried for an Electroninc
-      Message Center having a new connected lighting power load greater than 15
-      kW per 110.12(d)
-    </div>
-    <div class="h01_begincap"></div>
-    <button type="button" class="button">Reset</button>
-  </div>
-  <!-- JANKY! Remove this -->
-  <div class="spaceBetweenTables">
-    0<br />
-    0 0
-  </div>
 
-  <!-- Table I -->
-  <div class="ltsGrid ltsGrid_tableI">
-    <div class="tableHeader">
-      I. Declaration of Required Certificates of Installation
+    <!-- Table I -->
+    <div class="ltsGrid ltsGrid_tableI">
+      <div class="tableHeader">
+        I. Declaration of Required Certificates of Installation
+      </div>
+      <div class="headerDirections">
+        Selections have been made based on information in this document. If any
+        selections have been changed by the permit applicant, an explanation
+        should be included in Table E. Additional Remarks. These documents must
+        be provided to the buildign inspector during construction and can be
+        found online at
+      </div>
+      <div class="i01 doubleRow">YES</div>
+      <div class="i02 doubleRow">NO</div>
+      <div class="i03 doubleRow">Form/Title</div>
+      <div class="i04">Field Inspector</div>
+      <div class="i04a">Pass</div>
+      <div class="i04b">Fail</div>
+      <input type="checkbox" class="i01" />
+      <input type="checkbox" class="i02" />
+      <div class="i03">NRCI-LTS-E - Must be submitted for all buildings.</div>
+      <input type="checkbox" class="i04a" />
+      <input type="checkbox" class="i04b" />
     </div>
-    <div class="headerDirections">
-      Selections have been made based on information in this document. If any
-      selections have been changed by the permit applicant, an explanation
-      should be included in Table E. Additional Remarks. These documents must be
-      provided to the buildign inspector during construction and can be found
-      online at
+    <!-- JANKY! Remove this -->
+    <div class="spaceBetweenTables">
+      0<br />
+      0 0
     </div>
-    <div class="i01 doubleRow">YES</div>
-    <div class="i02 doubleRow">NO</div>
-    <div class="i03 doubleRow">Form/Title</div>
-    <div class="i04">Field Inspector</div>
-    <div class="i04a">Pass</div>
-    <div class="i04b">Fail</div>
-    <input type="checkbox" class="i01" />
-    <input type="checkbox" class="i02" />
-    <div class="i03">NRCI-LTS-E - Must be submitted for all buildings.</div>
-    <input type="checkbox" class="i04a" />
-    <input type="checkbox" class="i04b" />
-  </div>
-  <!-- JANKY! Remove this -->
-  <div class="spaceBetweenTables">
-    0<br />
-    0 0
-  </div>
 
-  <!-- Table J -->
-  <div class="ltsGrid ltsGrid_tableJ">
-    <div class="tableHeader">J. Declaration of Required</div>
-    <div class="headerDirections">
-      There are no Certificates of Acceptance applicable to sign lighting
-      requirements
+    <!-- Table J -->
+    <div class="ltsGrid ltsGrid_tableJ">
+      <div class="tableHeader">J. Declaration of Required</div>
+      <div class="headerDirections">
+        There are no Certificates of Acceptance applicable to sign lighting
+        requirements
+      </div>
+    </div>
+
+    <!-- JANKY! Remove this -->
+    <div class="spaceBetweenTables">
+      0<br />
+      0 0
     </div>
   </div>
-
-  <!-- JANKY! Remove this -->
-  <div class="spaceBetweenTables">
-    0<br />
-    0 0
-  </div>
+  <script src="../static/javascript/lts.js"></script>
+  > {% endblock %}
 </div>
-{% endblock %}
