@@ -82,7 +82,7 @@
 .ltsGrid_tableH {
   display: grid;
   grid-template-columns: repeat(100, 0.91vw);
-  grid-template-rows: repeat(11, 6vh);
+  grid-template-rows: repeat(2, 6vh);
 }
 
 .ltsGrid_tableI {
@@ -563,5 +563,9 @@ label {
 }
 
 .tableFApplies {
+  display: none;
+}
+
+.tableHApplies {
   display: none;
 }

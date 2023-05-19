@@ -11,6 +11,11 @@ const tableG = document.getElementById("tableG");
 tableGDoesNotApply = document.querySelector(".tableGDoesNotApply");
 const tableGApplies = document.querySelectorAll(".tableGApplies");
 
+// Table H variables
+const tableH = document.getElementById("tableH");
+const tableHDoesNotApply = document.querySelector(".tableHDoesNotApply");
+const tableHApplies = document.querySelectorAll(".tableHApplies");
+
 //Functions
 
 // Change Table based on B05 Compliance Method Dropdown
@@ -29,7 +34,6 @@ complianceMethodDropdown.addEventListener("change", function () {
     for (const element of tableFApplies) {
       element.hidden = true;
     }
-    // Change the grid & hide Does Not Apply
     tableFDoesNotApply.hidden = false;
     tableF.style.gridTemplateRows = "repeat(2, 6vh)";
   }
@@ -40,14 +44,29 @@ complianceMethodDropdown.addEventListener("change", function () {
       element.style.display = "grid";
       element.hidden = false;
     }
-    // Change the grid & hide Does Not Apply
+    tableGDoesNotApply.hidden = true;
     tableG.style.gridTemplateRows = "repeat(9, 6vh)";
   } else {
     for (const element of tableGApplies) {
       element.hidden = true;
     }
-    // Change the grid & hide Does Not Apply
     tableGDoesNotApply.hidden = false;
     tableG.style.gridTemplateRows = "repeat(2, 6vh)";
+  }
+
+  // Trigger Table H
+  if (complianceMethodSelected === "energyVerifiedLabel") {
+    for (const element of tableHApplies) {
+      element.style.display = "grid";
+      element.hidden = false;
+    }
+    tableH.style.gridTemplateRows = "repeat(11, 6vh)";
+    tableHDoesNotApply.hidden = true;
+  } else {
+    for (const element of tableHApplies) {
+      element.hidden = true;
+    }
+    tableHDoesNotApply.hidden = false;
+    tableH.style.gridTemplateRows = "repeat(2, 6vh)";
   }
 });
