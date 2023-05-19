@@ -70,20 +70,19 @@
 .ltsGrid_tableF {
   display: grid;
   grid-template-columns: repeat(100, 0.91vw);
-
-  grid-template-rows: repeat(14, 6vh);
+  grid-template-rows: repeat(2, 6vh);
 }
 
 .ltsGrid_tableG {
   display: grid;
   grid-template-columns: repeat(100, 0.91vw);
-  grid-template-rows: repeat(9, 6vh);
+  grid-template-rows: repeat(2, 6vh);
 }
 
 .ltsGrid_tableH {
   display: grid;
   grid-template-columns: repeat(100, 0.91vw);
-  grid-template-rows: repeat(11, 6vh);
+  grid-template-rows: repeat(2, 6vh);
 }
 
 .ltsGrid_tableI {
@@ -559,6 +558,14 @@ label {
   min-height: 94vh;
 }
 
-.testing {
-  grid-column: span 10;
+.tableGApplies {
+  display: none;
+}
+
+.tableFApplies {
+  display: none;
+}
+
+.tableHApplies {
+  display: none;
 }
