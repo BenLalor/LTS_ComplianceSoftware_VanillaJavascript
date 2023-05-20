@@ -4,7 +4,7 @@ let complianceMethodDropdown = document.getElementById("compliance_Method");
 // Table F variables
 const tableF = document.getElementById("tableF");
 const tableFDoesNotApply = document.querySelector(".tableFDoesNotApply");
-const tableFApplies = document.querySelectorAll(".tableFApplies");
+const tableFAttributes = document.querySelectorAll(".tableFAttributes");
 
 // Table G variables
 const tableG = document.getElementById("tableG");
@@ -20,18 +20,17 @@ const tableHApplies = document.querySelectorAll(".tableHApplies");
 
 // Change Table based on B05 Compliance Method Dropdown
 complianceMethodDropdown.addEventListener("change", function () {
-  let complianceMethodSelected = complianceMethodDropdown.value;
-
   // Trigger Table F
+  let complianceMethodSelected = complianceMethodDropdown.value;
   if (complianceMethodSelected === "maxAllowedLP") {
-    for (const element of tableFApplies) {
+    for (const element of tableFAttributes) {
       element.style.display = "grid";
       element.hidden = false;
     }
     tableFDoesNotApply.hidden = true;
     tableF.style.gridTemplateRows = "repeat(14, 6vh)";
   } else {
-    for (const element of tableFApplies) {
+    for (const element of tableFAttributes) {
       element.hidden = true;
     }
     tableFDoesNotApply.hidden = false;
