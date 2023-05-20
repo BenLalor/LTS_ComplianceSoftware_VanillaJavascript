@@ -3,6 +3,8 @@ let healthCareCheckbox = document.getElementById("healthcareCheckbox");
 
 // Table B Variables
 let complianceMethodDropdown = document.getElementById("compliance_Method");
+let b01_Name = document.getElementById("b01_Name");
+let b02_Description = document.getElementById("b02_Description");
 
 // Table F Variables
 const tableF = document.getElementById("tableF");
@@ -11,6 +13,8 @@ const tableFDoesNotApplyAttribute = document.querySelector(
   ".tableFDoesNotApplyAttribute"
 );
 const tableFAttributes = document.querySelectorAll(".tableFAttributes");
+const f01_Name = document.getElementById("f01_Name");
+const f02_Description = document.getElementById("f02_Description");
 const F08a_MandatoryControl = document.getElementById("F08a");
 const F08b_MandatoryControl = document.getElementById("F08b");
 const F08c_MandatoryControl = document.getElementById("F08c");
@@ -55,6 +59,18 @@ healthCareCheckbox.addEventListener("change", () => {
     h03b_MandatoryControl.disabled = false;
     h03c_MandatoryControl.disabled = false;
   }
+});
+
+// Transfer B01 Name to F.01 Name
+b01_Name.addEventListener("change", () => {
+  const b01_Name_Input = b01_Name.value;
+  f01_Name.textContent = b01_Name_Input;
+});
+
+// Transfer B02 Description to F.02 Description
+b02_Description.addEventListener("change", () => {
+  const b02_Description_Input = b02_Description.value;
+  f02_Description.textContent = b02_Description_Input;
 });
 
 // Change Table based on B05 Compliance Method Dropdown
