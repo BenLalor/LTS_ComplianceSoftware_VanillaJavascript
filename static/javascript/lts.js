@@ -103,6 +103,7 @@ complianceMethodDropdown.addEventListener("change", function () {
   // Calculate F04 Options Based on B04 Value
   b04_Value.addEventListener("change", () => {
     F08aValueCalculation();
+    F08bValueCalculation();
   });
 
   // Calculate F05 Value
@@ -213,12 +214,28 @@ const F08aValueCalculation = () => {
     F08a_MandatoryControl.add(new Option("Astrn Timer", "astrnTimer"));
     F08a_MandatoryControl.add(new Option("Other*", "other"));
     F08a_MandatoryControl.add(new Option("NA: Tunnels", "naTunnels"));
-    F08a_MandatoryControl.addEventListener(
-      new Option("NA: Outdoor 24x7x356", "na247")
-    );
+    F08a_MandatoryControl.add(new Option("NA: Outdoor 24x7x356", "na247"));
   } else if (b04_Value.value === "Center") {
     console.log(" I hear you!");
     F08a_MandatoryControl.options.length = 0;
     F08a_MandatoryControl.disabled = true;
+  }
+};
+
+const F08bValueCalculation = () => {
+  let disabledOption = new Option("dropdown", "", true, true);
+  disabledOption.disabled = true;
+  if (b04_Value.value === "Indoor" || b04_Value.value === "Center") {
+    F08b_MandatoryControl.options.length = 0;
+    F08b_MandatoryControl.disabled = true;
+  } else if (b04_Value.value === "Outdoor") {
+    F08b_MandatoryControl.disabled = false;
+    F08b_MandatoryControl.options.length = 0;
+    F08b_MandatoryControl.add(disabledOption);
+    F08b_MandatoryControl.add(
+      new Option("Power Reduced 65%+", "powerReduced65")
+    );
+    F08b_MandatoryControl.add(new Option("NA: Tunnels", "naTunnels"));
+    F08b_MandatoryControl.add(new Option("NA: Outdoor 24x7x356", "na247"));
   }
 };
