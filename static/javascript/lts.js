@@ -98,12 +98,7 @@ complianceMethodDropdown.addEventListener("change", function () {
 
   // Calculate F05 Value
   f03_Method.addEventListener("change", () => {
-    let f03_Method_Value = f03_Method.value;
-    if (f03_Method_Value === "internally") {
-      f05_Value.textContent = 12;
-    } else if (f03_Method_Value === "externally") {
-      f05_Value.textContent = 2.3;
-    }
+    f05ValueCalculation();
   });
 
   f04_Value.addEventListener("change", () => {
@@ -142,6 +137,16 @@ complianceMethodDropdown.addEventListener("change", function () {
     tableH.style.gridTemplateRows = "repeat(2, 6vh)";
   }
 });
+
+// Functions
+const f05ValueCalculation = () => {
+  let f03_Method_Value = f03_Method.value;
+  if (f03_Method_Value === "internally") {
+    f05_Value.textContent = 12;
+  } else if (f03_Method_Value === "externally") {
+    f05_Value.textContent = 2.3;
+  }
+};
 
 const f06ValueCalculation = () => {
   f06_Value.textContent = f04_Value.value * f05_Value.textContent;
