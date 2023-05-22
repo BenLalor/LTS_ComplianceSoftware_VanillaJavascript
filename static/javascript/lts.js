@@ -5,6 +5,7 @@ let healthCareCheckbox = document.getElementById("healthcareCheckbox");
 let complianceMethodDropdown = document.getElementById("compliance_Method");
 let b01_Name = document.getElementById("b01_Name");
 let b02_Description = document.getElementById("b02_Description");
+let b04_Value = document.getElementById("b04_Value");
 
 // Table F Variables
 const tableF = document.getElementById("tableF");
@@ -99,6 +100,11 @@ complianceMethodDropdown.addEventListener("change", function () {
     F02ValueCalcuation();
   });
 
+  // Calculate F04 Options Based on B04 Value
+  b04_Value.addEventListener("change", () => {
+    F08aValueCalculation();
+  });
+
   // Calculate F05 Value
   f03_Method.addEventListener("change", () => {
     f05ValueCalculation();
@@ -184,5 +190,35 @@ const f07_ValueCalculation = () => {
       element.hidden = true;
     }
     tableF.style.gridTemplateRows = "repeat(11, 6vh)";
+  }
+};
+
+const F08aValueCalculation = () => {
+  let disabledOption = new Option("dropdown", "", true, true);
+  disabledOption.disabled = true;
+  if (b04_Value.value === "Indoor") {
+    F08a_MandatoryControl.disabled = false;
+    F08a_MandatoryControl.options.length = 0;
+    F08a_MandatoryControl.add(disabledOption);
+    F08a_MandatoryControl.add(new Option("Auto Timer", "autoTimer"));
+    F08a_MandatoryControl.add(new Option("Astrn Timer", "astrnTimer"));
+    F08a_MandatoryControl.add(new Option("Other*", "other"));
+  } else if (b04_Value.value === "Outdoor") {
+    F08a_MandatoryControl.disabled = false;
+    F08a_MandatoryControl.options.length = 0;
+    F08a_MandatoryControl.add(disabledOption);
+    F08a_MandatoryControl.add(
+      new Option("Auto Time-Switch + Photocontrol", "autoTimerAndPhotocontrol")
+    );
+    F08a_MandatoryControl.add(new Option("Astrn Timer", "astrnTimer"));
+    F08a_MandatoryControl.add(new Option("Other*", "other"));
+    F08a_MandatoryControl.add(new Option("NA: Tunnels", "naTunnels"));
+    F08a_MandatoryControl.addEventListener(
+      new Option("NA: Outdoor 24x7x356", "na247")
+    );
+  } else if (b04_Value.value === "Center") {
+    console.log(" I hear you!");
+    F08a_MandatoryControl.options.length = 0;
+    F08a_MandatoryControl.disabled = true;
   }
 };
