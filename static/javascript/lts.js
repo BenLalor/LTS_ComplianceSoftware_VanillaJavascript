@@ -104,6 +104,7 @@ complianceMethodDropdown.addEventListener("change", function () {
   b04_Value.addEventListener("change", () => {
     F08aValueCalculation();
     F08bValueCalculation();
+    F08cValueCalculation();
   });
 
   // Calculate F05 Value
@@ -237,5 +238,25 @@ const F08bValueCalculation = () => {
     );
     F08b_MandatoryControl.add(new Option("NA: Tunnels", "naTunnels"));
     F08b_MandatoryControl.add(new Option("NA: Outdoor 24x7x356", "na247"));
+  }
+};
+
+const F08cValueCalculation = () => {
+  let disabledOption = new Option("dropdown", "", true, true);
+  disabledOption.disabled = true;
+  if (b04_Value.value === "Indoor" || b04_Value.value === "Outdoor") {
+    F08c_MandatoryControl.options.length = 0;
+    F08c_MandatoryControl.disabled = true;
+  } else if (b04_Value.value === "Center") {
+    F08c_MandatoryControl.disabled = false;
+    F08c_MandatoryControl.options.length = 0;
+    F08c_MandatoryControl.add(disabledOption);
+    F08c_MandatoryControl.add(
+      new Option("Power Reduced 30%+", "powerReduced65")
+    );
+    F08c_MandatoryControl.add(
+      new Option("Exempt By Health/LS Reg", "ExemptHeathLSReg")
+    );
+    F08c_MandatoryControl.add(new Option("NA: &lte15kW", "NA15kW"));
   }
 };
