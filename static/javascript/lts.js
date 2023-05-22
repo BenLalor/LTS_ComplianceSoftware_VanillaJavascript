@@ -16,7 +16,9 @@ const tableFAttributes = document.querySelectorAll(".tableFAttributes");
 const f01_Name = document.getElementById("f01_Name");
 const f02_Description = document.getElementById("f02_Description");
 const f03_Method = document.getElementById("f03_Method");
+const f04_Value = document.getElementById("f04_Value");
 const f05_Value = document.getElementById("f05_Value");
+const f06_Value = document.getElementById("f06_Value");
 const F08a_MandatoryControl = document.getElementById("F08a");
 const F08b_MandatoryControl = document.getElementById("F08b");
 const F08c_MandatoryControl = document.getElementById("F08c");
@@ -104,6 +106,10 @@ complianceMethodDropdown.addEventListener("change", function () {
     }
   });
 
+  f04_Value.addEventListener("change", () => {
+    f06ValueCalculation();
+  });
+
   // Trigger Table G
   if (complianceMethodSelected === "alternateLightSources") {
     for (const element of tableGApplies) {
@@ -136,3 +142,8 @@ complianceMethodDropdown.addEventListener("change", function () {
     tableH.style.gridTemplateRows = "repeat(2, 6vh)";
   }
 });
+
+const f06ValueCalculation = () => {
+  f06_Value.textContent = f04_Value.value * f05_Value.textContent;
+  console.log(f06_Value.textContent);
+};
