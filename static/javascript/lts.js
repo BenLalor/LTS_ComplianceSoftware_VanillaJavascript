@@ -73,8 +73,8 @@ healthCareCheckbox.addEventListener("change", () => {
   }
 });
 
-// Change Table based on B05 Compliance Method Dropdown
-complianceMethodDropdown.addEventListener("change", function () {
+// Render Tables F, G, and H Based on B.05 Compliance Method
+complianceMethodDropdown.addEventListener("change", () => {
   // Trigger Table F
   let complianceMethodSelected = complianceMethodDropdown.value;
   if (complianceMethodSelected === "maxAllowedLP") {
@@ -82,8 +82,15 @@ complianceMethodDropdown.addEventListener("change", function () {
       element.style.display = "grid";
       element.hidden = false;
     }
+    for (const element of tableFOptionalRowAttributes) {
+      element.hidden = true;
+    }
+
+    for (const element of tableF_StarOptions) {
+      element.hidden = true;
+    }
     tableFDoesNotApplyAttribute.hidden = true;
-    tableF.style.gridTemplateRows = "repeat(14, 6vh)";
+    tableF.style.gridTemplateRows = "repeat(9, 6vh)";
   } else {
     for (const element of tableFAttributes) {
       element.hidden = true;
@@ -183,6 +190,7 @@ const F01ValueCalculation = () => {
   f01_Name.textContent = b01_Name_Input;
 };
 
+// Render & Hide F10-F14 Row
 const f07_ValueCalculation = () => {
   let f03_Method_Value = f03_Method.value;
   if (f03_Method_Value === "externally") {
@@ -191,14 +199,22 @@ const f07_ValueCalculation = () => {
     for (let element of tableFOptionalRowAttributes) {
       element.hidden = false;
     }
-    tableF.style.gridTemplateRows = "repeat(14, 6vh)";
+    if (tableF.style.gridTemplateRows === "repeat(11, 6vh)") {
+      tableF.style.gridTemplateRows = "repeat(14, 6vh)";
+    } else if (tableF.style.gridTemplateRows === "repeat(9, 6vh)") {
+      tableF.style.gridTemplateRows = "repeat(12, 6vh)";
+    }
   } else {
     f07_Value.value = "";
     f07_Value.disabled = false;
     for (let element of tableFOptionalRowAttributes) {
       element.hidden = true;
     }
-    tableF.style.gridTemplateRows = "repeat(11, 6vh)";
+    if (tableF.style.gridTemplateRows === "repeat(14, 6vh)") {
+      tableF.style.gridTemplateRows = "repeat(11, 6vh)";
+    } else if (tableF.style.gridTemplateRows === "repeat(12, 6vh)") {
+      tableF.style.gridTemplateRows = "repeat(9, 6vh)";
+    }
   }
 };
 
@@ -274,15 +290,22 @@ const tableF_StarOptions_Render = () => {
     for (let element of tableF_StarOptions) {
       element.hidden = false;
     }
-
     const lightName = f01_Name.textContent;
     FExplanationName.textContent = lightName;
-    tableF.style.gridTemplateRows = "repeat(14, 6vh)"; // HOW MANY ROWS SHOULD BE HERE?
+    if (tableF.style.gridTemplateRows === "repeat(12, 6vh)") {
+      tableF.style.gridTemplateRows = "repeat(14, 6vh)";
+    } else if (tableF.style.gridTemplateRows === "repeat(9, 6vh)") {
+      tableF.style.gridTemplateRows = "repeat(11, 6vh)";
+    }
   } else if (F08a_MandatoryControl.value !== "Other") {
     console.log("Else");
     for (let element of tableF_StarOptions) {
       element.hidden = true;
     }
-    tableF.style.gridTemplateRows = "repeat(12, 6vh)"; // HOW MANY ROWS SHOULD BE HERE?
+    if (tableF.style.gridTemplateRows === "repeat(14, 6vh)") {
+      tableF.style.gridTemplateRows = "repeat(12, 6vh)";
+    } else if (tableF.style.gridTemplateRows === "repeat(11, 6vh)") {
+      tableF.style.gridTemplateRows = "repeat(9, 6vh)";
+    }
   }
 };
