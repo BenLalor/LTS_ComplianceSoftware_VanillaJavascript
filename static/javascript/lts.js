@@ -16,6 +16,7 @@ const tableFDoesNotApplyAttribute = document.querySelector(
 const tableFAttributes = document.querySelectorAll(".tableFAttributes");
 const tableFOptionalRowAttributes =
   document.querySelectorAll(".tableFOptionalRow");
+const tableF_StarOptions = document.querySelectorAll(".tableF_StarOptions");
 const f01_Name = document.getElementById("f01_Name");
 const f02_Description = document.getElementById("f02_Description");
 const f03_Method = document.getElementById("f03_Method");
@@ -28,6 +29,7 @@ const F08b_MandatoryControl = document.getElementById("F08b");
 const F08c_MandatoryControl = document.getElementById("F08c");
 const f12_Value = document.getElementById("f12_Value");
 const f14_Value = document.getElementById("f14_Value");
+const FExplanationName = document.getElementById("FExplanationName");
 
 // Table G Variables
 const tableG = document.getElementById("tableG");
@@ -45,7 +47,7 @@ const h03a_MandatoryControl = document.getElementById("h03a");
 const h03b_MandatoryControl = document.getElementById("h03b");
 const h03c_MandatoryControl = document.getElementById("h03c");
 
-//Functions
+//Event Listeners
 // Healthcare Checkbox Status
 healthCareCheckbox.addEventListener("change", () => {
   if (healthCareCheckbox.checked) {
@@ -116,6 +118,11 @@ complianceMethodDropdown.addEventListener("change", function () {
   // Calculate F06 Value
   f04_Value.addEventListener("change", () => {
     f06ValueCalculation();
+  });
+
+  // Trigger Explanation Element for * Options
+  F08a_MandatoryControl.addEventListener("change", () => {
+    tableF_StarOptions_Render();
   });
 
   // Trigger Table G
@@ -258,5 +265,24 @@ const F08cValueCalculation = () => {
       new Option("Exempt By Health/LS Reg", "ExemptHeathLSReg")
     );
     F08c_MandatoryControl.add(new Option("NA: &lte15kW", "NA15kW"));
+  }
+};
+
+const tableF_StarOptions_Render = () => {
+  if (F08a_MandatoryControl.value === "Other") {
+    console.log("If");
+    for (let element of tableF_StarOptions) {
+      element.hidden = false;
+    }
+
+    const lightName = f01_Name.textContent;
+    FExplanationName.textContent = lightName;
+    tableF.style.gridTemplateRows = "repeat(14, 6vh)"; // HOW MANY ROWS SHOULD BE HERE?
+  } else if (F08a_MandatoryControl.value !== "Other") {
+    console.log("Else");
+    for (let element of tableF_StarOptions) {
+      element.hidden = true;
+    }
+    tableF.style.gridTemplateRows = "repeat(12, 6vh)"; // HOW MANY ROWS SHOULD BE HERE?
   }
 };
