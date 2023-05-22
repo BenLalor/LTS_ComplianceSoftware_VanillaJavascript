@@ -13,15 +13,20 @@ const tableFDoesNotApplyAttribute = document.querySelector(
   ".tableFDoesNotApplyAttribute"
 );
 const tableFAttributes = document.querySelectorAll(".tableFAttributes");
+const tableFOptionalRowAttributes =
+  document.querySelectorAll(".tableFOptionalRow");
 const f01_Name = document.getElementById("f01_Name");
 const f02_Description = document.getElementById("f02_Description");
 const f03_Method = document.getElementById("f03_Method");
 const f04_Value = document.getElementById("f04_Value");
 const f05_Value = document.getElementById("f05_Value");
 const f06_Value = document.getElementById("f06_Value");
+const f07_Value = document.getElementById("f07_Value");
 const F08a_MandatoryControl = document.getElementById("F08a");
 const F08b_MandatoryControl = document.getElementById("F08b");
 const F08c_MandatoryControl = document.getElementById("F08c");
+const f12_Value = document.getElementById("f12_Value");
+const f14_Value = document.getElementById("f14_Value");
 
 // Table G Variables
 const tableG = document.getElementById("tableG");
@@ -97,6 +102,7 @@ complianceMethodDropdown.addEventListener("change", function () {
   // Calculate F05 Value
   f03_Method.addEventListener("change", () => {
     f05ValueCalculation();
+    f07_ValueCalculation();
   });
 
   // Calculate F06 Value
@@ -160,4 +166,23 @@ const F02ValueCalcuation = () => {
 const F01ValueCalculation = () => {
   const b01_Name_Input = b01_Name.value;
   f01_Name.textContent = b01_Name_Input;
+};
+
+const f07_ValueCalculation = () => {
+  let f03_Method_Value = f03_Method.value;
+  if (f03_Method_Value === "externally") {
+    f07_Value.value = f12_Value.value * f14_Value.value;
+    f07_Value.disabled = true;
+    for (let element of tableFOptionalRowAttributes) {
+      element.hidden = false;
+    }
+    tableF.style.gridTemplateRows = "repeat(14, 6vh)";
+  } else {
+    f07_Value.value = "";
+    f07_Value.disabled = false;
+    for (let element of tableFOptionalRowAttributes) {
+      element.hidden = true;
+    }
+    tableF.style.gridTemplateRows = "repeat(11, 6vh)";
+  }
 };
