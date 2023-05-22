@@ -65,17 +65,6 @@ healthCareCheckbox.addEventListener("change", () => {
   }
 });
 
-// Transfer B01 Name to F.01 Name
-b01_Name.addEventListener("change", () => {
-  const b01_Name_Input = b01_Name.value;
-  f01_Name.textContent = b01_Name_Input;
-});
-
-// Transfer B02 Description to F.02 Description
-b02_Description.addEventListener("change", () => {
-  F02ValueCalcuation();
-});
-
 // Change Table based on B05 Compliance Method Dropdown
 complianceMethodDropdown.addEventListener("change", function () {
   // Trigger Table F
@@ -94,6 +83,16 @@ complianceMethodDropdown.addEventListener("change", function () {
     tableFDoesNotApplyAttribute.hidden = false;
     tableF.style.gridTemplateRows = "repeat(2, 6vh)";
   }
+
+  // Calculate F02 Value Based on B01 Value
+  b01_Name.addEventListener("change", () => {
+    F01ValueCalculation();
+  });
+
+  // Calcuate F02 Value Based on B02 Value
+  b02_Description.addEventListener("change", () => {
+    F02ValueCalcuation();
+  });
 
   // Calculate F05 Value
   f03_Method.addEventListener("change", () => {
@@ -156,4 +155,9 @@ const f06ValueCalculation = () => {
 const F02ValueCalcuation = () => {
   const b02_Description_Input = b02_Description.value;
   f02_Description.textContent = b02_Description_Input;
+};
+
+const F01ValueCalculation = () => {
+  const b01_Name_Input = b01_Name.value;
+  f01_Name.textContent = b01_Name_Input;
 };
