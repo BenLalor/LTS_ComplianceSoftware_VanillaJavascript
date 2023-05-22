@@ -15,6 +15,8 @@ const tableFDoesNotApplyAttribute = document.querySelector(
 const tableFAttributes = document.querySelectorAll(".tableFAttributes");
 const f01_Name = document.getElementById("f01_Name");
 const f02_Description = document.getElementById("f02_Description");
+const f03_Method = document.getElementById("f03_Method");
+const f05_Value = document.getElementById("f05_Value");
 const F08a_MandatoryControl = document.getElementById("F08a");
 const F08b_MandatoryControl = document.getElementById("F08b");
 const F08c_MandatoryControl = document.getElementById("F08c");
@@ -56,7 +58,7 @@ healthCareCheckbox.addEventListener("change", () => {
     g04b_MandatoryControl.disabled = false;
     g04c_MandatoryControl.disabled = false;
     h03a_MandatoryControl.disabled = false;
-    h03b_MandatoryControl.disabled = false;
+    h03b_MandatoryControl.diabled = false;
     h03c_MandatoryControl.disabled = false;
   }
 });
@@ -91,6 +93,16 @@ complianceMethodDropdown.addEventListener("change", function () {
     tableFDoesNotApplyAttribute.hidden = false;
     tableF.style.gridTemplateRows = "repeat(2, 6vh)";
   }
+
+  // Calculate F05 Value
+  f03_Method.addEventListener("change", () => {
+    let f03_Method_Value = f03_Method.value;
+    if (f03_Method_Value === "internally") {
+      f05_Value.textContent = 12;
+    } else if (f03_Method_Value === "externally") {
+      f05_Value.textContent = 2.3;
+    }
+  });
 
   // Trigger Table G
   if (complianceMethodSelected === "alternateLightSources") {
