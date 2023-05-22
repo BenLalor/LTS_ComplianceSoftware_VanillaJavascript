@@ -73,8 +73,7 @@ b01_Name.addEventListener("change", () => {
 
 // Transfer B02 Description to F.02 Description
 b02_Description.addEventListener("change", () => {
-  const b02_Description_Input = b02_Description.value;
-  f02_Description.textContent = b02_Description_Input;
+  F02ValueCalcuation();
 });
 
 // Change Table based on B05 Compliance Method Dropdown
@@ -101,6 +100,7 @@ complianceMethodDropdown.addEventListener("change", function () {
     f05ValueCalculation();
   });
 
+  // Calculate F06 Value
   f04_Value.addEventListener("change", () => {
     f06ValueCalculation();
   });
@@ -151,4 +151,9 @@ const f05ValueCalculation = () => {
 const f06ValueCalculation = () => {
   f06_Value.textContent = f04_Value.value * f05_Value.textContent;
   console.log(f06_Value.textContent);
+};
+
+const F02ValueCalcuation = () => {
+  const b02_Description_Input = b02_Description.value;
+  f02_Description.textContent = b02_Description_Input;
 };
