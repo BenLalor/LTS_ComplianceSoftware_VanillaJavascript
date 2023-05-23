@@ -3,6 +3,9 @@ let healthCareCheckbox = document.getElementById("healthcareCheckbox");
 
 // Table B Variables
 let complianceMethodDropdown = document.getElementById("compliance_Method");
+let b01_Name = document.getElementById("b01_Name");
+let b02_Description = document.getElementById("b02_Description");
+let b04_Value = document.getElementById("b04_Value");
 
 // Table F Variables
 const tableF = document.getElementById("tableF");
@@ -11,9 +14,22 @@ const tableFDoesNotApplyAttribute = document.querySelector(
   ".tableFDoesNotApplyAttribute"
 );
 const tableFAttributes = document.querySelectorAll(".tableFAttributes");
+const tableFOptionalRowAttributes =
+  document.querySelectorAll(".tableFOptionalRow");
+const tableF_StarOptions = document.querySelectorAll(".tableF_StarOptions");
+const f01_Name = document.getElementById("f01_Name");
+const f02_Description = document.getElementById("f02_Description");
+const f03_Method = document.getElementById("f03_Method");
+const f04_Value = document.getElementById("f04_Value");
+const f05_Value = document.getElementById("f05_Value");
+const f06_Value = document.getElementById("f06_Value");
+const f07_Value = document.getElementById("f07_Value");
 const F08a_MandatoryControl = document.getElementById("F08a");
 const F08b_MandatoryControl = document.getElementById("F08b");
 const F08c_MandatoryControl = document.getElementById("F08c");
+const f12_Value = document.getElementById("f12_Value");
+const f14_Value = document.getElementById("f14_Value");
+const FExplanationName = document.getElementById("FExplanationName");
 
 // Table G Variables
 const tableG = document.getElementById("tableG");
@@ -31,34 +47,14 @@ const h03a_MandatoryControl = document.getElementById("h03a");
 const h03b_MandatoryControl = document.getElementById("h03b");
 const h03c_MandatoryControl = document.getElementById("h03c");
 
-//Functions
+//Event Listeners
 // Healthcare Checkbox Status
 healthCareCheckbox.addEventListener("change", () => {
-  if (healthCareCheckbox.checked) {
-    F08a_MandatoryControl.disabled = true;
-    F08b_MandatoryControl.disabled = true;
-    F08c_MandatoryControl.disabled = true;
-    g04a_MandatoryControl.disabled = true;
-    g04b_MandatoryControl.disabled = true;
-    g04c_MandatoryControl.disabled = true;
-    h03a_MandatoryControl.disabled = true;
-    h03b_MandatoryControl.disabled = true;
-    h03c_MandatoryControl.disabled = true;
-  } else {
-    F08a_MandatoryControl.disabled = false;
-    F08b_MandatoryControl.disabled = false;
-    F08c_MandatoryControl.disabled = false;
-    g04a_MandatoryControl.disabled = false;
-    g04b_MandatoryControl.disabled = false;
-    g04c_MandatoryControl.disabled = false;
-    h03a_MandatoryControl.disabled = false;
-    h03b_MandatoryControl.disabled = false;
-    h03c_MandatoryControl.disabled = false;
-  }
+  healthCareCheckboxChecked();
 });
 
-// Change Table based on B05 Compliance Method Dropdown
-complianceMethodDropdown.addEventListener("change", function () {
+// Render Tables F, G, and H Based on B.05 Compliance Method
+complianceMethodDropdown.addEventListener("change", () => {
   // Trigger Table F
   let complianceMethodSelected = complianceMethodDropdown.value;
   if (complianceMethodSelected === "maxAllowedLP") {
@@ -66,8 +62,15 @@ complianceMethodDropdown.addEventListener("change", function () {
       element.style.display = "grid";
       element.hidden = false;
     }
+    for (const element of tableFOptionalRowAttributes) {
+      element.hidden = true;
+    }
+
+    for (const element of tableF_StarOptions) {
+      element.hidden = true;
+    }
     tableFDoesNotApplyAttribute.hidden = true;
-    tableF.style.gridTemplateRows = "repeat(14, 6vh)";
+    tableF.style.gridTemplateRows = "repeat(9, 6vh)";
   } else {
     for (const element of tableFAttributes) {
       element.hidden = true;
@@ -75,7 +78,6 @@ complianceMethodDropdown.addEventListener("change", function () {
     tableFDoesNotApplyAttribute.hidden = false;
     tableF.style.gridTemplateRows = "repeat(2, 6vh)";
   }
-
   // Trigger Table G
   if (complianceMethodSelected === "alternateLightSources") {
     for (const element of tableGApplies) {
@@ -108,3 +110,205 @@ complianceMethodDropdown.addEventListener("change", function () {
     tableH.style.gridTemplateRows = "repeat(2, 6vh)";
   }
 });
+
+// Calculate F02 Value Based on B01 Value
+b01_Name.addEventListener("change", () => {
+  F01ValueCalculation();
+});
+
+// Calcuate F02 Value Based on B02 Value
+b02_Description.addEventListener("change", () => {
+  F02ValueCalcuation();
+});
+
+// Calculate F04 Options Based on B04 Value
+b04_Value.addEventListener("change", () => {
+  F08aValueCalculation();
+  F08bValueCalculation();
+  F08cValueCalculation();
+});
+
+// Calculate F05 Value
+f03_Method.addEventListener("change", () => {
+  f05ValueCalculation();
+  f07_ValueCalculation();
+});
+
+// Calculate F06 Value
+f04_Value.addEventListener("change", () => {
+  f06ValueCalculation();
+});
+
+// Trigger Explanation Element for * Options
+F08a_MandatoryControl.addEventListener("change", () => {
+  tableF_StarOptions_Render();
+});
+
+// Functions
+const f05ValueCalculation = () => {
+  let f03_Method_Value = f03_Method.value;
+  if (f03_Method_Value === "internally") {
+    f05_Value.textContent = 12;
+  } else if (f03_Method_Value === "externally") {
+    f05_Value.textContent = 2.3;
+  }
+};
+
+const f06ValueCalculation = () => {
+  f06_Value.textContent = f04_Value.value * f05_Value.textContent;
+  console.log(f06_Value.textContent);
+};
+
+const F02ValueCalcuation = () => {
+  const b02_Description_Input = b02_Description.value;
+  f02_Description.textContent = b02_Description_Input;
+};
+
+const F01ValueCalculation = () => {
+  const b01_Name_Input = b01_Name.value;
+  f01_Name.textContent = b01_Name_Input;
+};
+
+// Render & Hide F10-F14 Row
+const f07_ValueCalculation = () => {
+  let f03_Method_Value = f03_Method.value;
+  if (f03_Method_Value === "externally") {
+    f07_Value.value = f12_Value.value * f14_Value.value;
+    f07_Value.disabled = true;
+    for (let element of tableFOptionalRowAttributes) {
+      element.hidden = false;
+    }
+    if (tableF.style.gridTemplateRows === "repeat(11, 6vh)") {
+      tableF.style.gridTemplateRows = "repeat(14, 6vh)";
+    } else if (tableF.style.gridTemplateRows === "repeat(9, 6vh)") {
+      tableF.style.gridTemplateRows = "repeat(12, 6vh)";
+    }
+  } else {
+    f07_Value.value = "";
+    f07_Value.disabled = false;
+    for (let element of tableFOptionalRowAttributes) {
+      element.hidden = true;
+    }
+    if (tableF.style.gridTemplateRows === "repeat(14, 6vh)") {
+      tableF.style.gridTemplateRows = "repeat(11, 6vh)";
+    } else if (tableF.style.gridTemplateRows === "repeat(12, 6vh)") {
+      tableF.style.gridTemplateRows = "repeat(9, 6vh)";
+    }
+  }
+};
+
+const F08aValueCalculation = () => {
+  let disabledOption = new Option("dropdown", "", true, true);
+  disabledOption.disabled = true;
+  if (b04_Value.value === "Indoor") {
+    F08a_MandatoryControl.disabled = false;
+    F08a_MandatoryControl.options.length = 0;
+    F08a_MandatoryControl.add(disabledOption);
+    F08a_MandatoryControl.add(new Option("Auto Timer", "autoTimer"));
+    F08a_MandatoryControl.add(new Option("Astrn Timer", "astrnTimer"));
+    F08a_MandatoryControl.add(new Option("Other*", "other"));
+  } else if (b04_Value.value === "Outdoor") {
+    F08a_MandatoryControl.disabled = false;
+    F08a_MandatoryControl.options.length = 0;
+    F08a_MandatoryControl.add(disabledOption);
+    F08a_MandatoryControl.add(
+      new Option("Auto Time-Switch + Photocontrol", "autoTimerAndPhotocontrol")
+    );
+    F08a_MandatoryControl.add(new Option("Astrn Timer", "astrnTimer"));
+    F08a_MandatoryControl.add(new Option("Other*", "other"));
+    F08a_MandatoryControl.add(new Option("NA: Tunnels", "naTunnels"));
+    F08a_MandatoryControl.add(new Option("NA: Outdoor 24x7x356", "na247"));
+  } else if (b04_Value.value === "Center") {
+    console.log(" I hear you!");
+    F08a_MandatoryControl.options.length = 0;
+    F08a_MandatoryControl.disabled = true;
+  }
+};
+
+const F08bValueCalculation = () => {
+  let disabledOption = new Option("dropdown", "", true, true);
+  disabledOption.disabled = true;
+  if (b04_Value.value === "Indoor" || b04_Value.value === "Center") {
+    F08b_MandatoryControl.options.length = 0;
+    F08b_MandatoryControl.disabled = true;
+  } else if (b04_Value.value === "Outdoor") {
+    F08b_MandatoryControl.disabled = false;
+    F08b_MandatoryControl.options.length = 0;
+    F08b_MandatoryControl.add(disabledOption);
+    F08b_MandatoryControl.add(
+      new Option("Power Reduced 65%+", "powerReduced65")
+    );
+    F08b_MandatoryControl.add(new Option("NA: Tunnels", "naTunnels"));
+    F08b_MandatoryControl.add(new Option("NA: Outdoor 24x7x356", "na247"));
+  }
+};
+
+const F08cValueCalculation = () => {
+  let disabledOption = new Option("dropdown", "", true, true);
+  disabledOption.disabled = true;
+  if (b04_Value.value === "Indoor" || b04_Value.value === "Outdoor") {
+    F08c_MandatoryControl.options.length = 0;
+    F08c_MandatoryControl.disabled = true;
+  } else if (b04_Value.value === "Center") {
+    F08c_MandatoryControl.disabled = false;
+    F08c_MandatoryControl.options.length = 0;
+    F08c_MandatoryControl.add(disabledOption);
+    F08c_MandatoryControl.add(
+      new Option("Power Reduced 30%+", "powerReduced65")
+    );
+    F08c_MandatoryControl.add(
+      new Option("Exempt By Health/LS Reg", "ExemptHeathLSReg")
+    );
+    F08c_MandatoryControl.add(new Option("NA: &lte15kW", "NA15kW"));
+  }
+};
+
+const tableF_StarOptions_Render = () => {
+  if (F08a_MandatoryControl.value === "Other") {
+    console.log("If");
+    for (let element of tableF_StarOptions) {
+      element.hidden = false;
+    }
+    const lightName = f01_Name.textContent;
+    FExplanationName.textContent = lightName;
+    if (tableF.style.gridTemplateRows === "repeat(12, 6vh)") {
+      tableF.style.gridTemplateRows = "repeat(14, 6vh)";
+    } else if (tableF.style.gridTemplateRows === "repeat(9, 6vh)") {
+      tableF.style.gridTemplateRows = "repeat(11, 6vh)";
+    }
+  } else if (F08a_MandatoryControl.value !== "Other") {
+    console.log("Else");
+    for (let element of tableF_StarOptions) {
+      element.hidden = true;
+    }
+    if (tableF.style.gridTemplateRows === "repeat(14, 6vh)") {
+      tableF.style.gridTemplateRows = "repeat(12, 6vh)";
+    } else if (tableF.style.gridTemplateRows === "repeat(11, 6vh)") {
+      tableF.style.gridTemplateRows = "repeat(9, 6vh)";
+    }
+  }
+};
+
+const healthCareCheckboxChecked = () => {
+  if (healthCareCheckbox.checked) {
+    F08a_MandatoryControl.disabled = true;
+    F08b_MandatoryControl.disabled = true;
+    F08c_MandatoryControl.disabled = true;
+    g04a_MandatoryControl.disabled = true;
+    g04b_MandatoryControl.disabled = true;
+    g04c_MandatoryControl.disabled = true;
+    h03a_MandatoryControl.disabled = true;
+    h03b_MandatoryControl.disabled = true;
+    h03c_MandatoryControl.disabled = true;
+  } else {
+    F08a_MandatoryControl.disabled = false;
+    F08b_MandatoryControl.disabled = false;
+    F08c_MandatoryControl.disabled = false;
+    g04a_MandatoryControl.disabled = false;
+    g04b_MandatoryControl.disabled = false;
+    g04c_MandatoryControl.disabled = false;
+    h03a_MandatoryControl.disabled = false;
+    h03b_MandatoryControl.diabled = false;
+    h03c_MandatoryControl.disabled = false;
+  }
+};

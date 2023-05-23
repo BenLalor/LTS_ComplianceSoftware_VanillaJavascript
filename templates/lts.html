@@ -121,14 +121,14 @@ content%}
     <div class="headerB B03">Sign Status</div>
     <div class="headerB B04">Sign Type</div>
     <div class="headerB B05">Compliance Method</div>
-    <input type="text" class="B01 hover" name="nameOrItem_sign" />
-    <input type="text" class="B02 hover" name="descriptionSign" />
+    <input type="text" id="b01_Name" class="B01 hover" name="nameOrItem_sign" />
+    <input type="text" id="b02_Description" class="B02 hover" name="descriptionSign" />
     <select class="B03 hover italic" name="status_Sign">
       <option value="" disabled selected>(dropdown)</option>
       <option value="new">New</option>
       <option value="altered">Altered</option>
     </select>
-    <select class="B04 hover italic" name="type_Sign">
+    <select id="b04_Value" class="B04 hover italic" name="type_Sign">
       <option value="" disabled selected>(dropdown)</option>
       <option value="Indoor">Indoor</option>
       <option value="Outdoor">Outdoor</option>
@@ -275,23 +275,23 @@ content%}
     <div class="F08c tableFAttributes">Demand Response</div>
     <div class="F09a tableFAttributes">Pass</div>
     <div class="F09b tableFAttributes">Fail</div>
-    <input type="text" class="F01 hover tableFAttributes" />
-    <input type="text" class="F02 hover tableFAttributes" />
-    <select class="F03 hover tableFAttributes">
+    <div id="f01_Name" class="F01 tableFAttributes" ></div>
+    <div id="f02_Description" class="F02  tableFAttributes" ></div>
+    <select id="f03_Method" class="F03 hover tableFAttributes">
       <option value="" disabled selected>dropdown</option>
-      <option value="new">Iternally</option>
-      <option value="altered">Externally</option>
+      <option value="internally">Iternally</option>
+      <option value="externally">Externally</option>
     </select>
-    <input type="text" class="F04 hover tableFAttributes" />
-    <div class="F05 tableFAttributes"></div>
-    <div class="F06 tableFAttributes"></div>
-    <input type="text" class="F07 hover tableFAttributes" />
+    <input type="text" id="f04_Value" class="F04 hover tableFAttributes" />
+    <div id="f05_Value" class="F05 tableFAttributes"></div>
+    <div id="f06_Value" class="F06 tableFAttributes"></div>
+    <input type="text" id="f07_Value" class="F07 hover tableFAttributes" />
     <!-- SELECT BELOW NEEDS JS LOGIC. THE OPTIONS BELOW ARE JUST FOR ONE SCENARIO-->
     <select id ="F08a" class="F08a hover tableFAttributes">
       <option value="" disabled selected>dropdown</option>
       <option value="AutoTimer">Auto Timer</option>
       <option value="Astrn. Timer">Astrn. Timer</option>
-      <option value="AutoTimer">Other*</option>
+      <option value="Other">Other*</option>
     </select>
     <select id ="F08b" class="F08b hover tableFAttributes">
       <option value="" disabled selected>dropdown</option>
@@ -303,44 +303,44 @@ content%}
     </select>
     <input type="checkbox" class="F09a checkBoxF hover tableFAttributes" />
     <input type="checkbox" class="F09b checkBoxF tableFAttributes hover" />
-    <div class="F01_begincap tableFAttributes"></div>
-    <div class="F03 tableFAttributes">10</div>
-    <div class="F04_doublewide tableFAttributes">11</div>
-    <div class="F06 tableFAttributes">12</div>
-    <div class="F07_doublewide tableFAttributes">13</div>
-    <div class="F08a tableFAttributes">14</div>
-    <div class="F08_endcap tableFAttributes"></div>
-    <div class="F01_begincap tableFAttributes"></div>
-    <div class="F03 tableFAttributes">Name or Item Tag</div>
-    <div class="F04_doublewide tableFAttributes">
+    <div class="F01_begincap tableFAttributes tableFOptionalRow"></div>
+    <div class="F03 tableFAttributes tableFOptionalRow">10</div>
+    <div class="F04_doublewide tableFAttributes tableFOptionalRow">11</div>
+    <div class="F06 tableFAttributes tableFOptionalRow">12</div>
+    <div class="F07_doublewide tableFAttributes tableFOptionalRow">13</div>
+    <div class="F08a tableFAttributes tableFOptionalRow">14</div>
+    <div class="F08_endcap tableFAttributes tableFOptionalRow"></div>
+    <div class="F01_begincap tableFAttributes tableFOptionalRow"></div>
+    <div class="F03 tableFAttributes tableFOptionalRow">Name or Item Tag</div>
+    <div class="F04_doublewide tableFAttributes tableFOptionalRow">
       Complete Luminaire Description
     </div>
-    <div class="F06 tableFAttributes">Watts per Luminaire</div>
-    <div class="F07_doublewide tableFAttributes">How Wattage is Determined</div>
-    <div class="F07 tableFAttributes">Total number luminaires</div>
-    <div class="F08_endcap tableFAttributes"></div>
-    <div class="F01_begincap tableFAttributes"></div>
-    <input type="text" class="F01 hover tableFAttributes" />
-    <input type="text" class="F02 hover tableFAttributes" />
-    <input type="text" class="F03 hover tableFAttributes" />
-    <select class="F07_doublewide hover tableFAttributes">
+    <div class="F06 tableFAttributes tableFOptionalRow">Watts per Luminaire</div>
+    <div class="F07_doublewide tableFAttributes tableFOptionalRow">How Wattage is Determined</div>
+    <div class="F07 tableFAttributes tableFOptionalRow">Total number luminaires</div>
+    <div class="F08_endcap tableFAttributes tableFOptionalRow"></div>
+    <div class="F01_begincap tableFAttributes tableFOptionalRow"></div>
+    <input type="text" class="F01 hover tableFAttributes tableFOptionalRow" />
+    <input type="text" class="F02 hover tableFAttributes tableFOptionalRow" />
+    <input type="text" id="f12_Value" class="F03 hover tableFAttributes tableFOptionalRow" />
+    <select class="F07_doublewide hover tableFAttributes tableFOptionalRow">
       <option value="NA8">NA8 Default</option>
       <option value="Mfr">Mfr Spec</option>
       <option value="Alt">Alt Sources per 140.8(b)/170.2(e)</option>
       <option value="Other">Other</option>
     </select>
-    <input type="text" class="F06 hover tableFAttributes" />
-    <div class="F08_endcap tableFAttributes"></div>
+    <input type="text" id="f14_Value" class="F06 hover tableFAttributes tableFOptionalRow" />
+    <div class="F08_endcap tableFAttributes tableFOptionalRow"></div>
     <div class="F01_begincap_extralong tableFAttributes"></div>
     <button type="button" class="button tableFAttributes">Add Row</button>
     <button type="button" class="button tableFAttributes">Delete Row</button>
-    <div class="fullLengthRow tableFAttributes">
+    <div class="fullLengthRow tableFAttributes tableF_StarOptions">
       * Notes: Controls with a * require a note in the space below explaining
       how compliance is achieved. Ex: Sign within a tunnel illuminated day &
       night; Excepetion to 130.3(a)2A
     </div>
-    <div class="F01 tableFAttributes"></div>
-    <input type="text" class="F02_extraLong hover tableFAttributes" />
+    <div id="FExplanationName" class="F01 tableFAttributes tableF_StarOptions"></div>
+    <input type="text" class="F02_extraLong hover tableFAttributes tableF_StarOptions" />
     <div class="F01_begincap_extralong2 tableFAttributes"></div>
     <button type="button" class="button tableFAttributes">Reset</button>
     <div class="fullLengthRow tableFDoesNotApplyAttribute">
