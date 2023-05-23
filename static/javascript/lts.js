@@ -50,27 +50,7 @@ const h03c_MandatoryControl = document.getElementById("h03c");
 //Event Listeners
 // Healthcare Checkbox Status
 healthCareCheckbox.addEventListener("change", () => {
-  if (healthCareCheckbox.checked) {
-    F08a_MandatoryControl.disabled = true;
-    F08b_MandatoryControl.disabled = true;
-    F08c_MandatoryControl.disabled = true;
-    g04a_MandatoryControl.disabled = true;
-    g04b_MandatoryControl.disabled = true;
-    g04c_MandatoryControl.disabled = true;
-    h03a_MandatoryControl.disabled = true;
-    h03b_MandatoryControl.disabled = true;
-    h03c_MandatoryControl.disabled = true;
-  } else {
-    F08a_MandatoryControl.disabled = false;
-    F08b_MandatoryControl.disabled = false;
-    F08c_MandatoryControl.disabled = false;
-    g04a_MandatoryControl.disabled = false;
-    g04b_MandatoryControl.disabled = false;
-    g04c_MandatoryControl.disabled = false;
-    h03a_MandatoryControl.disabled = false;
-    h03b_MandatoryControl.diabled = false;
-    h03c_MandatoryControl.disabled = false;
-  }
+  healthCareCheckboxChecked();
 });
 
 // Render Tables F, G, and H Based on B.05 Compliance Method
@@ -98,40 +78,6 @@ complianceMethodDropdown.addEventListener("change", () => {
     tableFDoesNotApplyAttribute.hidden = false;
     tableF.style.gridTemplateRows = "repeat(2, 6vh)";
   }
-
-  // Calculate F02 Value Based on B01 Value
-  b01_Name.addEventListener("change", () => {
-    F01ValueCalculation();
-  });
-
-  // Calcuate F02 Value Based on B02 Value
-  b02_Description.addEventListener("change", () => {
-    F02ValueCalcuation();
-  });
-
-  // Calculate F04 Options Based on B04 Value
-  b04_Value.addEventListener("change", () => {
-    F08aValueCalculation();
-    F08bValueCalculation();
-    F08cValueCalculation();
-  });
-
-  // Calculate F05 Value
-  f03_Method.addEventListener("change", () => {
-    f05ValueCalculation();
-    f07_ValueCalculation();
-  });
-
-  // Calculate F06 Value
-  f04_Value.addEventListener("change", () => {
-    f06ValueCalculation();
-  });
-
-  // Trigger Explanation Element for * Options
-  F08a_MandatoryControl.addEventListener("change", () => {
-    tableF_StarOptions_Render();
-  });
-
   // Trigger Table G
   if (complianceMethodSelected === "alternateLightSources") {
     for (const element of tableGApplies) {
@@ -163,6 +109,39 @@ complianceMethodDropdown.addEventListener("change", () => {
     tableHDoesNotApply.hidden = false;
     tableH.style.gridTemplateRows = "repeat(2, 6vh)";
   }
+});
+
+// Calculate F02 Value Based on B01 Value
+b01_Name.addEventListener("change", () => {
+  F01ValueCalculation();
+});
+
+// Calcuate F02 Value Based on B02 Value
+b02_Description.addEventListener("change", () => {
+  F02ValueCalcuation();
+});
+
+// Calculate F04 Options Based on B04 Value
+b04_Value.addEventListener("change", () => {
+  F08aValueCalculation();
+  F08bValueCalculation();
+  F08cValueCalculation();
+});
+
+// Calculate F05 Value
+f03_Method.addEventListener("change", () => {
+  f05ValueCalculation();
+  f07_ValueCalculation();
+});
+
+// Calculate F06 Value
+f04_Value.addEventListener("change", () => {
+  f06ValueCalculation();
+});
+
+// Trigger Explanation Element for * Options
+F08a_MandatoryControl.addEventListener("change", () => {
+  tableF_StarOptions_Render();
 });
 
 // Functions
@@ -307,5 +286,29 @@ const tableF_StarOptions_Render = () => {
     } else if (tableF.style.gridTemplateRows === "repeat(11, 6vh)") {
       tableF.style.gridTemplateRows = "repeat(9, 6vh)";
     }
+  }
+};
+
+const healthCareCheckboxChecked = () => {
+  if (healthCareCheckbox.checked) {
+    F08a_MandatoryControl.disabled = true;
+    F08b_MandatoryControl.disabled = true;
+    F08c_MandatoryControl.disabled = true;
+    g04a_MandatoryControl.disabled = true;
+    g04b_MandatoryControl.disabled = true;
+    g04c_MandatoryControl.disabled = true;
+    h03a_MandatoryControl.disabled = true;
+    h03b_MandatoryControl.disabled = true;
+    h03c_MandatoryControl.disabled = true;
+  } else {
+    F08a_MandatoryControl.disabled = false;
+    F08b_MandatoryControl.disabled = false;
+    F08c_MandatoryControl.disabled = false;
+    g04a_MandatoryControl.disabled = false;
+    g04b_MandatoryControl.disabled = false;
+    g04c_MandatoryControl.disabled = false;
+    h03a_MandatoryControl.disabled = false;
+    h03b_MandatoryControl.diabled = false;
+    h03c_MandatoryControl.disabled = false;
   }
 };
