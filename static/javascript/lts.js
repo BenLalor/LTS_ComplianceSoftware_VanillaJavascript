@@ -131,6 +131,7 @@ b04_Value.addEventListener("change", () => {
   F08bValueCalculation();
   F08cValueCalculation();
   G08aValueCalculation();
+  G08bValueCalculation();
 });
 
 // Calculate F05 Value
@@ -352,5 +353,23 @@ const G08aValueCalculation = () => {
   } else if (b04_Value.value === "Center") {
     g04a_MandatoryControl.options.length = 0;
     g04a_MandatoryControl.disabled = true;
+  }
+};
+
+const G08bValueCalculation = () => {
+  let disabledOption = new Option("dropdown", "", true, true);
+  disabledOption.disabled = true;
+  if (b04_Value.value === "Indoor" || b04_Value.value === "Center") {
+    g04b_MandatoryControl.options.length = 0;
+    g04b_MandatoryControl.disabled = true;
+  } else if (b04_Value.value === "Outdoor") {
+    g04b_MandatoryControl.disabled = false;
+    g04b_MandatoryControl.options.length = 0;
+    g04b_MandatoryControl.add(disabledOption);
+    g04b_MandatoryControl.add(
+      new Option("Power Reduced 65%+", "powerReduced65")
+    );
+    g04b_MandatoryControl.add(new Option("NA: Tunnels", "naTunnels"));
+    g04b_MandatoryControl.add(new Option("NA: Outdoor 24x7x356", "na247"));
   }
 };
