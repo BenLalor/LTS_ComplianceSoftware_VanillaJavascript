@@ -35,6 +35,7 @@ const FExplanationName = document.getElementById("FExplanationName");
 const tableG = document.getElementById("tableG");
 tableGDoesNotApply = document.querySelector(".tableGDoesNotApply");
 const tableGApplies = document.querySelectorAll(".tableGApplies");
+const g01_Name = document.getElementById("g01_Name");
 const g04a_MandatoryControl = document.getElementById("g04a");
 const g04b_MandatoryControl = document.getElementById("g04b");
 const g04c_MandatoryControl = document.getElementById("g04c");
@@ -111,9 +112,10 @@ complianceMethodDropdown.addEventListener("change", () => {
   }
 });
 
-// Calculate F02 Value Based on B01 Value
+// Calculate F01 Value Based on B01 Value
 b01_Name.addEventListener("change", () => {
   F01ValueCalculation();
+  G01ValueCalculation();
 });
 
 // Calcuate F02 Value Based on B02 Value
@@ -144,7 +146,7 @@ F08a_MandatoryControl.addEventListener("change", () => {
   tableF_StarOptions_Render();
 });
 
-// Functions
+// Table F Functions
 const f05ValueCalculation = () => {
   let f03_Method_Value = f03_Method.value;
   if (f03_Method_Value === "internally") {
@@ -311,4 +313,10 @@ const healthCareCheckboxChecked = () => {
     h03b_MandatoryControl.diabled = false;
     h03c_MandatoryControl.disabled = false;
   }
+};
+
+// Table G Functions
+const G01ValueCalculation = () => {
+  const b01_Name_Input = b01_Name.value;
+  g01_Name.textContent = b01_Name_Input;
 };
