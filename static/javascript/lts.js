@@ -48,6 +48,7 @@ const tableH = document.getElementById("tableH");
 const tableHDoesNotApply = document.querySelector(".tableHDoesNotApply");
 const tableHApplies = document.querySelectorAll(".tableHApplies");
 const h01_Name = document.getElementById("h01_Name");
+const h02_Description = document.getElementById("h02_Description");
 const h03a_MandatoryControl = document.getElementById("h03a");
 const h03b_MandatoryControl = document.getElementById("h03b");
 const h03c_MandatoryControl = document.getElementById("h03c");
@@ -132,6 +133,7 @@ b01_Name.addEventListener("change", () => {
 b02_Description.addEventListener("change", () => {
   F02ValueCalcuation();
   G02ValueCalculation();
+  H02ValueCalculation();
 });
 
 // Calculate F04 Options Based on B04 Value
@@ -439,4 +441,9 @@ const tableG_StarOptions_Render = () => {
 const H01ValueCalculation = () => {
   const b01_Name_Input = b01_Name.value;
   h01_Name.textContent = b01_Name_Input;
+};
+
+const H02ValueCalculation = () => {
+  const b02_Description_Input = b02_Description.value;
+  h02_Description.textContent = b02_Description_Input;
 };
