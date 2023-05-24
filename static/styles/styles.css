@@ -385,8 +385,16 @@ label {
   grid-column: span 80;
 }
 
+.g01_Begincap_Longer {
+  grid-column: span 90;
+}
+
 .G02 {
   grid-column: span 20;
+}
+
+.g02_Endcap {
+  grid-column: span 80;
 }
 
 .G03 {
@@ -419,6 +427,10 @@ label {
 
 .G05b {
   grid-column: span 10;
+}
+
+.g05_Endcap {
+  grid-column: 80;
 }
 
 .h01 {
