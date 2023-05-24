@@ -47,6 +47,7 @@ const GExplanationName = document.getElementById("GExplanationName");
 const tableH = document.getElementById("tableH");
 const tableHDoesNotApply = document.querySelector(".tableHDoesNotApply");
 const tableHApplies = document.querySelectorAll(".tableHApplies");
+const h01_Name = document.getElementById("h01_Name");
 const h03a_MandatoryControl = document.getElementById("h03a");
 const h03b_MandatoryControl = document.getElementById("h03b");
 const h03c_MandatoryControl = document.getElementById("h03c");
@@ -124,6 +125,7 @@ complianceMethodDropdown.addEventListener("change", () => {
 b01_Name.addEventListener("change", () => {
   F01ValueCalculation();
   G01ValueCalculation();
+  H01ValueCalculation();
 });
 
 // Calcuate F02 Value Based on B02 Value
@@ -164,6 +166,8 @@ F08a_MandatoryControl.addEventListener("change", () => {
 g04a_MandatoryControl.addEventListener("change", () => {
   tableG_StarOptions_Render();
 });
+
+// Table H Event Listeners
 
 // Table F Functions
 const f05ValueCalculation = () => {
@@ -427,4 +431,12 @@ const tableG_StarOptions_Render = () => {
       tableG.style.gridTemplateRows = "repeat(9, 6vh)";
     }
   }
+};
+
+// Table H Functions
+
+//
+const H01ValueCalculation = () => {
+  const b01_Name_Input = b01_Name.value;
+  h01_Name.textContent = b01_Name_Input;
 };
