@@ -36,6 +36,7 @@ const tableG = document.getElementById("tableG");
 tableGDoesNotApply = document.querySelector(".tableGDoesNotApply");
 const tableGApplies = document.querySelectorAll(".tableGApplies");
 const g01_Name = document.getElementById("g01_Name");
+const g02_Description = document.getElementById("g02_Description");
 const g04a_MandatoryControl = document.getElementById("g04a");
 const g04b_MandatoryControl = document.getElementById("g04b");
 const g04c_MandatoryControl = document.getElementById("g04c");
@@ -121,6 +122,7 @@ b01_Name.addEventListener("change", () => {
 // Calcuate F02 Value Based on B02 Value
 b02_Description.addEventListener("change", () => {
   F02ValueCalcuation();
+  G02ValueCalculation();
 });
 
 // Calculate F04 Options Based on B04 Value
@@ -128,6 +130,7 @@ b04_Value.addEventListener("change", () => {
   F08aValueCalculation();
   F08bValueCalculation();
   F08cValueCalculation();
+  G08aValueCalculation();
 });
 
 // Calculate F05 Value
@@ -221,7 +224,6 @@ const F08aValueCalculation = () => {
     F08a_MandatoryControl.add(new Option("NA: Tunnels", "naTunnels"));
     F08a_MandatoryControl.add(new Option("NA: Outdoor 24x7x356", "na247"));
   } else if (b04_Value.value === "Center") {
-    console.log(" I hear you!");
     F08a_MandatoryControl.options.length = 0;
     F08a_MandatoryControl.disabled = true;
   }
@@ -319,4 +321,36 @@ const healthCareCheckboxChecked = () => {
 const G01ValueCalculation = () => {
   const b01_Name_Input = b01_Name.value;
   g01_Name.textContent = b01_Name_Input;
+};
+
+const G02ValueCalculation = () => {
+  const b02_Description_Input = b02_Description.value;
+  g02_Description.textContent = b02_Description_Input;
+};
+
+const G08aValueCalculation = () => {
+  let disabledOption = new Option("dropdown", "", true, true);
+  disabledOption.disabled = true;
+  if (b04_Value.value === "Indoor") {
+    g04a_MandatoryControl.disabled = false;
+    g04a_MandatoryControl.options.length = 0;
+    g04a_MandatoryControl.add(disabledOption);
+    g04a_MandatoryControl.add(new Option("Auto Timer", "autoTimer"));
+    g04a_MandatoryControl.add(new Option("Astrn Timer", "astrnTimer"));
+    g04a_MandatoryControl.add(new Option("Other*", "other"));
+  } else if (b04_Value.value === "Outdoor") {
+    g04a_MandatoryControl.disabled = false;
+    g04a_MandatoryControl.options.length = 0;
+    g04a_MandatoryControl.add(disabledOption);
+    g04a_MandatoryControl.add(
+      new Option("Auto Time-Switch + Photocontrol", "autoTimerAndPhotocontrol")
+    );
+    g04a_MandatoryControl.add(new Option("Astrn Timer", "astrnTimer"));
+    g04a_MandatoryControl.add(new Option("Other*", "other"));
+    g04a_MandatoryControl.add(new Option("NA: Tunnels", "naTunnels"));
+    g04a_MandatoryControl.add(new Option("NA: Outdoor 24x7x356", "na247"));
+  } else if (b04_Value.value === "Center") {
+    g04a_MandatoryControl.options.length = 0;
+    g04a_MandatoryControl.disabled = true;
+  }
 };
