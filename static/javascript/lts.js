@@ -132,6 +132,7 @@ b04_Value.addEventListener("change", () => {
   F08cValueCalculation();
   G08aValueCalculation();
   G08bValueCalculation();
+  G08cValueCalculation();
 });
 
 // Calculate F05 Value
@@ -371,5 +372,25 @@ const G08bValueCalculation = () => {
     );
     g04b_MandatoryControl.add(new Option("NA: Tunnels", "naTunnels"));
     g04b_MandatoryControl.add(new Option("NA: Outdoor 24x7x356", "na247"));
+  }
+};
+
+const G08cValueCalculation = () => {
+  let disabledOption = new Option("dropdown", "", true, true);
+  disabledOption.disabled = true;
+  if (b04_Value.value === "Indoor" || b04_Value.value === "Outdoor") {
+    g04c_MandatoryControl.options.length = 0;
+    g04c_MandatoryControl.disabled = true;
+  } else if (b04_Value.value === "Center") {
+    g04c_MandatoryControl.disabled = false;
+    g04c_MandatoryControl.options.length = 0;
+    g04c_MandatoryControl.add(disabledOption);
+    g04c_MandatoryControl.add(
+      new Option("Power Reduced 30%+", "powerReduced65")
+    );
+    g04c_MandatoryControl.add(
+      new Option("Exempt By Health/LS Reg", "ExemptHeathLSReg")
+    );
+    g04c_MandatoryControl.add(new Option("NA: &lte15kW", "NA15kW"));
   }
 };
