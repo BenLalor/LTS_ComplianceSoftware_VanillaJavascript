@@ -55,6 +55,10 @@ const h03b_MandatoryControl = document.getElementById("h03b");
 const h03c_MandatoryControl = document.getElementById("h03c");
 const HExplanationName = document.getElementById("HExplanationName");
 
+// Table I Variables
+const yes_NRCILTS = document.getElementById("yes_NRCILTS");
+const no_NRCILTS = document.getElementById("no_NRCILTS");
+
 //Event Listeners
 // Healthcare Checkbox Status
 healthCareCheckbox.addEventListener("change", () => {
@@ -182,6 +186,15 @@ g04a_MandatoryControl.addEventListener("change", () => {
 // Table H Event Listeners
 h03a_MandatoryControl.addEventListener("change", () => {
   tableH_StarOptions_Render();
+});
+
+// Table I Event Listeners
+yes_NRCILTS.addEventListener("change", () => {
+  toggleYesCheckbox();
+});
+
+no_NRCILTS.addEventListener("change", () => {
+  toggleNoCheckbox();
 });
 
 // Table F Functions
@@ -543,5 +556,21 @@ const tableH_StarOptions_Render = () => {
     if (tableH.style.gridTemplateRows === "repeat(11, 6vh)") {
       tableH.style.gridTemplateRows = "repeat(9, 6vh)";
     }
+  }
+};
+
+const toggleYesCheckbox = () => {
+  if (yes_NRCILTS.checked) {
+    no_NRCILTS.checked = false;
+  } else if (yes_NRCILTS.checked === false) {
+    no_NRCILTS.checked = true;
+  }
+};
+
+const toggleNoCheckbox = () => {
+  if (no_NRCILTS.checked) {
+    yes_NRCILTS.checked = false;
+  } else if (no_NRCILTS.checked === false) {
+    yes_NRCILTS.checked = true;
   }
 };
