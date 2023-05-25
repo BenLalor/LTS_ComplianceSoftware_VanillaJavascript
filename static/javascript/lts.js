@@ -47,11 +47,13 @@ const GExplanationName = document.getElementById("GExplanationName");
 const tableH = document.getElementById("tableH");
 const tableHDoesNotApply = document.querySelector(".tableHDoesNotApply");
 const tableHApplies = document.querySelectorAll(".tableHApplies");
+const tableH_StarOptions = document.querySelectorAll(".tableH_StarOptions");
 const h01_Name = document.getElementById("h01_Name");
 const h02_Description = document.getElementById("h02_Description");
 const h03a_MandatoryControl = document.getElementById("h03a");
 const h03b_MandatoryControl = document.getElementById("h03b");
 const h03c_MandatoryControl = document.getElementById("h03c");
+const HExplanationName = document.getElementById("HExplanationName");
 
 //Event Listeners
 // Healthcare Checkbox Status
@@ -173,6 +175,9 @@ g04a_MandatoryControl.addEventListener("change", () => {
 });
 
 // Table H Event Listeners
+h03a_MandatoryControl.addEventListener("change", () => {
+  tableH_StarOptions_Render();
+});
 
 // Table F Functions
 const f05ValueCalculation = () => {
@@ -513,5 +518,25 @@ const H03cValueCalculation = () => {
       new Option("Exempt By Health/LS Reg", "ExemptHeathLSReg")
     );
     h03c_MandatoryControl.add(new Option("NA: &lte15kW", "NA15kW"));
+  }
+};
+
+const tableH_StarOptions_Render = () => {
+  if (h03a_MandatoryControl.value === "Other") {
+    for (let element of tableH_StarOptions) {
+      element.hidden = false;
+    }
+    const lightName = h01_Name.textContent;
+    HExplanationName.textContent = lightName;
+    if (tableH.style.gridTemplateRows === "repeat(9, 6vh)") {
+      tableH.style.gridTemplateRows = "repeat(11, 6vh)";
+    }
+  } else if (h03a_MandatoryControl.value !== "Other") {
+    for (let element of tableH_StarOptions) {
+      element.hidden = true;
+    }
+    if (tableH.style.gridTemplateRows === "repeat(11, 6vh)") {
+      tableH.style.gridTemplateRows = "repeat(9, 6vh)";
+    }
   }
 };
