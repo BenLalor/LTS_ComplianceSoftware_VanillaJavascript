@@ -7,6 +7,10 @@ let b01_Name = document.getElementById("b01_Name");
 let b02_Description = document.getElementById("b02_Description");
 let b04_Value = document.getElementById("b04_Value");
 
+// Table C Variables
+const c01_Name = document.getElementById("c01_Name");
+const c02_Description = document.getElementById("c02_Description");
+
 // Table F Variables
 const tableF = document.getElementById("tableF");
 const tableFCurrentlyApplies = false;
@@ -60,10 +64,13 @@ const yes_NRCILTS = document.getElementById("yes_NRCILTS");
 const no_NRCILTS = document.getElementById("no_NRCILTS");
 
 //Event Listeners
-// Healthcare Checkbox Status
+
+// Table A Event Listeners
 healthCareCheckbox.addEventListener("change", () => {
   healthCareCheckboxChecked();
 });
+
+// Table B Event Listeners
 
 // Render Tables F, G, and H Based on B.05 Compliance Method
 complianceMethodDropdown.addEventListener("change", () => {
@@ -160,6 +167,8 @@ b04_Value.addEventListener("change", () => {
   H03cValueCalculation();
 });
 
+// Table F Event Listeners
+
 // Calculate F05 Value
 f03_Method.addEventListener("change", () => {
   f05ValueCalculation();
@@ -178,26 +187,74 @@ F08a_MandatoryControl.addEventListener("change", () => {
 
 // Table G Event Listeners
 
-// Trigger Table G Explanation Row
+// Render Table F Explanation Row
 g04a_MandatoryControl.addEventListener("change", () => {
   tableG_StarOptions_Render();
 });
 
 // Table H Event Listeners
+
+// Render Table H Explanation Row
 h03a_MandatoryControl.addEventListener("change", () => {
   tableH_StarOptions_Render();
 });
 
 // Table I Event Listeners
+
+// Toggle Table I Yes Checkbox
 yes_NRCILTS.addEventListener("change", () => {
   toggleYesCheckbox();
 });
 
+// Toggle Table I No Checkbox
 no_NRCILTS.addEventListener("change", () => {
   toggleNoCheckbox();
 });
 
+// Functions
+
+// Table A Functions
+
+// Hide Table F, H and G Control Dropdowns if Table A Health Care Checkbox is Checked
+const healthCareCheckboxChecked = () => {
+  if (healthCareCheckbox.checked) {
+    F08a_MandatoryControl.disabled = true;
+    F08b_MandatoryControl.disabled = true;
+    F08c_MandatoryControl.disabled = true;
+    g04a_MandatoryControl.disabled = true;
+    g04b_MandatoryControl.disabled = true;
+    g04c_MandatoryControl.disabled = true;
+    h03a_MandatoryControl.disabled = true;
+    h03b_MandatoryControl.disabled = true;
+    h03c_MandatoryControl.disabled = true;
+  } else {
+    F08a_MandatoryControl.disabled = false;
+    F08b_MandatoryControl.disabled = false;
+    F08c_MandatoryControl.disabled = false;
+    g04a_MandatoryControl.disabled = false;
+    g04b_MandatoryControl.disabled = false;
+    g04c_MandatoryControl.disabled = false;
+    h03a_MandatoryControl.disabled = false;
+    h03b_MandatoryControl.diabled = false;
+    h03c_MandatoryControl.disabled = false;
+  }
+};
+
 // Table F Functions
+
+// Render Table F Name
+const F01ValueCalculation = () => {
+  const b01_Name_Input = b01_Name.value;
+  f01_Name.textContent = b01_Name_Input;
+};
+
+// Render Table F Description
+const F02ValueCalcuation = () => {
+  const b02_Description_Input = b02_Description.value;
+  f02_Description.textContent = b02_Description_Input;
+};
+
+// Calculate and Render Table F Allowance Density
 const f05ValueCalculation = () => {
   let f03_Method_Value = f03_Method.value;
   if (f03_Method_Value === "internally") {
@@ -207,22 +264,12 @@ const f05ValueCalculation = () => {
   }
 };
 
+// Calculate and Render Table F Total Allowance
 const f06ValueCalculation = () => {
   f06_Value.textContent = f04_Value.value * f05_Value.textContent;
-  console.log(f06_Value.textContent);
 };
 
-const F02ValueCalcuation = () => {
-  const b02_Description_Input = b02_Description.value;
-  f02_Description.textContent = b02_Description_Input;
-};
-
-const F01ValueCalculation = () => {
-  const b01_Name_Input = b01_Name.value;
-  f01_Name.textContent = b01_Name_Input;
-};
-
-// Render & Hide F10-F14 Row
+// Render & Hide Table F Optional Watt Per Luminaire Row
 const f07_ValueCalculation = () => {
   let f03_Method_Value = f03_Method.value;
   if (f03_Method_Value === "externally") {
@@ -250,6 +297,7 @@ const f07_ValueCalculation = () => {
   }
 };
 
+// Determine Valid Table F08a Cotrol Options
 const F08aValueCalculation = () => {
   let disabledOption = new Option("dropdown", "", true, true);
   disabledOption.disabled = true;
@@ -277,6 +325,7 @@ const F08aValueCalculation = () => {
   }
 };
 
+// Determine Valid Table F08b Control Options
 const F08bValueCalculation = () => {
   let disabledOption = new Option("dropdown", "", true, true);
   disabledOption.disabled = true;
@@ -295,6 +344,7 @@ const F08bValueCalculation = () => {
   }
 };
 
+// Determine Valid Table F08c Control Options
 const F08cValueCalculation = () => {
   let disabledOption = new Option("dropdown", "", true, true);
   disabledOption.disabled = true;
@@ -315,6 +365,7 @@ const F08cValueCalculation = () => {
   }
 };
 
+// Render and Hide Table F Star Option Explanation Row
 const tableF_StarOptions_Render = () => {
   if (F08a_MandatoryControl.value === "Other") {
     for (let element of tableF_StarOptions) {
@@ -339,41 +390,21 @@ const tableF_StarOptions_Render = () => {
   }
 };
 
-const healthCareCheckboxChecked = () => {
-  if (healthCareCheckbox.checked) {
-    F08a_MandatoryControl.disabled = true;
-    F08b_MandatoryControl.disabled = true;
-    F08c_MandatoryControl.disabled = true;
-    g04a_MandatoryControl.disabled = true;
-    g04b_MandatoryControl.disabled = true;
-    g04c_MandatoryControl.disabled = true;
-    h03a_MandatoryControl.disabled = true;
-    h03b_MandatoryControl.disabled = true;
-    h03c_MandatoryControl.disabled = true;
-  } else {
-    F08a_MandatoryControl.disabled = false;
-    F08b_MandatoryControl.disabled = false;
-    F08c_MandatoryControl.disabled = false;
-    g04a_MandatoryControl.disabled = false;
-    g04b_MandatoryControl.disabled = false;
-    g04c_MandatoryControl.disabled = false;
-    h03a_MandatoryControl.disabled = false;
-    h03b_MandatoryControl.diabled = false;
-    h03c_MandatoryControl.disabled = false;
-  }
-};
-
 // Table G Functions
+
+// Render Table G Name
 const G01ValueCalculation = () => {
   const b01_Name_Input = b01_Name.value;
   g01_Name.textContent = b01_Name_Input;
 };
 
+// Render Table G Description
 const G02ValueCalculation = () => {
   const b02_Description_Input = b02_Description.value;
   g02_Description.textContent = b02_Description_Input;
 };
 
+// Determine Valid Table G04a Control Options
 const G04aValueCalculation = () => {
   let disabledOption = new Option("dropdown", "", true, true);
   disabledOption.disabled = true;
@@ -401,6 +432,7 @@ const G04aValueCalculation = () => {
   }
 };
 
+// Determine Valid Table G04b Control Options
 const G04bValueCalculation = () => {
   let disabledOption = new Option("dropdown", "", true, true);
   disabledOption.disabled = true;
@@ -419,6 +451,7 @@ const G04bValueCalculation = () => {
   }
 };
 
+// Determine Valid Table G04c Control Options
 const G04cValueCalculation = () => {
   let disabledOption = new Option("dropdown", "", true, true);
   disabledOption.disabled = true;
@@ -439,6 +472,7 @@ const G04cValueCalculation = () => {
   }
 };
 
+// Render and Hide Table G Star Option Explanation Row
 const tableG_StarOptions_Render = () => {
   if (g04a_MandatoryControl.value === "Other") {
     console.log("1");
@@ -463,17 +497,19 @@ const tableG_StarOptions_Render = () => {
 
 // Table H Functions
 
-//
+// Render Table H Name
 const H01ValueCalculation = () => {
   const b01_Name_Input = b01_Name.value;
   h01_Name.textContent = b01_Name_Input;
 };
 
+// Render Table H Description
 const H02ValueCalculation = () => {
   const b02_Description_Input = b02_Description.value;
   h02_Description.textContent = b02_Description_Input;
 };
 
+// Determine Valid Table H03a Control Options
 const H03aValueCalculation = () => {
   let disabledOption = new Option("dropdown", "", true, true);
   disabledOption.disabled = true;
@@ -501,6 +537,7 @@ const H03aValueCalculation = () => {
   }
 };
 
+// Determine Valid Table H03b Control Options
 const H03bValueCalculation = () => {
   let disabledOption = new Option("dropdown", "", true, true);
   disabledOption.disabled = true;
@@ -519,6 +556,7 @@ const H03bValueCalculation = () => {
   }
 };
 
+// Determine Valid Table H03c Control Options
 const H03cValueCalculation = () => {
   let disabledOption = new Option("dropdown", "", true, true);
   disabledOption.disabled = true;
@@ -539,6 +577,7 @@ const H03cValueCalculation = () => {
   }
 };
 
+// Render and Hide Table H Star Option Explanation Row
 const tableH_StarOptions_Render = () => {
   if (h03a_MandatoryControl.value === "Other") {
     for (let element of tableH_StarOptions) {
@@ -559,6 +598,7 @@ const tableH_StarOptions_Render = () => {
   }
 };
 
+// Toggle Table H Yes Checkbox
 const toggleYesCheckbox = () => {
   if (yes_NRCILTS.checked) {
     no_NRCILTS.checked = false;
@@ -567,6 +607,7 @@ const toggleYesCheckbox = () => {
   }
 };
 
+// Toggle Table H No Checkbox
 const toggleNoCheckbox = () => {
   if (no_NRCILTS.checked) {
     yes_NRCILTS.checked = false;
