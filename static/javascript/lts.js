@@ -144,6 +144,9 @@ b04_Value.addEventListener("change", () => {
   G04aValueCalculation();
   G04bValueCalculation();
   G04cValueCalculation();
+  H03aValueCalculation();
+  H03bValueCalculation();
+  H03cValueCalculation();
 });
 
 // Calculate F05 Value
@@ -446,4 +449,69 @@ const H01ValueCalculation = () => {
 const H02ValueCalculation = () => {
   const b02_Description_Input = b02_Description.value;
   h02_Description.textContent = b02_Description_Input;
+};
+
+const H03aValueCalculation = () => {
+  let disabledOption = new Option("dropdown", "", true, true);
+  disabledOption.disabled = true;
+  if (b04_Value.value === "Indoor") {
+    h03a_MandatoryControl.disabled = false;
+    h03a_MandatoryControl.options.length = 0;
+    h03a_MandatoryControl.add(disabledOption);
+    h03a_MandatoryControl.add(new Option("Auto Timer", "autoTimer"));
+    h03a_MandatoryControl.add(new Option("Astrn Timer", "astrnTimer"));
+    h03a_MandatoryControl.add(new Option("Other*", "Other"));
+  } else if (b04_Value.value === "Outdoor") {
+    h03a_MandatoryControl.disabled = false;
+    h03a_MandatoryControl.options.length = 0;
+    h03a_MandatoryControl.add(disabledOption);
+    h03a_MandatoryControl.add(
+      new Option("Auto Time-Switch + Photocontrol", "autoTimerAndPhotocontrol")
+    );
+    h03a_MandatoryControl.add(new Option("Astrn Timer", "astrnTimer"));
+    h03a_MandatoryControl.add(new Option("Other*", "Other"));
+    h03a_MandatoryControl.add(new Option("NA: Tunnels", "naTunnels"));
+    h03a_MandatoryControl.add(new Option("NA: Outdoor 24x7x356", "na247"));
+  } else if (b04_Value.value === "Center") {
+    h03a_MandatoryControl.options.length = 0;
+    h03a_MandatoryControl.disabled = true;
+  }
+};
+
+const H03bValueCalculation = () => {
+  let disabledOption = new Option("dropdown", "", true, true);
+  disabledOption.disabled = true;
+  if (b04_Value.value === "Indoor" || b04_Value.value === "Center") {
+    h03b_MandatoryControl.options.length = 0;
+    h03b_MandatoryControl.disabled = true;
+  } else if (b04_Value.value === "Outdoor") {
+    h03b_MandatoryControl.disabled = false;
+    h03b_MandatoryControl.options.length = 0;
+    h03b_MandatoryControl.add(disabledOption);
+    h03b_MandatoryControl.add(
+      new Option("Power Reduced 65%+", "powerReduced65")
+    );
+    h03b_MandatoryControl.add(new Option("NA: Tunnels", "naTunnels"));
+    h03b_MandatoryControl.add(new Option("NA: Outdoor 24x7x356", "na247"));
+  }
+};
+
+const H03cValueCalculation = () => {
+  let disabledOption = new Option("dropdown", "", true, true);
+  disabledOption.disabled = true;
+  if (b04_Value.value === "Indoor" || b04_Value.value === "Outdoor") {
+    h03c_MandatoryControl.options.length = 0;
+    h03c_MandatoryControl.disabled = true;
+  } else if (b04_Value.value === "Center") {
+    h03c_MandatoryControl.disabled = false;
+    h03c_MandatoryControl.options.length = 0;
+    h03c_MandatoryControl.add(disabledOption);
+    h03c_MandatoryControl.add(
+      new Option("Power Reduced 30%+", "powerReduced65")
+    );
+    h03c_MandatoryControl.add(
+      new Option("Exempt By Health/LS Reg", "ExemptHeathLSReg")
+    );
+    h03c_MandatoryControl.add(new Option("NA: &lte15kW", "NA15kW"));
+  }
 };
