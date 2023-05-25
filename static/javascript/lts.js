@@ -113,7 +113,12 @@ complianceMethodDropdown.addEventListener("change", () => {
       element.style.display = "grid";
       element.hidden = false;
     }
-    tableH.style.gridTemplateRows = "repeat(11, 6vh)";
+
+    for (const element of tableH_StarOptions) {
+      element.hidden = true;
+    }
+
+    tableH.style.gridTemplateRows = "repeat(9, 6vh)";
     tableHDoesNotApply.hidden = true;
   } else {
     for (const element of tableHApplies) {
