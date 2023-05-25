@@ -150,6 +150,7 @@ b01_Name.addEventListener("change", () => {
 
 // Calcuate F02 Value Based on B02 Value
 b02_Description.addEventListener("change", () => {
+  C02ValueCalculation();
   F02ValueCalcuation();
   G02ValueCalculation();
   H02ValueCalculation();
@@ -620,4 +621,9 @@ const toggleNoCheckbox = () => {
 const C01ValueCalculation = () => {
   const b01_Name_Input = b01_Name.value;
   c01_Name.textContent = b01_Name_Input;
+};
+
+const C02ValueCalculation = () => {
+  const b02_Description_Input = b02_Description.value;
+  c02_Description.textContent = b02_Description_Input;
 };
