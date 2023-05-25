@@ -142,6 +142,7 @@ complianceMethodDropdown.addEventListener("change", () => {
 
 // Calculate F01 Value Based on B01 Value
 b01_Name.addEventListener("change", () => {
+  C01ValueCalculation();
   F01ValueCalculation();
   G01ValueCalculation();
   H01ValueCalculation();
@@ -614,4 +615,9 @@ const toggleNoCheckbox = () => {
   } else if (no_NRCILTS.checked === false) {
     yes_NRCILTS.checked = true;
   }
+};
+
+const C01ValueCalculation = () => {
+  const b01_Name_Input = b01_Name.value;
+  c01_Name.textContent = b01_Name_Input;
 };
