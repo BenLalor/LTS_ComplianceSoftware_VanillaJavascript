@@ -47,9 +47,13 @@ const GExplanationName = document.getElementById("GExplanationName");
 const tableH = document.getElementById("tableH");
 const tableHDoesNotApply = document.querySelector(".tableHDoesNotApply");
 const tableHApplies = document.querySelectorAll(".tableHApplies");
+const tableH_StarOptions = document.querySelectorAll(".tableH_StarOptions");
+const h01_Name = document.getElementById("h01_Name");
+const h02_Description = document.getElementById("h02_Description");
 const h03a_MandatoryControl = document.getElementById("h03a");
 const h03b_MandatoryControl = document.getElementById("h03b");
 const h03c_MandatoryControl = document.getElementById("h03c");
+const HExplanationName = document.getElementById("HExplanationName");
 
 //Event Listeners
 // Healthcare Checkbox Status
@@ -109,7 +113,12 @@ complianceMethodDropdown.addEventListener("change", () => {
       element.style.display = "grid";
       element.hidden = false;
     }
-    tableH.style.gridTemplateRows = "repeat(11, 6vh)";
+
+    for (const element of tableH_StarOptions) {
+      element.hidden = true;
+    }
+
+    tableH.style.gridTemplateRows = "repeat(9, 6vh)";
     tableHDoesNotApply.hidden = true;
   } else {
     for (const element of tableHApplies) {
@@ -124,12 +133,14 @@ complianceMethodDropdown.addEventListener("change", () => {
 b01_Name.addEventListener("change", () => {
   F01ValueCalculation();
   G01ValueCalculation();
+  H01ValueCalculation();
 });
 
 // Calcuate F02 Value Based on B02 Value
 b02_Description.addEventListener("change", () => {
   F02ValueCalcuation();
   G02ValueCalculation();
+  H02ValueCalculation();
 });
 
 // Calculate F04 Options Based on B04 Value
@@ -137,9 +148,12 @@ b04_Value.addEventListener("change", () => {
   F08aValueCalculation();
   F08bValueCalculation();
   F08cValueCalculation();
-  G08aValueCalculation();
-  G08bValueCalculation();
-  G08cValueCalculation();
+  G04aValueCalculation();
+  G04bValueCalculation();
+  G04cValueCalculation();
+  H03aValueCalculation();
+  H03bValueCalculation();
+  H03cValueCalculation();
 });
 
 // Calculate F05 Value
@@ -163,6 +177,11 @@ F08a_MandatoryControl.addEventListener("change", () => {
 // Trigger Table G Explanation Row
 g04a_MandatoryControl.addEventListener("change", () => {
   tableG_StarOptions_Render();
+});
+
+// Table H Event Listeners
+h03a_MandatoryControl.addEventListener("change", () => {
+  tableH_StarOptions_Render();
 });
 
 // Table F Functions
@@ -342,7 +361,7 @@ const G02ValueCalculation = () => {
   g02_Description.textContent = b02_Description_Input;
 };
 
-const G08aValueCalculation = () => {
+const G04aValueCalculation = () => {
   let disabledOption = new Option("dropdown", "", true, true);
   disabledOption.disabled = true;
   if (b04_Value.value === "Indoor") {
@@ -369,7 +388,7 @@ const G08aValueCalculation = () => {
   }
 };
 
-const G08bValueCalculation = () => {
+const G04bValueCalculation = () => {
   let disabledOption = new Option("dropdown", "", true, true);
   disabledOption.disabled = true;
   if (b04_Value.value === "Indoor" || b04_Value.value === "Center") {
@@ -387,7 +406,7 @@ const G08bValueCalculation = () => {
   }
 };
 
-const G08cValueCalculation = () => {
+const G04cValueCalculation = () => {
   let disabledOption = new Option("dropdown", "", true, true);
   disabledOption.disabled = true;
   if (b04_Value.value === "Indoor" || b04_Value.value === "Outdoor") {
@@ -425,6 +444,104 @@ const tableG_StarOptions_Render = () => {
     }
     if (tableG.style.gridTemplateRows === "repeat(11, 6vh)") {
       tableG.style.gridTemplateRows = "repeat(9, 6vh)";
+    }
+  }
+};
+
+// Table H Functions
+
+//
+const H01ValueCalculation = () => {
+  const b01_Name_Input = b01_Name.value;
+  h01_Name.textContent = b01_Name_Input;
+};
+
+const H02ValueCalculation = () => {
+  const b02_Description_Input = b02_Description.value;
+  h02_Description.textContent = b02_Description_Input;
+};
+
+const H03aValueCalculation = () => {
+  let disabledOption = new Option("dropdown", "", true, true);
+  disabledOption.disabled = true;
+  if (b04_Value.value === "Indoor") {
+    h03a_MandatoryControl.disabled = false;
+    h03a_MandatoryControl.options.length = 0;
+    h03a_MandatoryControl.add(disabledOption);
+    h03a_MandatoryControl.add(new Option("Auto Timer", "autoTimer"));
+    h03a_MandatoryControl.add(new Option("Astrn Timer", "astrnTimer"));
+    h03a_MandatoryControl.add(new Option("Other*", "Other"));
+  } else if (b04_Value.value === "Outdoor") {
+    h03a_MandatoryControl.disabled = false;
+    h03a_MandatoryControl.options.length = 0;
+    h03a_MandatoryControl.add(disabledOption);
+    h03a_MandatoryControl.add(
+      new Option("Auto Time-Switch + Photocontrol", "autoTimerAndPhotocontrol")
+    );
+    h03a_MandatoryControl.add(new Option("Astrn Timer", "astrnTimer"));
+    h03a_MandatoryControl.add(new Option("Other*", "Other"));
+    h03a_MandatoryControl.add(new Option("NA: Tunnels", "naTunnels"));
+    h03a_MandatoryControl.add(new Option("NA: Outdoor 24x7x356", "na247"));
+  } else if (b04_Value.value === "Center") {
+    h03a_MandatoryControl.options.length = 0;
+    h03a_MandatoryControl.disabled = true;
+  }
+};
+
+const H03bValueCalculation = () => {
+  let disabledOption = new Option("dropdown", "", true, true);
+  disabledOption.disabled = true;
+  if (b04_Value.value === "Indoor" || b04_Value.value === "Center") {
+    h03b_MandatoryControl.options.length = 0;
+    h03b_MandatoryControl.disabled = true;
+  } else if (b04_Value.value === "Outdoor") {
+    h03b_MandatoryControl.disabled = false;
+    h03b_MandatoryControl.options.length = 0;
+    h03b_MandatoryControl.add(disabledOption);
+    h03b_MandatoryControl.add(
+      new Option("Power Reduced 65%+", "powerReduced65")
+    );
+    h03b_MandatoryControl.add(new Option("NA: Tunnels", "naTunnels"));
+    h03b_MandatoryControl.add(new Option("NA: Outdoor 24x7x356", "na247"));
+  }
+};
+
+const H03cValueCalculation = () => {
+  let disabledOption = new Option("dropdown", "", true, true);
+  disabledOption.disabled = true;
+  if (b04_Value.value === "Indoor" || b04_Value.value === "Outdoor") {
+    h03c_MandatoryControl.options.length = 0;
+    h03c_MandatoryControl.disabled = true;
+  } else if (b04_Value.value === "Center") {
+    h03c_MandatoryControl.disabled = false;
+    h03c_MandatoryControl.options.length = 0;
+    h03c_MandatoryControl.add(disabledOption);
+    h03c_MandatoryControl.add(
+      new Option("Power Reduced 30%+", "powerReduced65")
+    );
+    h03c_MandatoryControl.add(
+      new Option("Exempt By Health/LS Reg", "ExemptHeathLSReg")
+    );
+    h03c_MandatoryControl.add(new Option("NA: &lte15kW", "NA15kW"));
+  }
+};
+
+const tableH_StarOptions_Render = () => {
+  if (h03a_MandatoryControl.value === "Other") {
+    for (let element of tableH_StarOptions) {
+      element.hidden = false;
+    }
+    const lightName = h01_Name.textContent;
+    HExplanationName.textContent = lightName;
+    if (tableH.style.gridTemplateRows === "repeat(9, 6vh)") {
+      tableH.style.gridTemplateRows = "repeat(11, 6vh)";
+    }
+  } else if (h03a_MandatoryControl.value !== "Other") {
+    for (let element of tableH_StarOptions) {
+      element.hidden = true;
+    }
+    if (tableH.style.gridTemplateRows === "repeat(11, 6vh)") {
+      tableH.style.gridTemplateRows = "repeat(9, 6vh)";
     }
   }
 };
