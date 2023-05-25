@@ -141,9 +141,9 @@ b04_Value.addEventListener("change", () => {
   F08aValueCalculation();
   F08bValueCalculation();
   F08cValueCalculation();
-  G08aValueCalculation();
-  G08bValueCalculation();
-  G08cValueCalculation();
+  G04aValueCalculation();
+  G04bValueCalculation();
+  G04cValueCalculation();
 });
 
 // Calculate F05 Value
@@ -348,7 +348,7 @@ const G02ValueCalculation = () => {
   g02_Description.textContent = b02_Description_Input;
 };
 
-const G08aValueCalculation = () => {
+const G04aValueCalculation = () => {
   let disabledOption = new Option("dropdown", "", true, true);
   disabledOption.disabled = true;
   if (b04_Value.value === "Indoor") {
@@ -375,7 +375,7 @@ const G08aValueCalculation = () => {
   }
 };
 
-const G08bValueCalculation = () => {
+const G04bValueCalculation = () => {
   let disabledOption = new Option("dropdown", "", true, true);
   disabledOption.disabled = true;
   if (b04_Value.value === "Indoor" || b04_Value.value === "Center") {
@@ -393,7 +393,7 @@ const G08bValueCalculation = () => {
   }
 };
 
-const G08cValueCalculation = () => {
+const G04cValueCalculation = () => {
   let disabledOption = new Option("dropdown", "", true, true);
   disabledOption.disabled = true;
   if (b04_Value.value === "Indoor" || b04_Value.value === "Outdoor") {
