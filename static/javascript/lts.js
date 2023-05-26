@@ -10,6 +10,7 @@ let b04_Value = document.getElementById("b04_Value");
 // Table C Variables
 const c01_Name = document.getElementById("c01_Name");
 const c02_Description = document.getElementById("c02_Description");
+const c04_Value = document.getElementById("c04_Value");
 
 // Table F Variables
 const tableF = document.getElementById("tableF");
@@ -182,6 +183,11 @@ f04_Value.addEventListener("change", () => {
   f06ValueCalculation();
 });
 
+// Auto-Complete c04_Value Based on f07_Value
+f07_Value.addEventListener("change", () => {
+  c04_ValueCalculation();
+});
+
 // Trigger Explanation Element for * Options
 F08a_MandatoryControl.addEventListener("change", () => {
   tableF_StarOptions_Render();
@@ -242,6 +248,13 @@ const healthCareCheckboxChecked = () => {
   }
 };
 
+// Table C Functions
+
+// Auto-Complete Co4 Value Based on F07 Value
+const c04_ValueCalculation = () => {
+  const f07_Value_Input = f07_Value.value;
+  c04_Value.textContent = f07_Value_Input;
+};
 // Table F Functions
 
 // Render Table F Name
