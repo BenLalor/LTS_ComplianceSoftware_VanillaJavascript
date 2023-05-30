@@ -10,6 +10,7 @@ let b04_Value = document.getElementById("b04_Value");
 // Table C Variables
 const c01_Name = document.getElementById("c01_Name");
 const c02_Description = document.getElementById("c02_Description");
+let c03_Value = document.getElementById("c03_Value");
 const c04_Value = document.getElementById("c04_Value");
 const c05_Value = document.getElementById("c05_Value");
 const c06_Value = document.getElementById("c06_Value");
@@ -28,7 +29,7 @@ const f02_Description = document.getElementById("f02_Description");
 const f03_Method = document.getElementById("f03_Method");
 const f04_Value = document.getElementById("f04_Value");
 const f05_Value = document.getElementById("f05_Value");
-const f06_Value = document.getElementById("f06_Value");
+let f06_Value = document.getElementById("f06_Value");
 const f07_Value = document.getElementById("f07_Value");
 const F08a_MandatoryControl = document.getElementById("F08a");
 const F08b_MandatoryControl = document.getElementById("F08b");
@@ -182,10 +183,12 @@ b04_Value.addEventListener("change", () => {
 f03_Method.addEventListener("change", () => {
   f05ValueCalculation();
   f07_ValueCalculation();
+  c03_ValueCalculation();
 });
 
 f04_Value.addEventListener("change", () => {
   f06ValueCalculation();
+  c03_ValueCalculation();
 });
 
 f07_Value.addEventListener("change", () => {
@@ -254,6 +257,12 @@ const healthCareCheckboxChecked = () => {
 
 // Table C Functions
 
+const c03_ValueCalculation = () => {
+  console.log("Called The Function!");
+  let f06_Value_Input = f06_Value.innerText;
+  c04_Value.innerText = f06_Value_Input;
+};
+
 const c05_ValueCalculation = () => {
   // Probably need to add a condition for table G being triggered,
   // maybe with a boolean value to ensure it is currently triggered
@@ -297,7 +306,8 @@ const f05ValueCalculation = () => {
 
 // Calculate and Render Table F Total Allowance
 const f06ValueCalculation = () => {
-  f06_Value.textContent = f04_Value.value * f05_Value.textContent;
+  f06_Value.innerText = f04_Value.value * f05_Value.textContent;
+  f06_Value.value = 44;
 };
 
 // Render & Hide Table F Optional Watt Per Luminaire Row
