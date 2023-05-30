@@ -12,7 +12,7 @@ const c01_Name = document.getElementById("c01_Name");
 const c02_Description = document.getElementById("c02_Description");
 const c04_Value = document.getElementById("c04_Value");
 const c05_Value = document.getElementById("c05_Value");
-
+const c06_Value = document.getElementById("c06_Value");
 // Table F Variables
 const tableF = document.getElementById("tableF");
 const tableFCurrentlyApplies = false;
@@ -138,12 +138,16 @@ complianceMethodDropdown.addEventListener("change", () => {
 
     tableH.style.gridTemplateRows = "repeat(9, 6vh)";
     tableHDoesNotApply.hidden = true;
+
+    c06_Value.textContent = "Yes";
   } else {
     for (const element of tableHApplies) {
       element.hidden = true;
     }
     tableHDoesNotApply.hidden = false;
     tableH.style.gridTemplateRows = "repeat(2, 6vh)";
+
+    c06_Value.textContent = "";
   }
 });
 
