@@ -11,6 +11,7 @@ let b04_Value = document.getElementById("b04_Value");
 const c01_Name = document.getElementById("c01_Name");
 const c02_Description = document.getElementById("c02_Description");
 const c04_Value = document.getElementById("c04_Value");
+const c05_Value = document.getElementById("c05_Value");
 
 // Table F Variables
 const tableF = document.getElementById("tableF");
@@ -43,6 +44,7 @@ const tableGApplies = document.querySelectorAll(".tableGApplies");
 const tableG_StarOptions = document.querySelectorAll(".tableG_StarOptions");
 const g01_Name = document.getElementById("g01_Name");
 const g02_Description = document.getElementById("g02_Description");
+const g03_Method = document.getElementById("g03_Method");
 const g04a_MandatoryControl = document.getElementById("g04a");
 const g04b_MandatoryControl = document.getElementById("g04b");
 const g04c_MandatoryControl = document.getElementById("g04c");
@@ -67,13 +69,13 @@ const no_NRCILTS = document.getElementById("no_NRCILTS");
 //Event Listeners
 
 // Table A Event Listeners
+
 healthCareCheckbox.addEventListener("change", () => {
   healthCareCheckboxChecked();
 });
 
 // Table B Event Listeners
 
-// Render Tables F, G, and H Based on B.05 Compliance Method
 complianceMethodDropdown.addEventListener("change", () => {
   // Trigger Table F
   let complianceMethodSelected = complianceMethodDropdown.value;
@@ -111,12 +113,16 @@ complianceMethodDropdown.addEventListener("change", () => {
 
     tableGDoesNotApply.hidden = true;
     tableG.style.gridTemplateRows = "repeat(9, 6vh)";
+
+    c05_Value.textContent = "No";
   } else {
     for (const element of tableGApplies) {
       element.hidden = true;
     }
     tableGDoesNotApply.hidden = false;
     tableG.style.gridTemplateRows = "repeat(2, 6vh)";
+
+    c05_Value.textContent = "";
   }
 
   // Trigger Table H
@@ -141,7 +147,6 @@ complianceMethodDropdown.addEventListener("change", () => {
   }
 });
 
-// Calculate F01 Value Based on B01 Value
 b01_Name.addEventListener("change", () => {
   C01ValueCalculation();
   F01ValueCalculation();
@@ -149,7 +154,6 @@ b01_Name.addEventListener("change", () => {
   H01ValueCalculation();
 });
 
-// Calcuate F02 Value Based on B02 Value
 b02_Description.addEventListener("change", () => {
   C02ValueCalculation();
   F02ValueCalcuation();
@@ -157,7 +161,6 @@ b02_Description.addEventListener("change", () => {
   H02ValueCalculation();
 });
 
-// Calculate F04 Options Based on B04 Value
 b04_Value.addEventListener("change", () => {
   F08aValueCalculation();
   F08bValueCalculation();
@@ -172,49 +175,46 @@ b04_Value.addEventListener("change", () => {
 
 // Table F Event Listeners
 
-// Calculate F05 Value
 f03_Method.addEventListener("change", () => {
   f05ValueCalculation();
   f07_ValueCalculation();
 });
 
-// Calculate F06 Value
 f04_Value.addEventListener("change", () => {
   f06ValueCalculation();
 });
 
-// Auto-Complete c04_Value Based on f07_Value
 f07_Value.addEventListener("change", () => {
   c04_ValueCalculation();
 });
 
-// Trigger Explanation Element for * Options
 F08a_MandatoryControl.addEventListener("change", () => {
   tableF_StarOptions_Render();
 });
 
 // Table G Event Listeners
 
-// Render Table F Explanation Row
+g03_Method.addEventListener("change", () => {
+  console.log("Event Listener Triggered");
+  c05_ValueCalculation();
+});
+
 g04a_MandatoryControl.addEventListener("change", () => {
   tableG_StarOptions_Render();
 });
 
 // Table H Event Listeners
 
-// Render Table H Explanation Row
 h03a_MandatoryControl.addEventListener("change", () => {
   tableH_StarOptions_Render();
 });
 
 // Table I Event Listeners
 
-// Toggle Table I Yes Checkbox
 yes_NRCILTS.addEventListener("change", () => {
   toggleYesCheckbox();
 });
 
-// Toggle Table I No Checkbox
 no_NRCILTS.addEventListener("change", () => {
   toggleNoCheckbox();
 });
@@ -249,6 +249,18 @@ const healthCareCheckboxChecked = () => {
 };
 
 // Table C Functions
+
+const c05_ValueCalculation = () => {
+  // Probably need to add a condition for table G being triggered,
+  // maybe with a boolean value to ensure it is currently triggered
+  //and not just triggered and untriggered
+  console.log("Called The Function!");
+  if (g03_Method.value) {
+    c05_Value.textContent = "Yes";
+  } else {
+    c05_Value.textContent = "No";
+  }
+};
 
 // Auto-Complete Co4 Value Based on F07 Value
 const c04_ValueCalculation = () => {
