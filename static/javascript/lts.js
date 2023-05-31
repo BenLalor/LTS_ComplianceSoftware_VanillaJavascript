@@ -10,10 +10,15 @@ let b04_Value = document.getElementById("b04_Value");
 // Table C Variables
 const c01_Name = document.getElementById("c01_Name");
 const c02_Description = document.getElementById("c02_Description");
-
+let c03_Value = document.getElementById("c03_Value");
+const c04_Value = document.getElementById("c04_Value");
+const c05_Value = document.getElementById("c05_Value");
+const c06_Value = document.getElementById("c06_Value");
+let c07_Value = document.getElementById("c07_Value");
+let c07_Complies;
 // Table F Variables
 const tableF = document.getElementById("tableF");
-const tableFCurrentlyApplies = false;
+let tableFCurrentlyApplies = false;
 const tableFDoesNotApplyAttribute = document.querySelector(
   ".tableFDoesNotApplyAttribute"
 );
@@ -26,7 +31,7 @@ const f02_Description = document.getElementById("f02_Description");
 const f03_Method = document.getElementById("f03_Method");
 const f04_Value = document.getElementById("f04_Value");
 const f05_Value = document.getElementById("f05_Value");
-const f06_Value = document.getElementById("f06_Value");
+let f06_Value = document.getElementById("f06_Value");
 const f07_Value = document.getElementById("f07_Value");
 const F08a_MandatoryControl = document.getElementById("F08a");
 const F08b_MandatoryControl = document.getElementById("F08b");
@@ -37,11 +42,13 @@ const FExplanationName = document.getElementById("FExplanationName");
 
 // Table G Variables
 const tableG = document.getElementById("tableG");
+let tableGCurrentlyApplies = false;
 tableGDoesNotApply = document.querySelector(".tableGDoesNotApply");
 const tableGApplies = document.querySelectorAll(".tableGApplies");
 const tableG_StarOptions = document.querySelectorAll(".tableG_StarOptions");
 const g01_Name = document.getElementById("g01_Name");
 const g02_Description = document.getElementById("g02_Description");
+const g03_Method = document.getElementById("g03_Method");
 const g04a_MandatoryControl = document.getElementById("g04a");
 const g04b_MandatoryControl = document.getElementById("g04b");
 const g04c_MandatoryControl = document.getElementById("g04c");
@@ -49,6 +56,7 @@ const GExplanationName = document.getElementById("GExplanationName");
 
 // Table H Variables
 const tableH = document.getElementById("tableH");
+let tableHCurrentlyApplies = false;
 const tableHDoesNotApply = document.querySelector(".tableHDoesNotApply");
 const tableHApplies = document.querySelectorAll(".tableHApplies");
 const tableH_StarOptions = document.querySelectorAll(".tableH_StarOptions");
@@ -62,154 +70,6 @@ const HExplanationName = document.getElementById("HExplanationName");
 // Table I Variables
 const yes_NRCILTS = document.getElementById("yes_NRCILTS");
 const no_NRCILTS = document.getElementById("no_NRCILTS");
-
-//Event Listeners
-
-// Table A Event Listeners
-healthCareCheckbox.addEventListener("change", () => {
-  healthCareCheckboxChecked();
-});
-
-// Table B Event Listeners
-
-// Render Tables F, G, and H Based on B.05 Compliance Method
-complianceMethodDropdown.addEventListener("change", () => {
-  // Trigger Table F
-  let complianceMethodSelected = complianceMethodDropdown.value;
-  if (complianceMethodSelected === "maxAllowedLP") {
-    for (const element of tableFAttributes) {
-      element.style.display = "grid";
-      element.hidden = false;
-    }
-    for (const element of tableFOptionalRowAttributes) {
-      element.hidden = true;
-    }
-
-    for (const element of tableF_StarOptions) {
-      element.hidden = true;
-    }
-    tableFDoesNotApplyAttribute.hidden = true;
-    tableF.style.gridTemplateRows = "repeat(9, 6vh)";
-  } else {
-    for (const element of tableFAttributes) {
-      element.hidden = true;
-    }
-    tableFDoesNotApplyAttribute.hidden = false;
-    tableF.style.gridTemplateRows = "repeat(2, 6vh)";
-  }
-  // Trigger Table G
-  if (complianceMethodSelected === "alternateLightSources") {
-    for (const element of tableGApplies) {
-      element.style.display = "grid";
-      element.hidden = false;
-    }
-
-    for (const element of tableG_StarOptions) {
-      element.hidden = true;
-    }
-
-    tableGDoesNotApply.hidden = true;
-    tableG.style.gridTemplateRows = "repeat(9, 6vh)";
-  } else {
-    for (const element of tableGApplies) {
-      element.hidden = true;
-    }
-    tableGDoesNotApply.hidden = false;
-    tableG.style.gridTemplateRows = "repeat(2, 6vh)";
-  }
-
-  // Trigger Table H
-  if (complianceMethodSelected === "energyVerifiedLabel") {
-    for (const element of tableHApplies) {
-      element.style.display = "grid";
-      element.hidden = false;
-    }
-
-    for (const element of tableH_StarOptions) {
-      element.hidden = true;
-    }
-
-    tableH.style.gridTemplateRows = "repeat(9, 6vh)";
-    tableHDoesNotApply.hidden = true;
-  } else {
-    for (const element of tableHApplies) {
-      element.hidden = true;
-    }
-    tableHDoesNotApply.hidden = false;
-    tableH.style.gridTemplateRows = "repeat(2, 6vh)";
-  }
-});
-
-// Calculate F01 Value Based on B01 Value
-b01_Name.addEventListener("change", () => {
-  F01ValueCalculation();
-  G01ValueCalculation();
-  H01ValueCalculation();
-});
-
-// Calcuate F02 Value Based on B02 Value
-b02_Description.addEventListener("change", () => {
-  F02ValueCalcuation();
-  G02ValueCalculation();
-  H02ValueCalculation();
-});
-
-// Calculate F04 Options Based on B04 Value
-b04_Value.addEventListener("change", () => {
-  F08aValueCalculation();
-  F08bValueCalculation();
-  F08cValueCalculation();
-  G04aValueCalculation();
-  G04bValueCalculation();
-  G04cValueCalculation();
-  H03aValueCalculation();
-  H03bValueCalculation();
-  H03cValueCalculation();
-});
-
-// Table F Event Listeners
-
-// Calculate F05 Value
-f03_Method.addEventListener("change", () => {
-  f05ValueCalculation();
-  f07_ValueCalculation();
-});
-
-// Calculate F06 Value
-f04_Value.addEventListener("change", () => {
-  f06ValueCalculation();
-});
-
-// Trigger Explanation Element for * Options
-F08a_MandatoryControl.addEventListener("change", () => {
-  tableF_StarOptions_Render();
-});
-
-// Table G Event Listeners
-
-// Render Table F Explanation Row
-g04a_MandatoryControl.addEventListener("change", () => {
-  tableG_StarOptions_Render();
-});
-
-// Table H Event Listeners
-
-// Render Table H Explanation Row
-h03a_MandatoryControl.addEventListener("change", () => {
-  tableH_StarOptions_Render();
-});
-
-// Table I Event Listeners
-
-// Toggle Table I Yes Checkbox
-yes_NRCILTS.addEventListener("change", () => {
-  toggleYesCheckbox();
-});
-
-// Toggle Table I No Checkbox
-no_NRCILTS.addEventListener("change", () => {
-  toggleNoCheckbox();
-});
 
 // Functions
 
@@ -240,6 +100,68 @@ const healthCareCheckboxChecked = () => {
   }
 };
 
+// Table C Functions
+
+const c03_ValueCalculation = () => {
+  let f06_Value_Input = f06_Value.innerText;
+  c03_Value.innerText = f06_Value_Input;
+};
+
+const c05_ValueCalculation = () => {
+  // Probably need to add a condition for table G being triggered,
+  // maybe with a boolean value to ensure it is currently triggered
+  //and not just triggered and untriggered
+  if (g03_Method.value) {
+    c05_Value.textContent = "Yes";
+  } else {
+    c05_Value.textContent = "No";
+  }
+};
+
+// Auto-Complete C04 Value Based on F07 Value
+const c04_ValueCalculation = () => {
+  const f07_Value_Input = f07_Value.value;
+  c04_Value.textContent = f07_Value_Input;
+};
+
+const c07_ValueCalculation = () => {
+  console.log("c07_ValueCalculation");
+  if (
+    !tableFCurrentlyApplies &&
+    !tableGCurrentlyApplies &&
+    !tableHCurrentlyApplies
+  ) {
+    console.log("Nothing Applies");
+    c07_Value.textContent = "";
+  } else if (tableFCurrentlyApplies && !tableFComplies()) {
+    console.log("Table F Does Not Comply");
+    c07_Value.textContent = "Does Not Comply";
+  } else if (tableGCurrentlyApplies && !tableGComplies()) {
+    console.log("Table G Does Not Comply");
+    c07_Value.textContent = "Does Not Comply";
+  } else {
+    console.log("Everything Complies!");
+    c07_Value.textContent = "Complies";
+  }
+};
+
+const tableFComplies = () => {
+  if (
+    c03_Value.textContent != "" &&
+    c04_Value.textContent != "" &&
+    c03_Value.textContent >= +c04_Value.textContent
+  ) {
+    console.log("Table F Complies Method");
+    return true;
+  } else return false;
+};
+
+const tableGComplies = () => {
+  if (c05_Value.textContent === "No") {
+    return false;
+  } else return true;
+};
+
 // Table F Functions
 
 // Render Table F Name
@@ -266,7 +188,8 @@ const f05ValueCalculation = () => {
 
 // Calculate and Render Table F Total Allowance
 const f06ValueCalculation = () => {
-  f06_Value.textContent = f04_Value.value * f05_Value.textContent;
+  f06_Value.innerText = f04_Value.value * f05_Value.textContent;
+  f06_Value.value = 44;
 };
 
 // Render & Hide Table F Optional Watt Per Luminaire Row
@@ -475,7 +398,6 @@ const G04cValueCalculation = () => {
 // Render and Hide Table G Star Option Explanation Row
 const tableG_StarOptions_Render = () => {
   if (g04a_MandatoryControl.value === "Other") {
-    console.log("1");
     for (let element of tableG_StarOptions) {
       element.hidden = false;
     }
@@ -485,7 +407,6 @@ const tableG_StarOptions_Render = () => {
       tableG.style.gridTemplateRows = "repeat(11, 6vh)";
     }
   } else if (g04a_MandatoryControl.value !== "Other") {
-    console.log("2");
     for (let element of tableG_StarOptions) {
       element.hidden = true;
     }
@@ -615,3 +536,196 @@ const toggleNoCheckbox = () => {
     yes_NRCILTS.checked = true;
   }
 };
+
+const C01ValueCalculation = () => {
+  const b01_Name_Input = b01_Name.value;
+  c01_Name.textContent = b01_Name_Input;
+};
+
+const C02ValueCalculation = () => {
+  const b02_Description_Input = b02_Description.value;
+  c02_Description.textContent = b02_Description_Input;
+};
+
+//Event Listeners
+
+// Table A Event Listeners
+
+healthCareCheckbox.addEventListener("change", () => {
+  healthCareCheckboxChecked();
+});
+
+// Table B Event Listeners
+
+complianceMethodDropdown.addEventListener("change", () => {
+  // Trigger Table F
+  let complianceMethodSelected = complianceMethodDropdown.value;
+  if (complianceMethodSelected === "maxAllowedLP") {
+    tableFCurrentlyApplies = true;
+    for (const element of tableFAttributes) {
+      element.style.display = "grid";
+      element.hidden = false;
+    }
+    for (const element of tableFOptionalRowAttributes) {
+      element.hidden = true;
+    }
+
+    for (const element of tableF_StarOptions) {
+      element.hidden = true;
+    }
+    tableFDoesNotApplyAttribute.hidden = true;
+    tableF.style.gridTemplateRows = "repeat(9, 6vh)";
+  } else {
+    tableFCurrentlyApplies = false;
+    for (const element of tableFAttributes) {
+      element.hidden = true;
+    }
+    tableFDoesNotApplyAttribute.hidden = false;
+    tableF.style.gridTemplateRows = "repeat(2, 6vh)";
+  }
+  // Trigger Table G
+  if (complianceMethodSelected === "alternateLightSources") {
+    tableGCurrentlyApplies = true;
+    c05_Value.textContent = "No";
+    for (const element of tableGApplies) {
+      element.style.display = "grid";
+      element.hidden = false;
+    }
+
+    for (const element of tableG_StarOptions) {
+      element.hidden = true;
+    }
+
+    tableGDoesNotApply.hidden = true;
+    tableG.style.gridTemplateRows = "repeat(9, 6vh)";
+  } else {
+    tableGCurrentlyApplies = false;
+    c05_Value.textContent = "";
+    for (const element of tableGApplies) {
+      element.hidden = true;
+    }
+    tableGDoesNotApply.hidden = false;
+    tableG.style.gridTemplateRows = "repeat(2, 6vh)";
+  }
+
+  // Trigger Table H
+  if (complianceMethodSelected === "energyVerifiedLabel") {
+    tableHCurrentlyApplies = true;
+    for (const element of tableHApplies) {
+      element.style.display = "grid";
+      element.hidden = false;
+    }
+
+    for (const element of tableH_StarOptions) {
+      element.hidden = true;
+    }
+
+    tableH.style.gridTemplateRows = "repeat(9, 6vh)";
+    tableHDoesNotApply.hidden = true;
+
+    c06_Value.textContent = "Yes";
+  } else {
+    tableHCurrentlyApplies = false;
+    for (const element of tableHApplies) {
+      element.hidden = true;
+    }
+    tableHDoesNotApply.hidden = false;
+    tableH.style.gridTemplateRows = "repeat(2, 6vh)";
+
+    c06_Value.textContent = "";
+  }
+});
+
+b01_Name.addEventListener("change", () => {
+  C01ValueCalculation();
+  F01ValueCalculation();
+  G01ValueCalculation();
+  H01ValueCalculation();
+});
+
+b02_Description.addEventListener("change", () => {
+  C02ValueCalculation();
+  F02ValueCalcuation();
+  G02ValueCalculation();
+  H02ValueCalculation();
+});
+
+b04_Value.addEventListener("change", () => {
+  F08aValueCalculation();
+  F08bValueCalculation();
+  F08cValueCalculation();
+  G04aValueCalculation();
+  G04bValueCalculation();
+  G04cValueCalculation();
+  H03aValueCalculation();
+  H03bValueCalculation();
+  H03cValueCalculation();
+});
+
+// Table C Event Listeners
+
+// Mutation Observers for C07 logic because event listener doesn't work to detect text changes
+const config = { attributes: true, childList: true, subtree: true };
+
+const c03_Observer = new MutationObserver(c07_ValueCalculation);
+c03_Observer.observe(c03_Value, config);
+
+const c04_Observer = new MutationObserver(c07_ValueCalculation);
+c04_Observer.observe(c04_Value, config);
+
+const c05_Observer = new MutationObserver(c07_ValueCalculation);
+c05_Observer.observe(c05_Value, config);
+
+const c06_Observer = new MutationObserver(c07_ValueCalculation);
+c06_Observer.observe(c06_Value, config);
+
+// Table F Event Listeners
+
+f03_Method.addEventListener("change", () => {
+  f05ValueCalculation();
+  f07_ValueCalculation();
+  //c03_ValueCalculation();
+});
+
+f04_Value.addEventListener("change", () => {
+  f06ValueCalculation();
+  //c03_ValueCalculation();
+});
+
+// Mutation Observer for C06 logic because event listener doesn't work to detect text changes
+const f06_Observer = new MutationObserver(c03_ValueCalculation);
+f06_Observer.observe(f06_Value, config);
+
+f07_Value.addEventListener("change", () => {
+  c04_ValueCalculation();
+});
+
+F08a_MandatoryControl.addEventListener("change", () => {
+  tableF_StarOptions_Render();
+});
+
+// Table G Event Listeners
+
+g03_Method.addEventListener("change", () => {
+  c05_ValueCalculation();
+});
+
+g04a_MandatoryControl.addEventListener("change", () => {
+  tableG_StarOptions_Render();
+});
+
+// Table H Event Listeners
+
+h03a_MandatoryControl.addEventListener("change", () => {
+  tableH_StarOptions_Render();
+});
+
+// Table I Event Listeners
+
+yes_NRCILTS.addEventListener("change", () => {
+  toggleYesCheckbox();
+});
+
+no_NRCILTS.addEventListener("change", () => {
+  toggleNoCheckbox();
+});
