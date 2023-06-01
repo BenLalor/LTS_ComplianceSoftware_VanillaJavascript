@@ -405,6 +405,13 @@ const tableF_StarOptions_Render = () => {
   }
 };
 
+const UpdateStarExplanationName = () => {
+  const lightName = b01_Name.value;
+  FExplanationName.textContent = lightName;
+  GExplanationName.textContent = lightName;
+  HExplanationName.textContent = lightName;
+};
+
 // Table G Functions
 
 // Render Table G Name
@@ -743,6 +750,7 @@ b01_Name.addEventListener("change", () => {
   F01ValueCalculation();
   G01ValueCalculation();
   H01ValueCalculation();
+  UpdateStarExplanationName();
 });
 
 b02_Description.addEventListener("change", () => {
