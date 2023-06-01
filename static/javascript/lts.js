@@ -126,13 +126,11 @@ const c04_ValueCalculation = () => {
 };
 
 const c07_ValueCalculation = () => {
-  console.log("c07_ValueCalculation");
   if (
     !tableFCurrentlyApplies &&
     !tableGCurrentlyApplies &&
     !tableHCurrentlyApplies
   ) {
-    console.log("Nothing Applies");
     c07_Value.textContent = "";
   } else if (tableFCurrentlyApplies && !tableFComplies()) {
     c07_Value.textContent = "Does Not Comply";
@@ -163,19 +161,16 @@ const ControlsCompliance_Calculation = () => {
       F08a_MandatoryControl.selectedIndex === 0
     ) {
       TableFControlsStatus = controlsStatus.false;
-      console.log("Fa Controls Do Not Comply");
     } else if (
       !F08b_MandatoryControl.disabled &&
       F08b_MandatoryControl.selectedIndex === 0
     ) {
       TableFControlsStatus = controlsStatus.false;
-      console.log("Fb Controls Do Not Comply");
     } else if (
       !F08c_MandatoryControl.disabled &&
       F08c_MandatoryControl.selectedIndex === 0
     ) {
       TableFControlsStatus = controlsStatus.false;
-      console.log("Fc Controls Do Not Comply");
     } else {
       TableFControlsStatus = controlsStatus.true;
     }
@@ -186,19 +181,16 @@ const ControlsCompliance_Calculation = () => {
       g04a_MandatoryControl.selectedIndex === 0
     ) {
       TableGControlsStatus = controlsStatus.false;
-      console.log("Ga Controls Do Not Comply");
     } else if (
       !g04b_MandatoryControl.disabled &&
       g04b_MandatoryControl.selectedIndex === 0
     ) {
       TableGControlsStatus = controlsStatus.false;
-      console.log("Gb Controls Do Not Comply");
     } else if (
       !g04c_MandatoryControl.disabled &&
       g04c_MandatoryControl.selectedIndex === 0
     ) {
       TableGControlsStatus = controlsStatus.false;
-      console.log("Gc Controls Do Not Comply");
     } else {
       TableGControlsStatus = controlsStatus.true;
     }
@@ -209,19 +201,16 @@ const ControlsCompliance_Calculation = () => {
       h03a_MandatoryControl.selectedIndex === 0
     ) {
       TableHControlsStatus = controlsStatus.false;
-      console.log("Ha Controls Do Not Comply");
     } else if (
       !h03b_MandatoryControl.disabled &&
       h03b_MandatoryControl.selectedIndex === 0
     ) {
       TableHControlsStatus = controlsStatus.false;
-      console.log("Hb Controls Do Not Comply");
     } else if (
       !h03c_MandatoryControl.disabled &&
       h03c_MandatoryControl.selectedIndex === 0
     ) {
       TableHControlsStatus = controlsStatus.false;
-      console.log("Hc Controls Do Not Comply");
     } else {
       TableHControlsStatus = controlsStatus.true;
     }
@@ -232,17 +221,14 @@ const ControlsCompliance_Calculation = () => {
     TableGControlsStatus === controlsStatus.na &&
     TableHControlsStatus === controlsStatus.na
   ) {
-    console.log("All Controls NA");
     c07_ControlsValue.textContent = blank;
   } else if (
     TableFControlsStatus === controlsStatus.false ||
     TableGControlsStatus == controlsStatus.false ||
     TableHControlsStatus == controlsStatus.false
   ) {
-    console.log("All Controls DO NO Comply");
     c07_ControlsValue.textContent = doesNotComply;
   } else {
-    console.log("All Controls Comply");
     c07_ControlsValue.textContent = complies;
   }
 };
