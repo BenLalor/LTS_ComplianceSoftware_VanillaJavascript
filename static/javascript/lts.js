@@ -126,13 +126,11 @@ const c04_ValueCalculation = () => {
 };
 
 const c07_ValueCalculation = () => {
-  console.log("c07_ValueCalculation");
   if (
     !tableFCurrentlyApplies &&
     !tableGCurrentlyApplies &&
     !tableHCurrentlyApplies
   ) {
-    console.log("Nothing Applies");
     c07_Value.textContent = "";
   } else if (tableFCurrentlyApplies && !tableFComplies()) {
     c07_Value.textContent = "Does Not Comply";
@@ -163,19 +161,16 @@ const ControlsCompliance_Calculation = () => {
       F08a_MandatoryControl.selectedIndex === 0
     ) {
       TableFControlsStatus = controlsStatus.false;
-      console.log("Fa Controls Do Not Comply");
     } else if (
       !F08b_MandatoryControl.disabled &&
       F08b_MandatoryControl.selectedIndex === 0
     ) {
       TableFControlsStatus = controlsStatus.false;
-      console.log("Fb Controls Do Not Comply");
     } else if (
       !F08c_MandatoryControl.disabled &&
       F08c_MandatoryControl.selectedIndex === 0
     ) {
       TableFControlsStatus = controlsStatus.false;
-      console.log("Fc Controls Do Not Comply");
     } else {
       TableFControlsStatus = controlsStatus.true;
     }
@@ -186,19 +181,16 @@ const ControlsCompliance_Calculation = () => {
       g04a_MandatoryControl.selectedIndex === 0
     ) {
       TableGControlsStatus = controlsStatus.false;
-      console.log("Ga Controls Do Not Comply");
     } else if (
       !g04b_MandatoryControl.disabled &&
       g04b_MandatoryControl.selectedIndex === 0
     ) {
       TableGControlsStatus = controlsStatus.false;
-      console.log("Gb Controls Do Not Comply");
     } else if (
       !g04c_MandatoryControl.disabled &&
       g04c_MandatoryControl.selectedIndex === 0
     ) {
       TableGControlsStatus = controlsStatus.false;
-      console.log("Gc Controls Do Not Comply");
     } else {
       TableGControlsStatus = controlsStatus.true;
     }
@@ -209,19 +201,16 @@ const ControlsCompliance_Calculation = () => {
       h03a_MandatoryControl.selectedIndex === 0
     ) {
       TableHControlsStatus = controlsStatus.false;
-      console.log("Ha Controls Do Not Comply");
     } else if (
       !h03b_MandatoryControl.disabled &&
       h03b_MandatoryControl.selectedIndex === 0
     ) {
       TableHControlsStatus = controlsStatus.false;
-      console.log("Hb Controls Do Not Comply");
     } else if (
       !h03c_MandatoryControl.disabled &&
       h03c_MandatoryControl.selectedIndex === 0
     ) {
       TableHControlsStatus = controlsStatus.false;
-      console.log("Hc Controls Do Not Comply");
     } else {
       TableHControlsStatus = controlsStatus.true;
     }
@@ -232,17 +221,14 @@ const ControlsCompliance_Calculation = () => {
     TableGControlsStatus === controlsStatus.na &&
     TableHControlsStatus === controlsStatus.na
   ) {
-    console.log("All Controls NA");
     c07_ControlsValue.textContent = blank;
   } else if (
     TableFControlsStatus === controlsStatus.false ||
     TableGControlsStatus == controlsStatus.false ||
     TableHControlsStatus == controlsStatus.false
   ) {
-    console.log("All Controls DO NO Comply");
     c07_ControlsValue.textContent = doesNotComply;
   } else {
-    console.log("All Controls Comply");
     c07_ControlsValue.textContent = complies;
   }
 };
@@ -295,8 +281,11 @@ const f06ValueCalculation = () => {
 
 // Render & Hide Table F Optional Watt Per Luminaire Row
 const TableF_ExternalExpandRow = () => {
+  f07_Value.value = "";
   let f03_Method_Value = f03_Method.value;
+  c04_ValueCalculation();
   if (f03_Method_Value === "externally") {
+    f07_Value.readOnly = true;
     for (let element of tableFOptionalRowAttributes) {
       element.hidden = false;
     }
@@ -306,7 +295,7 @@ const TableF_ExternalExpandRow = () => {
       tableF.style.gridTemplateRows = "repeat(12, 6vh)";
     }
   } else {
-    f07_Value.value = "";
+    f07_Value.readOnly = false;
     for (let element of tableFOptionalRowAttributes) {
       element.hidden = true;
     }
@@ -773,6 +762,7 @@ b04_Value.addEventListener("change", () => {
   H03aValueCalculation();
   H03bValueCalculation();
   H03cValueCalculation();
+  ControlsCompliance_Calculation();
 });
 
 // Table C Event Listeners
@@ -796,6 +786,7 @@ c06_Observer.observe(c06_Value, config);
 
 f03_Method.addEventListener("change", () => {
   f05ValueCalculation();
+  f06ValueCalculation();
   TableF_ExternalExpandRow();
   //c03_ValueCalculation();
 });
@@ -809,7 +800,7 @@ f04_Value.addEventListener("change", () => {
 const f06_Observer = new MutationObserver(c03_ValueCalculation);
 f06_Observer.observe(f06_Value, config);
 
-f07_Value.addEventListener("change", () => {
+f07_Value.addEventListener("input", () => {
   c04_ValueCalculation();
   // FIX ME - will need to call c04_ValueCalculation() when F12 or F14 change
 });
@@ -829,10 +820,12 @@ F08c_MandatoryControl.addEventListener("change", () => {
 
 f12_Value.addEventListener("change", () => {
   f07_ValueCalculation();
+  c04_ValueCalculation();
 });
 
 f14_Value.addEventListener("change", () => {
   f07_ValueCalculation();
+  c04_ValueCalculation();
 });
 
 // Table G Event Listeners
