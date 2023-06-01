@@ -126,11 +126,13 @@ const c04_ValueCalculation = () => {
 };
 
 const c07_ValueCalculation = () => {
+  console.log("c07_ValueCalculation");
   if (
     !tableFCurrentlyApplies &&
     !tableGCurrentlyApplies &&
     !tableHCurrentlyApplies
   ) {
+    console.log("Nothing Applies");
     c07_Value.textContent = "";
   } else if (tableFCurrentlyApplies && !tableFComplies()) {
     c07_Value.textContent = "Does Not Comply";
@@ -741,6 +743,10 @@ complianceMethodDropdown.addEventListener("change", () => {
     c06_Value.textContent = "";
     ControlsCompliance_Calculation();
   }
+});
+
+complianceMethodDropdown.addEventListener("change", () => {
+  c07_ValueCalculation();
 });
 
 b01_Name.addEventListener("change", () => {
