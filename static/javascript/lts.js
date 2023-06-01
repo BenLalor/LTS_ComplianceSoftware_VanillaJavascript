@@ -773,6 +773,7 @@ b04_Value.addEventListener("change", () => {
   H03aValueCalculation();
   H03bValueCalculation();
   H03cValueCalculation();
+  ControlsCompliance_Calculation();
 });
 
 // Table C Event Listeners
@@ -796,6 +797,7 @@ c06_Observer.observe(c06_Value, config);
 
 f03_Method.addEventListener("change", () => {
   f05ValueCalculation();
+  f06ValueCalculation();
   TableF_ExternalExpandRow();
   //c03_ValueCalculation();
 });
