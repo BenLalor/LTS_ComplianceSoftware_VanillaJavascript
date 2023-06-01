@@ -52,7 +52,7 @@
 .ltsGrid_tableC {
   display: grid;
   grid-template-columns: repeat(100, 0.91vw);
-  grid-template-rows: repeat(7, 6vh);
+  grid-template-rows: repeat(8, 6vh);
 }
 
 .ltsGrid_tableD {
@@ -243,6 +243,10 @@ label {
 
 .C01 {
   grid-column: span 10;
+}
+
+.c01_begincap {
+  grid-column: span 75;
 }
 
 .C02 {

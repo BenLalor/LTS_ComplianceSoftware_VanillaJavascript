@@ -15,7 +15,8 @@ const c04_Value = document.getElementById("c04_Value");
 const c05_Value = document.getElementById("c05_Value");
 const c06_Value = document.getElementById("c06_Value");
 let c07_Value = document.getElementById("c07_Value");
-let c07_Complies;
+let c07_ControlsValue = document.getElementById("c07_ControlsValue");
+
 // Table F Variables
 const tableF = document.getElementById("tableF");
 let tableFCurrentlyApplies = false;
@@ -125,23 +126,122 @@ const c04_ValueCalculation = () => {
 };
 
 const c07_ValueCalculation = () => {
-  console.log("c07_ValueCalculation");
   if (
     !tableFCurrentlyApplies &&
     !tableGCurrentlyApplies &&
     !tableHCurrentlyApplies
   ) {
-    console.log("Nothing Applies");
     c07_Value.textContent = "";
   } else if (tableFCurrentlyApplies && !tableFComplies()) {
-    console.log("Table F Does Not Comply");
     c07_Value.textContent = "Does Not Comply";
   } else if (tableGCurrentlyApplies && !tableGComplies()) {
-    console.log("Table G Does Not Comply");
     c07_Value.textContent = "Does Not Comply";
   } else {
-    console.log("Everything Complies!");
     c07_Value.textContent = "Complies";
+  }
+};
+
+const ControlsCompliance_Calculation = () => {
+  const doesNotComply = "Does Not Comply";
+  const complies = "Complies";
+  const blank = "";
+  const controlsStatus = {
+    true: true,
+    false: false,
+    na: null,
+  };
+
+  let TableFControlsStatus = controlsStatus.na;
+  let TableGControlsStatus = controlsStatus.na;
+  let TableHControlsStatus = controlsStatus.na;
+
+  if (tableFCurrentlyApplies) {
+    if (
+      !F08a_MandatoryControl.disabled &&
+      F08a_MandatoryControl.selectedIndex === 0
+    ) {
+      TableFControlsStatus = controlsStatus.false;
+      console.log("Fa Controls Do Not Comply");
+    } else if (
+      !F08b_MandatoryControl.disabled &&
+      F08b_MandatoryControl.selectedIndex === 0
+    ) {
+      TableFControlsStatus = controlsStatus.false;
+      console.log("Fb Controls Do Not Comply");
+    } else if (
+      !F08c_MandatoryControl.disabled &&
+      F08c_MandatoryControl.selectedIndex === 0
+    ) {
+      TableFControlsStatus = controlsStatus.false;
+      console.log("Fc Controls Do Not Comply");
+    } else {
+      TableFControlsStatus = controlsStatus.true;
+    }
+  }
+  if (tableGCurrentlyApplies) {
+    if (
+      !g04a_MandatoryControl.disabled &&
+      g04a_MandatoryControl.selectedIndex === 0
+    ) {
+      TableGControlsStatus = controlsStatus.false;
+      console.log("Ga Controls Do Not Comply");
+    } else if (
+      !g04b_MandatoryControl.disabled &&
+      g04b_MandatoryControl.selectedIndex === 0
+    ) {
+      TableGControlsStatus = controlsStatus.false;
+      console.log("Gb Controls Do Not Comply");
+    } else if (
+      !g04c_MandatoryControl.disabled &&
+      g04c_MandatoryControl.selectedIndex === 0
+    ) {
+      TableGControlsStatus = controlsStatus.false;
+      console.log("Gc Controls Do Not Comply");
+    } else {
+      TableGControlsStatus = controlsStatus.true;
+    }
+  }
+  if (tableHCurrentlyApplies) {
+    if (
+      !h03a_MandatoryControl.disabled &&
+      h03a_MandatoryControl.selectedIndex === 0
+    ) {
+      TableHControlsStatus = controlsStatus.false;
+      console.log("Ha Controls Do Not Comply");
+    } else if (
+      !h03b_MandatoryControl.disabled &&
+      h03b_MandatoryControl.selectedIndex === 0
+    ) {
+      TableHControlsStatus = controlsStatus.false;
+      console.log("Hb Controls Do Not Comply");
+    } else if (
+      !h03c_MandatoryControl.disabled &&
+      h03c_MandatoryControl.selectedIndex === 0
+    ) {
+      TableHControlsStatus = controlsStatus.false;
+      console.log("Hc Controls Do Not Comply");
+    } else {
+      TableHControlsStatus = controlsStatus.true;
+    }
+  }
+  if (
+    // Change this to use new type of tracking
+    TableFControlsStatus === controlsStatus.na &&
+    TableGControlsStatus === controlsStatus.na &&
+    TableHControlsStatus === controlsStatus.na
+  ) {
+    console.log("All Controls NA");
+    c07_ControlsValue.textContent = blank;
+  } else if (
+    TableFControlsStatus === controlsStatus.false ||
+    TableGControlsStatus == controlsStatus.false ||
+    TableHControlsStatus == controlsStatus.false
+  ) {
+    console.log("All Controls DO NO Comply");
+    c07_ControlsValue.textContent = doesNotComply;
+  } else {
+    console.log("All Controls Comply");
+    c07_ControlsValue.textContent = complies;
   }
 };
 
@@ -151,7 +251,6 @@ const tableFComplies = () => {
     c04_Value.textContent != "" &&
     c03_Value.textContent >= +c04_Value.textContent
   ) {
-    console.log("Table F Complies Method");
     return true;
   } else return false;
 };
@@ -575,6 +674,7 @@ complianceMethodDropdown.addEventListener("change", () => {
     }
     tableFDoesNotApplyAttribute.hidden = true;
     tableF.style.gridTemplateRows = "repeat(9, 6vh)";
+    ControlsCompliance_Calculation();
   } else {
     tableFCurrentlyApplies = false;
     for (const element of tableFAttributes) {
@@ -582,6 +682,7 @@ complianceMethodDropdown.addEventListener("change", () => {
     }
     tableFDoesNotApplyAttribute.hidden = false;
     tableF.style.gridTemplateRows = "repeat(2, 6vh)";
+    ControlsCompliance_Calculation();
   }
   // Trigger Table G
   if (complianceMethodSelected === "alternateLightSources") {
@@ -598,6 +699,7 @@ complianceMethodDropdown.addEventListener("change", () => {
 
     tableGDoesNotApply.hidden = true;
     tableG.style.gridTemplateRows = "repeat(9, 6vh)";
+    ControlsCompliance_Calculation();
   } else {
     tableGCurrentlyApplies = false;
     c05_Value.textContent = "";
@@ -606,6 +708,7 @@ complianceMethodDropdown.addEventListener("change", () => {
     }
     tableGDoesNotApply.hidden = false;
     tableG.style.gridTemplateRows = "repeat(2, 6vh)";
+    ControlsCompliance_Calculation();
   }
 
   // Trigger Table H
@@ -624,6 +727,7 @@ complianceMethodDropdown.addEventListener("change", () => {
     tableHDoesNotApply.hidden = true;
 
     c06_Value.textContent = "Yes";
+    ControlsCompliance_Calculation();
   } else {
     tableHCurrentlyApplies = false;
     for (const element of tableHApplies) {
@@ -633,6 +737,7 @@ complianceMethodDropdown.addEventListener("change", () => {
     tableH.style.gridTemplateRows = "repeat(2, 6vh)";
 
     c06_Value.textContent = "";
+    ControlsCompliance_Calculation();
   }
 });
 
@@ -702,6 +807,15 @@ f07_Value.addEventListener("change", () => {
 
 F08a_MandatoryControl.addEventListener("change", () => {
   tableF_StarOptions_Render();
+  ControlsCompliance_Calculation();
+});
+
+F08b_MandatoryControl.addEventListener("change", () => {
+  ControlsCompliance_Calculation();
+});
+
+F08c_MandatoryControl.addEventListener("change", () => {
+  ControlsCompliance_Calculation();
 });
 
 // Table G Event Listeners
@@ -712,12 +826,30 @@ g03_Method.addEventListener("change", () => {
 
 g04a_MandatoryControl.addEventListener("change", () => {
   tableG_StarOptions_Render();
+  ControlsCompliance_Calculation();
+});
+
+g04b_MandatoryControl.addEventListener("change", () => {
+  ControlsCompliance_Calculation();
+});
+
+g04c_MandatoryControl.addEventListener("change", () => {
+  ControlsCompliance_Calculation();
 });
 
 // Table H Event Listeners
 
 h03a_MandatoryControl.addEventListener("change", () => {
   tableH_StarOptions_Render();
+  ControlsCompliance_Calculation();
+});
+
+h03b_MandatoryControl.addEventListener("change", () => {
+  ControlsCompliance_Calculation();
+});
+
+h03c_MandatoryControl.addEventListener("change", () => {
+  ControlsCompliance_Calculation();
 });
 
 // Table I Event Listeners
