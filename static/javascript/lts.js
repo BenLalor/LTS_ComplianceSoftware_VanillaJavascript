@@ -32,11 +32,11 @@ const f03_Method = document.getElementById("f03_Method");
 const f04_Value = document.getElementById("f04_Value");
 const f05_Value = document.getElementById("f05_Value");
 let f06_Value = document.getElementById("f06_Value");
-const f07_Value = document.getElementById("f07_Value");
+let f07_Value = document.getElementById("f07_Value");
 const F08a_MandatoryControl = document.getElementById("F08a");
 const F08b_MandatoryControl = document.getElementById("F08b");
 const F08c_MandatoryControl = document.getElementById("F08c");
-const f12_Value = document.getElementById("f12_Value");
+let f12_Value = document.getElementById("f12_Value");
 const f14_Value = document.getElementById("f14_Value");
 const FExplanationName = document.getElementById("FExplanationName");
 
@@ -193,11 +193,9 @@ const f06ValueCalculation = () => {
 };
 
 // Render & Hide Table F Optional Watt Per Luminaire Row
-const f07_ValueCalculation = () => {
+const TableF_ExternalExpandRow = () => {
   let f03_Method_Value = f03_Method.value;
   if (f03_Method_Value === "externally") {
-    f07_Value.value = f12_Value.value * f14_Value.value;
-    f07_Value.disabled = true;
     for (let element of tableFOptionalRowAttributes) {
       element.hidden = false;
     }
@@ -208,7 +206,6 @@ const f07_ValueCalculation = () => {
     }
   } else {
     f07_Value.value = "";
-    f07_Value.disabled = false;
     for (let element of tableFOptionalRowAttributes) {
       element.hidden = true;
     }
@@ -218,6 +215,11 @@ const f07_ValueCalculation = () => {
       tableF.style.gridTemplateRows = "repeat(9, 6vh)";
     }
   }
+};
+
+const f07_ValueCalculation = () => {
+  let product = f12_Value.value * f14_Value.value;
+  f07_Value.value = product;
 };
 
 // Determine Valid Table F08a Cotrol Options
@@ -683,7 +685,7 @@ c06_Observer.observe(c06_Value, config);
 
 f03_Method.addEventListener("change", () => {
   f05ValueCalculation();
-  f07_ValueCalculation();
+  TableF_ExternalExpandRow();
   //c03_ValueCalculation();
 });
 
@@ -698,10 +700,19 @@ f06_Observer.observe(f06_Value, config);
 
 f07_Value.addEventListener("change", () => {
   c04_ValueCalculation();
+  // FIX ME - will need to call c04_ValueCalculation() when F12 or F14 change
 });
 
 F08a_MandatoryControl.addEventListener("change", () => {
   tableF_StarOptions_Render();
+});
+
+f12_Value.addEventListener("change", () => {
+  f07_ValueCalculation();
+});
+
+f14_Value.addEventListener("change", () => {
+  f07_ValueCalculation();
 });
 
 // Table G Event Listeners
