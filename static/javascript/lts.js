@@ -283,6 +283,7 @@ const f06ValueCalculation = () => {
 const TableF_ExternalExpandRow = () => {
   f07_Value.value = "";
   let f03_Method_Value = f03_Method.value;
+  c04_ValueCalculation();
   if (f03_Method_Value === "externally") {
     f07_Value.readOnly = true;
     for (let element of tableFOptionalRowAttributes) {
@@ -295,7 +296,6 @@ const TableF_ExternalExpandRow = () => {
     }
   } else {
     f07_Value.readOnly = false;
-    f07_Value.value = "";
     for (let element of tableFOptionalRowAttributes) {
       element.hidden = true;
     }
@@ -800,7 +800,7 @@ f04_Value.addEventListener("change", () => {
 const f06_Observer = new MutationObserver(c03_ValueCalculation);
 f06_Observer.observe(f06_Value, config);
 
-f07_Value.addEventListener("change", () => {
+f07_Value.addEventListener("input", () => {
   c04_ValueCalculation();
   // FIX ME - will need to call c04_ValueCalculation() when F12 or F14 change
 });
@@ -820,10 +820,12 @@ F08c_MandatoryControl.addEventListener("change", () => {
 
 f12_Value.addEventListener("change", () => {
   f07_ValueCalculation();
+  c04_ValueCalculation();
 });
 
 f14_Value.addEventListener("change", () => {
   f07_ValueCalculation();
+  c04_ValueCalculation();
 });
 
 // Table G Event Listeners
