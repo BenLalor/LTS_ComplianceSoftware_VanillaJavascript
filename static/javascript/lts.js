@@ -297,6 +297,7 @@ const f06ValueCalculation = () => {
 const TableF_ExternalExpandRow = () => {
   let f03_Method_Value = f03_Method.value;
   if (f03_Method_Value === "externally") {
+    f07_Value.readOnly = true;
     for (let element of tableFOptionalRowAttributes) {
       element.hidden = false;
     }
@@ -306,6 +307,7 @@ const TableF_ExternalExpandRow = () => {
       tableF.style.gridTemplateRows = "repeat(12, 6vh)";
     }
   } else {
+    f07_Value.readOnly = false;
     f07_Value.value = "";
     for (let element of tableFOptionalRowAttributes) {
       element.hidden = true;
