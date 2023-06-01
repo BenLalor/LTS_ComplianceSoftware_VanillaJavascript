@@ -295,6 +295,7 @@ const f06ValueCalculation = () => {
 
 // Render & Hide Table F Optional Watt Per Luminaire Row
 const TableF_ExternalExpandRow = () => {
+  f07_Value.value = "";
   let f03_Method_Value = f03_Method.value;
   if (f03_Method_Value === "externally") {
     f07_Value.readOnly = true;
