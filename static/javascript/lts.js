@@ -427,12 +427,15 @@ const resetTableF_Action = () => {
       f10_Value,
       f11_Value,
       f12_Value,
-
+      f13_Value,
       f14_Value,
     ];
     for (let element of clearTheseElements) {
-      element.textContent = "";
-      element.value = "";
+      if (element.tagName === "SELECT" || element.tagName === "INPUT") {
+        element.value = "";
+      } else {
+        element.textContent = "";
+      }
     }
   }
 };
