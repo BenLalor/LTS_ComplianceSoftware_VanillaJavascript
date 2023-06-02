@@ -66,6 +66,7 @@ let tableHCurrentlyApplies = false;
 const tableHDoesNotApply = document.querySelector(".tableHDoesNotApply");
 const tableHApplies = document.querySelectorAll(".tableHApplies");
 const tableH_StarOptions = document.querySelectorAll(".tableH_StarOptions");
+const reset_tableH = document.getElementById("reset_tableH");
 const h01_Name = document.getElementById("h01_Name");
 const h02_Description = document.getElementById("h02_Description");
 const h03a_MandatoryControl = document.getElementById("h03a");
@@ -684,6 +685,17 @@ const toggleNoCheckbox = () => {
   }
 };
 
+const resetTableH_Action = () => {
+  const confirmDiaglog = window.confirm(
+    "Are you sure? This will clear all data in Table F."
+  );
+  if (confirmDiaglog) {
+    h03a_MandatoryControl.value = "";
+    h03b_MandatoryControl.value = "";
+    h03c_MandatoryControl.value = "";
+  }
+};
+
 const C01ValueCalculation = () => {
   const b01_Name_Input = b01_Name.value;
   c01_Name.textContent = b01_Name_Input;
@@ -924,6 +936,10 @@ h03b_MandatoryControl.addEventListener("change", () => {
 
 h03c_MandatoryControl.addEventListener("change", () => {
   ControlsCompliance_Calculation();
+});
+
+reset_tableH.addEventListener("click", () => {
+  resetTableH_Action();
 });
 
 // Table I Event Listeners
