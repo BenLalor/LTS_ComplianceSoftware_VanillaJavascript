@@ -410,24 +410,30 @@ const tableF_StarOptions_Render = () => {
 };
 
 const resetTableF_Action = () => {
-  const clearTheseElements = [
-    f03_Method,
-    f04_Value,
-    f05_Value,
-    f06_Value,
-    f07_Value,
-    F08a_MandatoryControl,
-    F08b_MandatoryControl,
-    F08c_MandatoryControl,
-    f10_Value,
-    f11_Value,
-    f12_Value,
+  const confirmDiaglog = window.confirm(
+    "Are you sure? This will clear all data in Table F."
+  );
+  if (confirmDiaglog) {
+    // Do something
+    const clearTheseElements = [
+      f03_Method,
+      f04_Value,
+      f05_Value,
+      f06_Value,
+      f07_Value,
+      F08a_MandatoryControl,
+      F08b_MandatoryControl,
+      F08c_MandatoryControl,
+      f10_Value,
+      f11_Value,
+      f12_Value,
 
-    f14_Value,
-  ];
-  for (let element of clearTheseElements) {
-    element.textContent = "";
-    element.value = "";
+      f14_Value,
+    ];
+    for (let element of clearTheseElements) {
+      element.textContent = "";
+      element.value = "";
+    }
   }
 };
 
