@@ -150,6 +150,10 @@ select {
   grid-column: span 70;
 }
 
+.reset {
+  background-color: #ffa500;
+}
+
 .groupCheckboxOuter {
   grid-column: span 70;
   display: flex;

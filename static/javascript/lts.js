@@ -27,6 +27,7 @@ const tableFAttributes = document.querySelectorAll(".tableFAttributes");
 const tableFOptionalRowAttributes =
   document.querySelectorAll(".tableFOptionalRow");
 const tableF_StarOptions = document.querySelectorAll(".tableF_StarOptions");
+const reset_TableF = document.getElementById("reset_TableF");
 const f01_Name = document.getElementById("f01_Name");
 const f02_Description = document.getElementById("f02_Description");
 const f03_Method = document.getElementById("f03_Method");
@@ -37,7 +38,10 @@ let f07_Value = document.getElementById("f07_Value");
 const F08a_MandatoryControl = document.getElementById("F08a");
 const F08b_MandatoryControl = document.getElementById("F08b");
 const F08c_MandatoryControl = document.getElementById("F08c");
+const f10_Value = document.getElementById("f10_Value");
+const f11_Value = document.getElementById("f11_Value");
 let f12_Value = document.getElementById("f12_Value");
+const f13_Value = document.getElementById("f13_Value");
 const f14_Value = document.getElementById("f14_Value");
 const FExplanationName = document.getElementById("FExplanationName");
 
@@ -47,6 +51,7 @@ let tableGCurrentlyApplies = false;
 tableGDoesNotApply = document.querySelector(".tableGDoesNotApply");
 const tableGApplies = document.querySelectorAll(".tableGApplies");
 const tableG_StarOptions = document.querySelectorAll(".tableG_StarOptions");
+const reset_tableG = document.getElementById("reset_tableG");
 const g01_Name = document.getElementById("g01_Name");
 const g02_Description = document.getElementById("g02_Description");
 const g03_Method = document.getElementById("g03_Method");
@@ -61,6 +66,7 @@ let tableHCurrentlyApplies = false;
 const tableHDoesNotApply = document.querySelector(".tableHDoesNotApply");
 const tableHApplies = document.querySelectorAll(".tableHApplies");
 const tableH_StarOptions = document.querySelectorAll(".tableH_StarOptions");
+const reset_tableH = document.getElementById("reset_tableH");
 const h01_Name = document.getElementById("h01_Name");
 const h02_Description = document.getElementById("h02_Description");
 const h03a_MandatoryControl = document.getElementById("h03a");
@@ -405,6 +411,37 @@ const tableF_StarOptions_Render = () => {
   }
 };
 
+const resetTableF_Action = () => {
+  const confirmDiaglog = window.confirm(
+    "Are you sure? This will clear all data in Table F."
+  );
+  if (confirmDiaglog) {
+    // Do something
+    const clearTheseElements = [
+      f03_Method,
+      f04_Value,
+      f05_Value,
+      f06_Value,
+      f07_Value,
+      F08a_MandatoryControl,
+      F08b_MandatoryControl,
+      F08c_MandatoryControl,
+      f10_Value,
+      f11_Value,
+      f12_Value,
+      f13_Value,
+      f14_Value,
+    ];
+    for (let element of clearTheseElements) {
+      if (element.tagName === "SELECT" || element.tagName === "INPUT") {
+        element.value = "";
+      } else {
+        element.textContent = "";
+      }
+    }
+  }
+};
+
 const UpdateStarExplanationName = () => {
   const lightName = b01_Name.value;
   FExplanationName.textContent = lightName;
@@ -512,6 +549,18 @@ const tableG_StarOptions_Render = () => {
     if (tableG.style.gridTemplateRows === "repeat(11, 6vh)") {
       tableG.style.gridTemplateRows = "repeat(9, 6vh)";
     }
+  }
+};
+
+const resetTableG_Action = () => {
+  const confirmDiaglog = window.confirm(
+    "Are you sure? This will clear all data in Table F."
+  );
+  if (confirmDiaglog) {
+    g03_Method.value = "";
+    g04a_MandatoryControl.value = "";
+    g04b_MandatoryControl.value = "";
+    g04c_MandatoryControl.value = "";
   }
 };
 
@@ -633,6 +682,17 @@ const toggleNoCheckbox = () => {
     yes_NRCILTS.checked = false;
   } else if (no_NRCILTS.checked === false) {
     yes_NRCILTS.checked = true;
+  }
+};
+
+const resetTableH_Action = () => {
+  const confirmDiaglog = window.confirm(
+    "Are you sure? This will clear all data in Table F."
+  );
+  if (confirmDiaglog) {
+    h03a_MandatoryControl.value = "";
+    h03b_MandatoryControl.value = "";
+    h03c_MandatoryControl.value = "";
   }
 };
 
@@ -836,6 +896,10 @@ f14_Value.addEventListener("change", () => {
   c04_ValueCalculation();
 });
 
+reset_TableF.addEventListener("click", () => {
+  resetTableF_Action();
+});
+
 // Table G Event Listeners
 
 g03_Method.addEventListener("change", () => {
@@ -855,6 +919,10 @@ g04c_MandatoryControl.addEventListener("change", () => {
   ControlsCompliance_Calculation();
 });
 
+reset_tableG.addEventListener("click", () => {
+  resetTableG_Action();
+});
+
 // Table H Event Listeners
 
 h03a_MandatoryControl.addEventListener("change", () => {
@@ -868,6 +936,10 @@ h03b_MandatoryControl.addEventListener("change", () => {
 
 h03c_MandatoryControl.addEventListener("change", () => {
   ControlsCompliance_Calculation();
+});
+
+reset_tableH.addEventListener("click", () => {
+  resetTableH_Action();
 });
 
 // Table I Event Listeners
