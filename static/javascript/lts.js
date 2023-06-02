@@ -27,6 +27,7 @@ const tableFAttributes = document.querySelectorAll(".tableFAttributes");
 const tableFOptionalRowAttributes =
   document.querySelectorAll(".tableFOptionalRow");
 const tableF_StarOptions = document.querySelectorAll(".tableF_StarOptions");
+const reset_TableF = document.getElementById("reset_TableF");
 const f01_Name = document.getElementById("f01_Name");
 const f02_Description = document.getElementById("f02_Description");
 const f03_Method = document.getElementById("f03_Method");
@@ -37,7 +38,10 @@ let f07_Value = document.getElementById("f07_Value");
 const F08a_MandatoryControl = document.getElementById("F08a");
 const F08b_MandatoryControl = document.getElementById("F08b");
 const F08c_MandatoryControl = document.getElementById("F08c");
+const f10_Value = document.getElementById("f10_Value");
+const f11_Value = document.getElementById("f11_Value");
 let f12_Value = document.getElementById("f12_Value");
+const f13_Value = document.getElementById("f13_Value");
 const f14_Value = document.getElementById("f14_Value");
 const FExplanationName = document.getElementById("FExplanationName");
 
@@ -402,6 +406,28 @@ const tableF_StarOptions_Render = () => {
     } else if (tableF.style.gridTemplateRows === "repeat(11, 6vh)") {
       tableF.style.gridTemplateRows = "repeat(9, 6vh)";
     }
+  }
+};
+
+const resetTableF_Action = () => {
+  const clearTheseElements = [
+    f03_Method,
+    f04_Value,
+    f05_Value,
+    f06_Value,
+    f07_Value,
+    F08a_MandatoryControl,
+    F08b_MandatoryControl,
+    F08c_MandatoryControl,
+    f10_Value,
+    f11_Value,
+    f12_Value,
+
+    f14_Value,
+  ];
+  for (let element of clearTheseElements) {
+    element.textContent = "";
+    element.value = "";
   }
 };
 
@@ -834,6 +860,10 @@ f12_Value.addEventListener("change", () => {
 f14_Value.addEventListener("change", () => {
   f07_ValueCalculation();
   c04_ValueCalculation();
+});
+
+reset_TableF.addEventListener("click", () => {
+  resetTableF_Action();
 });
 
 // Table G Event Listeners
