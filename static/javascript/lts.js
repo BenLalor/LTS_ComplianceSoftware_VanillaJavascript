@@ -51,6 +51,7 @@ let tableGCurrentlyApplies = false;
 tableGDoesNotApply = document.querySelector(".tableGDoesNotApply");
 const tableGApplies = document.querySelectorAll(".tableGApplies");
 const tableG_StarOptions = document.querySelectorAll(".tableG_StarOptions");
+const reset_tableG = document.getElementById("reset_tableG");
 const g01_Name = document.getElementById("g01_Name");
 const g02_Description = document.getElementById("g02_Description");
 const g03_Method = document.getElementById("g03_Method");
@@ -550,6 +551,18 @@ const tableG_StarOptions_Render = () => {
   }
 };
 
+const resetTableG_Action = () => {
+  const confirmDiaglog = window.confirm(
+    "Are you sure? This will clear all data in Table F."
+  );
+  if (confirmDiaglog) {
+    g03_Method.value = "";
+    g04a_MandatoryControl.value = "";
+    g04b_MandatoryControl.value = "";
+    g04c_MandatoryControl.value = "";
+  }
+};
+
 // Table H Functions
 
 // Render Table H Name
@@ -892,6 +905,10 @@ g04b_MandatoryControl.addEventListener("change", () => {
 
 g04c_MandatoryControl.addEventListener("change", () => {
   ControlsCompliance_Calculation();
+});
+
+reset_tableG.addEventListener("click", () => {
+  resetTableG_Action();
 });
 
 // Table H Event Listeners
