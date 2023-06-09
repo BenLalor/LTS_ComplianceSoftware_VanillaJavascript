@@ -910,6 +910,7 @@ f14_Value.addEventListener("change", () => {
 reset_TableF.addEventListener("click", () => {
   resetTableF_Action();
   ControlsCompliance_Calculation();
+  c04_ValueCalculation();
 });
 
 // Table G Event Listeners
@@ -935,7 +936,6 @@ reset_tableG.addEventListener("click", () => {
   resetTableG_Action();
   ControlsCompliance_Calculation();
   c05_ValueCalculation();
-  c04_ValueCalculation();
 });
 
 // Table H Event Listeners
