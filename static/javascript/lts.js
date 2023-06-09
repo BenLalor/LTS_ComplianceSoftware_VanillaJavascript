@@ -2,24 +2,24 @@
 let healthCareCheckbox = document.getElementById("healthcareCheckbox");
 
 // Table B Variables
-let complianceMethodDropdown = document.getElementById("compliance_Method");
-let b01_Name = document.getElementById("b01_Name");
-let b02_Description = document.getElementById("b02_Description");
-let b04_Value = document.getElementById("b04_Value");
+const complianceMethodDropdown = document.getElementById("compliance_Method");
+const b01_Name = document.getElementById("b01_Name");
+const b02_Description = document.getElementById("b02_Description");
+const b04_Value = document.getElementById("b04_Value");
 
 // Table C Variables
 const c01_Name = document.getElementById("c01_Name");
 const c02_Description = document.getElementById("c02_Description");
-let c03_Value = document.getElementById("c03_Value");
+const c03_Value = document.getElementById("c03_Value");
 const c04_Value = document.getElementById("c04_Value");
 const c05_Value = document.getElementById("c05_Value");
 const c06_Value = document.getElementById("c06_Value");
-let c07_Value = document.getElementById("c07_Value");
-let c07_ControlsValue = document.getElementById("c07_ControlsValue");
+const c07_Value = document.getElementById("c07_Value");
+const c07_ControlsValue = document.getElementById("c07_ControlsValue");
 
 // Table F Variables
 const tableF = document.getElementById("tableF");
-let tableFCurrentlyApplies = false;
+const tableFCurrentlyApplies = false;
 const tableFDoesNotApplyAttribute = document.querySelector(
   ".tableFDoesNotApplyAttribute"
 );
@@ -33,8 +33,8 @@ const f02_Description = document.getElementById("f02_Description");
 const f03_Method = document.getElementById("f03_Method");
 const f04_Value = document.getElementById("f04_Value");
 const f05_Value = document.getElementById("f05_Value");
-let f06_Value = document.getElementById("f06_Value");
-let f07_Value = document.getElementById("f07_Value");
+const f06_Value = document.getElementById("f06_Value");
+const f07_Value = document.getElementById("f07_Value");
 const F08a_MandatoryControl = document.getElementById("F08a");
 const F08b_MandatoryControl = document.getElementById("F08b");
 const F08c_MandatoryControl = document.getElementById("F08c");
@@ -47,7 +47,7 @@ const FExplanationName = document.getElementById("FExplanationName");
 
 // Table G Variables
 const tableG = document.getElementById("tableG");
-let tableGCurrentlyApplies = false;
+const tableGCurrentlyApplies = false;
 tableGDoesNotApply = document.querySelector(".tableGDoesNotApply");
 const tableGApplies = document.querySelectorAll(".tableGApplies");
 const tableG_StarOptions = document.querySelectorAll(".tableG_StarOptions");
@@ -62,7 +62,7 @@ const GExplanationName = document.getElementById("GExplanationName");
 
 // Table H Variables
 const tableH = document.getElementById("tableH");
-let tableHCurrentlyApplies = false;
+const tableHCurrentlyApplies = false;
 const tableHDoesNotApply = document.querySelector(".tableHDoesNotApply");
 const tableHApplies = document.querySelectorAll(".tableHApplies");
 const tableH_StarOptions = document.querySelectorAll(".tableH_StarOptions");
