@@ -2,8 +2,8 @@
 let healthCareCheckbox = document.getElementById("healthcareCheckbox");
 
 // Table B Variables
-const complianceMethodDropdown = document.getElementById("compliance_Method");
-const b01_Name = document.getElementById("b01_Name");
+let complianceMethodDropdown = document.getElementById("compliance_Method");
+let b01_Name = document.getElementById("b01_Name");
 const b02_Description = document.getElementById("b02_Description");
 const b04_Value = document.getElementById("b04_Value");
 
@@ -19,7 +19,7 @@ const c07_ControlsValue = document.getElementById("c07_ControlsValue");
 
 // Table F Variables
 const tableF = document.getElementById("tableF");
-const tableFCurrentlyApplies = false;
+let tableFCurrentlyApplies = false;
 const tableFDoesNotApplyAttribute = document.querySelector(
   ".tableFDoesNotApplyAttribute"
 );
@@ -47,7 +47,7 @@ const FExplanationName = document.getElementById("FExplanationName");
 
 // Table G Variables
 const tableG = document.getElementById("tableG");
-const tableGCurrentlyApplies = false;
+let tableGCurrentlyApplies = false;
 tableGDoesNotApply = document.querySelector(".tableGDoesNotApply");
 const tableGApplies = document.querySelectorAll(".tableGApplies");
 const tableG_StarOptions = document.querySelectorAll(".tableG_StarOptions");
@@ -62,7 +62,7 @@ const GExplanationName = document.getElementById("GExplanationName");
 
 // Table H Variables
 const tableH = document.getElementById("tableH");
-const tableHCurrentlyApplies = false;
+let tableHCurrentlyApplies = false;
 const tableHDoesNotApply = document.querySelector(".tableHDoesNotApply");
 const tableHApplies = document.querySelectorAll(".tableHApplies");
 const tableH_StarOptions = document.querySelectorAll(".tableH_StarOptions");
@@ -799,6 +799,7 @@ complianceMethodDropdown.addEventListener("change", () => {
     c06_Value.textContent = "";
     ControlsCompliance_Calculation();
   }
+  //healthCareCheckboxChecked();
 });
 
 complianceMethodDropdown.addEventListener("change", () => {
