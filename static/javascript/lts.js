@@ -935,6 +935,7 @@ reset_tableG.addEventListener("click", () => {
   resetTableG_Action();
   ControlsCompliance_Calculation();
   c05_ValueCalculation();
+  c04_ValueCalculation();
 });
 
 // Table H Event Listeners
