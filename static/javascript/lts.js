@@ -344,6 +344,7 @@ const F08aValueCalculation = () => {
     F08a_MandatoryControl.options.length = 0;
     F08a_MandatoryControl.disabled = true;
   }
+  healthCareCheckboxChecked();
 };
 
 // Determine Valid Table F08b Control Options
@@ -363,6 +364,7 @@ const F08bValueCalculation = () => {
     F08b_MandatoryControl.add(new Option("NA: Tunnels", "naTunnels"));
     F08b_MandatoryControl.add(new Option("NA: Outdoor 24x7x356", "na247"));
   }
+  healthCareCheckboxChecked();
 };
 
 // Determine Valid Table F08c Control Options
@@ -384,6 +386,7 @@ const F08cValueCalculation = () => {
     );
     F08c_MandatoryControl.add(new Option("NA: &lte15kW", "NA15kW"));
   }
+  healthCareCheckboxChecked();
 };
 
 // Render and Hide Table F Star Option Explanation Row
@@ -489,6 +492,7 @@ const G04aValueCalculation = () => {
     g04a_MandatoryControl.options.length = 0;
     g04a_MandatoryControl.disabled = true;
   }
+  healthCareCheckboxChecked();
 };
 
 // Determine Valid Table G04b Control Options
@@ -508,6 +512,7 @@ const G04bValueCalculation = () => {
     g04b_MandatoryControl.add(new Option("NA: Tunnels", "naTunnels"));
     g04b_MandatoryControl.add(new Option("NA: Outdoor 24x7x356", "na247"));
   }
+  healthCareCheckboxChecked();
 };
 
 // Determine Valid Table G04c Control Options
@@ -529,6 +534,7 @@ const G04cValueCalculation = () => {
     );
     g04c_MandatoryControl.add(new Option("NA: &lte15kW", "NA15kW"));
   }
+  healthCareCheckboxChecked();
 };
 
 // Render and Hide Table G Star Option Explanation Row
@@ -604,6 +610,7 @@ const H03aValueCalculation = () => {
     h03a_MandatoryControl.options.length = 0;
     h03a_MandatoryControl.disabled = true;
   }
+  healthCareCheckboxChecked();
 };
 
 // Determine Valid Table H03b Control Options
@@ -623,6 +630,7 @@ const H03bValueCalculation = () => {
     h03b_MandatoryControl.add(new Option("NA: Tunnels", "naTunnels"));
     h03b_MandatoryControl.add(new Option("NA: Outdoor 24x7x356", "na247"));
   }
+  healthCareCheckboxChecked();
 };
 
 // Determine Valid Table H03c Control Options
@@ -644,6 +652,7 @@ const H03cValueCalculation = () => {
     );
     h03c_MandatoryControl.add(new Option("NA: &lte15kW", "NA15kW"));
   }
+  healthCareCheckboxChecked();
 };
 
 // Render and Hide Table H Star Option Explanation Row
@@ -799,7 +808,7 @@ complianceMethodDropdown.addEventListener("change", () => {
     c06_Value.textContent = "";
     ControlsCompliance_Calculation();
   }
-  //healthCareCheckboxChecked();
+  healthCareCheckboxChecked();
 });
 
 complianceMethodDropdown.addEventListener("change", () => {
