@@ -769,6 +769,7 @@ complianceMethodDropdown.addEventListener("change", () => {
     tableGDoesNotApply.hidden = true;
     tableG.style.gridTemplateRows = "repeat(9, 6vh)";
     ControlsCompliance_Calculation();
+    c05_ValueCalculation();
   } else {
     tableGCurrentlyApplies = false;
     c05_Value.textContent = "";
@@ -933,6 +934,7 @@ g04c_MandatoryControl.addEventListener("change", () => {
 reset_tableG.addEventListener("click", () => {
   resetTableG_Action();
   ControlsCompliance_Calculation();
+  c05_ValueCalculation();
 });
 
 // Table H Event Listeners
