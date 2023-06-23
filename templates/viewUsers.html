@@ -1,0 +1,4 @@
+{% extends "base.html"%} {% block title%} Login Page {% endblock %} {% block
+content%} {% for item in values %}
+<p>Name: {{item.email}}, Email: {{item.password}}</p>
+{% endfor %} {% endblock %}
