@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import UserMixin
 import models  # THIS COULD BE WRONG BECAUSE I AM NOT USING THE WEBSSITE PACKAGE. See 1:30 in the video
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 app.secret_key = "myKey123"
@@ -61,7 +62,7 @@ def signup():
     if request.method == "POST":
         email = request.form.get("email")
         password1 = request.form.get("password1")
-        password2 = request.form.get("password2")
+        password1 = generate_password_hash(password1, method="sha256")
         # FIX ME - Check to see if password 1 and password 2 are the same. If not, flash a warning an don't save to database
         if users.query.filter_by(email=email).first() is not None:
             flash("Account already exists with that email", category="error")
