@@ -1,7 +1,7 @@
 from flask import Flask, render_template, Blueprint, request, flash, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from os import path
-from flask_login import UserMixin, login_user, login_required, logout_user, current_user
+from flask_login import UserMixin, login_user, login_required, logout_user, current_user, LoginManager 
 import models  # THIS COULD BE WRONG BECAUSE I AM NOT USING THE WEBSSITE PACKAGE. See 1:30 in the video
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -54,7 +54,7 @@ def login():
         if user:
             if check_password_hash(user.password, password):
                 flash('Logged in successfully!',category="success")
-                login_user(user, remember=True)
+                #login_user(user, remember = True)
                 return redirect(url_for("home"))
             else: 
                 flash('Incorrect password, try again',category="error")
@@ -88,11 +88,12 @@ def signup():
             # FIX ME - Call the function rather than directly rendering the template
             # return render_template("userAlreadyExists.html")
         else:
-            login_user(user, remember=True)
+            # login_user(user, remember=True)
             flash("Account created!", category="success")
             usr = users(email, password1)
             db.session.add(usr)
             db.session.commit()
+            # login_user(user, remember = True)
             return redirect(url_for("home"))
     return render_template("signup.html")
 
@@ -114,4 +115,13 @@ if __name__ == "__main__":
     # create the database if it doesn't already exist
     db.create_all()
     # run the application
+    
     app.run(debug=True)
+
+    #login_manager = LoginManager()
+    #login_manager.login_view='auth.login'
+    #login_manager.init_app(app)
+
+    #@login_manager.user_loader
+    #def load_user(id):
+    #    return users.query.get(int(id))
