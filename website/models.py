@@ -1,8 +1,5 @@
-from lts import (
-    db,
-)  # this may be wrong because you didn't use the website package. See 1:16:000 in the video
+from . import db
 from flask_login import UserMixin
-from sqlalchemy.sql import func
 
 
 class LTS(db.Model):
