@@ -1,13 +1,6 @@
 {% extends "base.html"%} {% block title%} Home Page {% endblock %} {% block
 content%}
 <div class="fakeBody">
-  <!-- Test Submit Button -->
-  <div class="dbTest">
-    <form  method="POST">
-      <input type="text" name="light_name" placeholder="Light Name" />
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </div>
   <!-- Header -->
   <div class="signLightingHeader">
     <div class="mainHeader">
@@ -35,7 +28,6 @@ content%}
         <div class="headerHeader">Date Prepared:</div>
         <input type="date" placeholder="YYYY-MM-DD" class="headerInput ß" name="datePrepared" />
       </div>
-      <div><button type="submit">Submit</button></div>
     
   </div>
   <!-- JANKY! Remove this -->
@@ -564,6 +556,13 @@ content%}
       0 0
     </div>
   </div>
+   <!-- Test Submit Button -->
+   <div class="dbTest">
+    <form  method="POST">
+      <input type="text" name="light_name" placeholder="Light Name" />
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
   <script src="../static/javascript/lts.js"></script>
-  > {% endblock %}
+   {% endblock %}
 </div>
