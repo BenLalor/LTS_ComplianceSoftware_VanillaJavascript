@@ -1,5 +1,6 @@
 {% extends "base.html"%} {% block title%} Home Page {% endblock %} {% block
 content%}
+<form  method="POST" onsubmit="return validateForm()">
 <div class="fakeBody">
   <!-- Header -->
   <div class="signLightingHeader">
@@ -22,11 +23,11 @@ content%}
           to 140.8 and do not need to complete this compliance document.
         </div>
         <div class="headerHeader">Project Name:</div>
-        <input type="text" class="headerInput hover" name="projectName" />
+        <input type="text" class="headerInput hover" name="projectName" id="projectName" />
         <div class="headerHeader">Project Address:</div>
-        <input type="text" class="headerInput hover" name="projectAddress" />
+        <input type="text" class="headerInput hover" name="projectAddress" id="projectAddress" />
         <div class="headerHeader">Date Prepared:</div>
-        <input type="date" placeholder="YYYY-MM-DD" class="headerInput ß" name="datePrepared" />
+        <input type="date" placeholder="YYYY-MM-DD" class="headerInput ß" name="datePrepared"  id="datePrepared" />
       </div>
     
   </div>
@@ -40,10 +41,10 @@ content%}
     <div class="tableHeader">A. General Information</div>
     <div class="headerNum">01</div>
     <div class="headerA">Project Location (city):</div>
-    <input class="hover" type="text" name="location" />
+    <input class="hover" type="text" name="project_location"  id="project_location" />
     <div class="headerNum">02</div>
     <div class="headerA">Climate Zone:</div>
-    <select class="hover italic" name="location">
+    <select class="hover italic" name="climateZone">
       <option value="" disabled selected>(dropdown)</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -69,7 +70,7 @@ content%}
         class="checkBoxA hover"
         type="checkbox"
         id="healthcareCheckbox"
-        value="healthcare"
+        value="1"
         name="healthcare"
       />
       <label for="healthcare">Healthcare Facility</label>
@@ -78,8 +79,8 @@ content%}
       <input
         class="checkBoxA hover"
         type="checkbox"
-        value="multifamily"
-        name="multifamily"
+        value="1"
+        name="multifamily_GTE4stories"
       />
       <label for="multifamily"
         >Multifamily.MF Mixed-use>=4 stories(including dormitory, senior
@@ -555,14 +556,11 @@ content%}
       0<br />
       0 0
     </div>
+  
   </div>
    <!-- Test Submit Button -->
-   <div class="dbTest">
-    <form  method="POST">
-      <input type="text" name="light_name" placeholder="Light Name" />
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-  </div>
   <script src="../static/javascript/lts.js"></script>
    {% endblock %}
 </div>

@@ -1,11 +1,18 @@
 from . import db
+
 from flask_login import UserMixin
 
 
 class LTS(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    lightName = db.Column(db.String(150), nullable=False)
-    lightDescription = db.Column(db.String(150), nullable=False)
+    project_name = db.Column(db.String(150), nullable=False)
+    project_address = db.Column(db.String(150), nullable=False)
+    date = db.Column(db.Date , nullable=True)
+    project_location = db.Column(db.String(150), nullable=False)
+    climate_zone = db.Column(db.Integer, nullable=False)
+    healthcare = db.Column(db.Boolean, nullable=False)
+    multifamily_GTE4stories = db.Column(db.Boolean, nullable=False)
+
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"))
 
 ## TODO & FIXME: Is the database using the models.py file or is it using the db model in the lts.py file? Remove the one it is not using!

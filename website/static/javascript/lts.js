@@ -1,3 +1,8 @@
+// Project Variables
+let project_name = document.getElementById("projectName");
+let project_address = document.getElementById("projectAddress");
+let date_prepared = document.getElementById("datePrepared");
+
 // Table A Variables
 let healthCareCheckbox = document.getElementById("healthcareCheckbox");
 
@@ -967,3 +972,17 @@ yes_NRCILTS.addEventListener("change", () => {
 no_NRCILTS.addEventListener("change", () => {
   toggleNoCheckbox();
 });
+
+// Submit Button
+function validateForm() {
+  if (!project_name.value || !project_address.value || !date_prepared.value) {
+    alert("Please fill out all required fields.");
+    // Prevent form submission
+    return false;
+  }
+  else{
+    // Allow form submission
+    return true;
+  }
+}
+
