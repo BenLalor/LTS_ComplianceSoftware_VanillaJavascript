@@ -1,5 +1,5 @@
 .vscode/
 *.pyc
-.database.db
+database.db
 .DS_Store
 venv
