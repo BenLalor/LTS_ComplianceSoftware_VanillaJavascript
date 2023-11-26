@@ -1,0 +1,16 @@
+{% extends "base.html"%}
+{% block title%}
+View Projects
+{% endblock %}
+{% block content%}
+<h1>Your Projects</h1>
+    <ul>
+        {% for project in ltsProjects %}
+            <li>
+                <strong>Project Name:</strong> <a href="{{ url_for('views.lts', project_id=project.id) }}">{{ project.project_name }}</a> <br>
+                
+            </li>
+            <hr>
+        {% endfor %}
+    </ul>
+{% endblock %}
