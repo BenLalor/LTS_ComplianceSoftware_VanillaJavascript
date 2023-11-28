@@ -7,7 +7,7 @@ View Projects
     <ul>
         {% for project in ltsProjects %}
             <li>
-                <strong>Project Name:</strong> <a href="{{ url_for('views.lts', project_id=project.id) }}">{{ project.project_name }}</a> <br>
+                <strong>Project Name:</strong> <a href="{{ url_for('views.ltsProject', projectID=project.id) }}">{{ project.project_name }}</a> <br>
                 
             </li>
             <hr>
