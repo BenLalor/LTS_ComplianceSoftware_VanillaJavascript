@@ -1,94 +1,98 @@
 // Project Variables
-let project_name = document.getElementById("projectName");
-let project_address = document.getElementById("projectAddress");
-let date_prepared = document.getElementById("datePrepared");
+var project_name = document.getElementById("projectName");
+var project_address = document.getElementById("projectAddress");
+var date_prepared = document.getElementById("datePrepared");
 
 // Table A Variables
-let healthCareCheckbox = document.getElementById("healthcareCheckbox");
+var a01_project_location = document.getElementById("a01_project_location");
+var climate_zone = document.getElementById("climateZone");
+var healthCareCheckbox = document.getElementById("healthcareCheckbox");
+var multifamilyCheckbox = document.getElementById("multifamilyCheckbox");
 
 // Table B Variables
-let complianceMethodDropdown = document.getElementById("compliance_Method");
-let b01_Name = document.getElementById("b01_Name");
-const b02_Description = document.getElementById("b02_Description");
-const b04_Value = document.getElementById("b04_Value");
+var b01_Name = document.getElementById("b01_Name");
+var b02_Description = document.getElementById("b02_Description");
+var b03_status = document.getElementById("b03_status_sign");
+var b04_Value = document.getElementById("b04_Value");
+var complianceMethodDropdown = document.getElementById("compliance_Method");
+
 
 // Table C Variables
-const c01_Name = document.getElementById("c01_Name");
-const c02_Description = document.getElementById("c02_Description");
-const c03_Value = document.getElementById("c03_Value");
-const c04_Value = document.getElementById("c04_Value");
-const c05_Value = document.getElementById("c05_Value");
-const c06_Value = document.getElementById("c06_Value");
-const c07_Value = document.getElementById("c07_Value");
-const c07_ControlsValue = document.getElementById("c07_ControlsValue");
+var c01_Name = document.getElementById("c01_Name");
+var c02_Description = document.getElementById("c02_Description");
+var c03_Value = document.getElementById("c03_Value");
+var c04_Value = document.getElementById("c04_Value");
+var c05_Value = document.getElementById("c05_Value");
+var c06_Value = document.getElementById("c06_Value");
+var c07_Value = document.getElementById("c07_Value");
+var c07_ControlsValue = document.getElementById("c07_ControlsValue");
 
 // Table F Variables
-const tableF = document.getElementById("tableF");
-let tableFCurrentlyApplies = false;
-const tableFDoesNotApplyAttribute = document.querySelector(
+var tableF = document.getElementById("tableF");
+var tableFCurrentlyApplies = false;
+var tableFDoesNotApplyAttribute = document.querySelector(
   ".tableFDoesNotApplyAttribute"
 );
-const tableFAttributes = document.querySelectorAll(".tableFAttributes");
-const tableFOptionalRowAttributes =
-  document.querySelectorAll(".tableFOptionalRow");
-const tableF_StarOptions = document.querySelectorAll(".tableF_StarOptions");
-const reset_TableF = document.getElementById("reset_TableF");
-const f01_Name = document.getElementById("f01_Name");
-const f02_Description = document.getElementById("f02_Description");
-const f03_Method = document.getElementById("f03_Method");
-const f04_Value = document.getElementById("f04_Value");
-const f05_Value = document.getElementById("f05_Value");
-const f06_Value = document.getElementById("f06_Value");
-const f07_Value = document.getElementById("f07_Value");
-const F08a_MandatoryControl = document.getElementById("F08a");
-const F08b_MandatoryControl = document.getElementById("F08b");
-const F08c_MandatoryControl = document.getElementById("F08c");
-const f10_Value = document.getElementById("f10_Value");
-const f11_Value = document.getElementById("f11_Value");
-let f12_Value = document.getElementById("f12_Value");
-const f13_Value = document.getElementById("f13_Value");
-const f14_Value = document.getElementById("f14_Value");
-const FExplanationName = document.getElementById("FExplanationName");
+var tableFAttributes = document.querySelectorAll(".tableFAttributes");
+var tableFOptionalRowAttributes = document.querySelectorAll(".tableFOptionalRow");
+var tableF_StarOptions = document.querySelectorAll(".tableF_StarOptions");
+var reset_TableF = document.getElementById("reset_TableF");
+var f01_Name = document.getElementById("f01_Name");
+var f02_Description = document.getElementById("f02_Description");
+var f03_Method = document.getElementById("f03_Method");
+var f04_Value = document.getElementById("f04_Value");
+var f05_Value = document.getElementById("f05_Value");
+var f06_Value = document.getElementById("f06_Value");
+var f07_Value = document.getElementById("f07_Value");
+var F08a_MandatoryControl = document.getElementById("F08a");
+var F08b_MandatoryControl = document.getElementById("F08b");
+var F08c_MandatoryControl = document.getElementById("F08c");
+var f10_Value = document.getElementById("f10_Value");
+var f11_Value = document.getElementById("f11_Value");
+var f12_Value = document.getElementById("f12_Value");
+var f13_Value = document.getElementById("f13_Value");
+var f14_Value = document.getElementById("f14_Value");
+var FExplanationName = document.getElementById("FExplanationName");
 
 // Table G Variables
-const tableG = document.getElementById("tableG");
-let tableGCurrentlyApplies = false;
-tableGDoesNotApply = document.querySelector(".tableGDoesNotApply");
-const tableGApplies = document.querySelectorAll(".tableGApplies");
-const tableG_StarOptions = document.querySelectorAll(".tableG_StarOptions");
-const reset_tableG = document.getElementById("reset_tableG");
-const g01_Name = document.getElementById("g01_Name");
-const g02_Description = document.getElementById("g02_Description");
-const g03_Method = document.getElementById("g03_Method");
-const g04a_MandatoryControl = document.getElementById("g04a");
-const g04b_MandatoryControl = document.getElementById("g04b");
-const g04c_MandatoryControl = document.getElementById("g04c");
-const GExplanationName = document.getElementById("GExplanationName");
+var tableG = document.getElementById("tableG");
+var tableGCurrentlyApplies = false;
+var tableGDoesNotApply = document.querySelector(".tableGDoesNotApply");
+var tableGApplies = document.querySelectorAll(".tableGApplies");
+var tableG_StarOptions = document.querySelectorAll(".tableG_StarOptions");
+var reset_tableG = document.getElementById("reset_tableG");
+var g01_Name = document.getElementById("g01_Name");
+var g02_Description = document.getElementById("g02_Description");
+var g03_Method = document.getElementById("g03_Method");
+var g04a_MandatoryControl = document.getElementById("g04a");
+var g04b_MandatoryControl = document.getElementById("g04b");
+var g04c_MandatoryControl = document.getElementById("g04c");
+var GExplanationName = document.getElementById("GExplanationName");
 
 // Table H Variables
-const tableH = document.getElementById("tableH");
-let tableHCurrentlyApplies = false;
-const tableHDoesNotApply = document.querySelector(".tableHDoesNotApply");
-const tableHApplies = document.querySelectorAll(".tableHApplies");
-const tableH_StarOptions = document.querySelectorAll(".tableH_StarOptions");
-const reset_tableH = document.getElementById("reset_tableH");
-const h01_Name = document.getElementById("h01_Name");
-const h02_Description = document.getElementById("h02_Description");
-const h03a_MandatoryControl = document.getElementById("h03a");
-const h03b_MandatoryControl = document.getElementById("h03b");
-const h03c_MandatoryControl = document.getElementById("h03c");
-const HExplanationName = document.getElementById("HExplanationName");
+var tableH = document.getElementById("tableH");
+var tableHCurrentlyApplies = false;
+var tableHDoesNotApply = document.querySelector(".tableHDoesNotApply");
+var tableHApplies = document.querySelectorAll(".tableHApplies");
+var tableH_StarOptions = document.querySelectorAll(".tableH_StarOptions");
+var reset_tableH = document.getElementById("reset_tableH");
+var h01_Name = document.getElementById("h01_Name");
+var h02_Description = document.getElementById("h02_Description");
+var h03a_MandatoryControl = document.getElementById("h03a");
+var h03b_MandatoryControl = document.getElementById("h03b");
+var h03c_MandatoryControl = document.getElementById("h03c");
+var HExplanationName = document.getElementById("HExplanationName");
 
 // Table I Variables
-const yes_NRCILTS = document.getElementById("yes_NRCILTS");
-const no_NRCILTS = document.getElementById("no_NRCILTS");
+var yes_NRCILTS = document.getElementById("yes_NRCILTS");
+var no_NRCILTS = document.getElementById("no_NRCILTS");
 
 // Functions
 
 // Table A Functions
 
 // Hide Table F, H and G Control Dropdowns if Table A Health Care Checkbox is Checked
-const healthCareCheckboxChecked = () => {
+var healthCareCheckboxChecked = () => {
   if (healthCareCheckbox.checked) {
     F08a_MandatoryControl.disabled = true;
     F08b_MandatoryControl.disabled = true;
@@ -712,7 +716,7 @@ const resetTableH_Action = () => {
 
 const C01ValueCalculation = () => {
   const b01_Name_Input = b01_Name.value;
-  c01_Name.textContent = b01_Name_Input;
+  c01_Name.value = b01_Name_Input;
 };
 
 const C02ValueCalculation = () => {
@@ -850,7 +854,8 @@ b04_Value.addEventListener("change", () => {
 });
 
 // Table C Event Listeners
-
+// FIX ME - Did we try using the input event listener for this? If this does work, we will need to change logic in ltsImporter 
+// currently it is hacking a mutaion observer to trigger the calculation
 // Mutation Observers for C07 logic because event listener doesn't work to detect text changes
 const config = { attributes: true, childList: true, subtree: true };
 
@@ -871,7 +876,10 @@ c06_Observer.observe(c06_Value, config);
 f03_Method.addEventListener("change", () => {
   f05ValueCalculation();
   f06ValueCalculation();
-  TableF_ExternalExpandRow();
+  if (f03_Method.value === "externally") {
+    TableF_ExternalExpandRow();
+  }
+  
   //c03_ValueCalculation();
 });
 
@@ -985,4 +993,11 @@ function validateForm() {
     return true;
   }
 }
+
+// REMOVE ME -
+const b01_Name_Input = b01_Name.value;
+c01_Name.value = b01_Name_Input;
+
+//project_name.value = projectData.project_name
+
 
