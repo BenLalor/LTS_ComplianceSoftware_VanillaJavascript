@@ -23,7 +23,9 @@ var c02_Description = document.getElementById("c02_Description");
 var c03_Value = document.getElementById("c03_Value");
 var c04_Value = document.getElementById("c04_Value");
 var c05_Value = document.getElementById("c05_Value");
+c05_Value.value = "NA";
 var c06_Value = document.getElementById("c06_Value");
+c06_Value.value = "NA";
 var c07_Value = document.getElementById("c07_Value");
 var c07_ControlsValue = document.getElementById("c07_ControlsValue");
 
@@ -119,40 +121,47 @@ var healthCareCheckboxChecked = () => {
 // Table C Functions
 
 const c03_ValueCalculation = () => {
-  let f06_Value_Input = f06_Value.innerText;
-  c03_Value.innerText = f06_Value_Input;
+  let f06_Value_Input = f06_Value.value;
+  c03_Value.value = f06_Value_Input;
+  console.log("It RAN!", c03_Value.value);
 };
 
 const c05_ValueCalculation = () => {
   // Probably need to add a condition for table G being triggered,
   // maybe with a boolean value to ensure it is currently triggered
   //and not just triggered and untriggered
-  if (g03_Method.value) {
-    c05_Value.textContent = "Yes";
-  } else {
-    c05_Value.textContent = "No";
+  if (tableGCurrentlyApplies){
+    if (g03_Method.value) {
+      c05_Value.value = "Yes";
+    } else {
+      c05_Value.value = "No";
+    }
+  }
+  else{
+    c05_Value.value = "NA";
   }
 };
 
 // Auto-Complete C04 Value Based on F07 Value
 const c04_ValueCalculation = () => {
   const f07_Value_Input = f07_Value.value;
-  c04_Value.textContent = f07_Value_Input;
+  c04_Value.value = f07_Value_Input;
 };
 
 const c07_ValueCalculation = () => {
+  console.log("C07 Value Calculation Ran!")
   if (
     !tableFCurrentlyApplies &&
     !tableGCurrentlyApplies &&
     !tableHCurrentlyApplies
   ) {
-    c07_Value.textContent = "";
+    c07_Value.value = "";
   } else if (tableFCurrentlyApplies && !tableFComplies()) {
-    c07_Value.textContent = "Does Not Comply";
+    c07_Value.value = "Does Not Comply";
   } else if (tableGCurrentlyApplies && !tableGComplies()) {
-    c07_Value.textContent = "Does Not Comply";
+    c07_Value.value = "Does Not Comply";
   } else {
-    c07_Value.textContent = "Complies";
+    c07_Value.value = "Complies";
   }
 };
 
@@ -236,30 +245,31 @@ const ControlsCompliance_Calculation = () => {
     TableGControlsStatus === controlsStatus.na &&
     TableHControlsStatus === controlsStatus.na
   ) {
-    c07_ControlsValue.textContent = blank;
+    c07_ControlsValue.value = blank;
   } else if (
     TableFControlsStatus === controlsStatus.false ||
     TableGControlsStatus == controlsStatus.false ||
     TableHControlsStatus == controlsStatus.false
   ) {
-    c07_ControlsValue.textContent = doesNotComply;
+    c07_ControlsValue.value = doesNotComply;
   } else {
-    c07_ControlsValue.textContent = complies;
+    c07_ControlsValue.value = complies;
   }
 };
 
 const tableFComplies = () => {
+  console.log("Table F Complies Ran!")
   if (
-    c03_Value.textContent != "" &&
-    c04_Value.textContent != "" &&
-    c03_Value.textContent >= +c04_Value.textContent
+    c03_Value.value != "" &&
+    c04_Value.value != "" &&
+    c03_Value.value >= +c04_Value.value
   ) {
     return true;
   } else return false;
 };
 
 const tableGComplies = () => {
-  if (c05_Value.textContent === "No") {
+  if (c05_Value.value === "No") {
     return false;
   } else return true;
 };
@@ -282,16 +292,17 @@ const F02ValueCalcuation = () => {
 const f05ValueCalculation = () => {
   let f03_Method_Value = f03_Method.value;
   if (f03_Method_Value === "internally") {
-    f05_Value.textContent = 12;
+    f05_Value.value = 12;
   } else if (f03_Method_Value === "externally") {
-    f05_Value.textContent = 2.3;
+    f05_Value.value = 2.3;
   }
 };
 
 // Calculate and Render Table F Total Allowance
 const f06ValueCalculation = () => {
-  f06_Value.innerText = f04_Value.value * f05_Value.textContent;
-  f06_Value.value = 44;
+  f06_Value.value = f04_Value.value * f05_Value.value;
+  //f06_Value.value = 44;
+  c03_ValueCalculation()
 };
 
 // Render & Hide Table F Optional Watt Per Luminaire Row
@@ -721,7 +732,7 @@ const C01ValueCalculation = () => {
 
 const C02ValueCalculation = () => {
   const b02_Description_Input = b02_Description.value;
-  c02_Description.textContent = b02_Description_Input;
+  c02_Description.value = b02_Description_Input;
 };
 
 //Event Listeners
@@ -765,7 +776,7 @@ complianceMethodDropdown.addEventListener("change", () => {
   // Trigger Table G
   if (complianceMethodSelected === "alternateLightSources") {
     tableGCurrentlyApplies = true;
-    c05_Value.textContent = "No";
+    c05_Value.value = "No";
     for (const element of tableGApplies) {
       element.style.display = "grid";
       element.hidden = false;
@@ -781,7 +792,7 @@ complianceMethodDropdown.addEventListener("change", () => {
     c05_ValueCalculation();
   } else {
     tableGCurrentlyApplies = false;
-    c05_Value.textContent = "";
+    c05_Value.value = "";
     for (const element of tableGApplies) {
       element.hidden = true;
     }
@@ -805,7 +816,7 @@ complianceMethodDropdown.addEventListener("change", () => {
     tableH.style.gridTemplateRows = "repeat(9, 6vh)";
     tableHDoesNotApply.hidden = true;
 
-    c06_Value.textContent = "Yes";
+    c06_Value.value = "Yes";
     ControlsCompliance_Calculation();
   } else {
     tableHCurrentlyApplies = false;
@@ -815,9 +826,10 @@ complianceMethodDropdown.addEventListener("change", () => {
     tableHDoesNotApply.hidden = false;
     tableH.style.gridTemplateRows = "repeat(2, 6vh)";
 
-    c06_Value.textContent = "";
+    c06_Value.value = "NA";
     ControlsCompliance_Calculation();
   }
+  c05_ValueCalculation();
   healthCareCheckboxChecked();
 });
 
@@ -888,6 +900,9 @@ f04_Value.addEventListener("change", () => {
   //c03_ValueCalculation();
 });
 
+
+//f06_Value.addEventListener('input', c03_ValueCalculation);
+
 // Mutation Observer for C06 logic because event listener doesn't work to detect text changes
 const f06_Observer = new MutationObserver(c03_ValueCalculation);
 f06_Observer.observe(f06_Value, config);
@@ -911,12 +926,16 @@ F08c_MandatoryControl.addEventListener("change", () => {
 });
 
 f12_Value.addEventListener("change", () => {
-  f07_ValueCalculation();
+  if (f03_Method.value === "externally") {
+    f07_ValueCalculation();
+  }
   c04_ValueCalculation();
 });
 
 f14_Value.addEventListener("change", () => {
-  f07_ValueCalculation();
+  if (f03_Method.value === "externally") {
+    f07_ValueCalculation();
+  }
   c04_ValueCalculation();
 });
 
