@@ -1,89 +1,102 @@
+// Project Variables
+var project_name = document.getElementById("projectName");
+var project_address = document.getElementById("projectAddress");
+var date_prepared = document.getElementById("datePrepared");
+
 // Table A Variables
-let healthCareCheckbox = document.getElementById("healthcareCheckbox");
+var a01_project_location = document.getElementById("a01_project_location");
+var climate_zone = document.getElementById("climateZone");
+var healthCareCheckbox = document.getElementById("healthcareCheckbox");
+var multifamilyCheckbox = document.getElementById("multifamilyCheckbox");
 
 // Table B Variables
-let complianceMethodDropdown = document.getElementById("compliance_Method");
-let b01_Name = document.getElementById("b01_Name");
-const b02_Description = document.getElementById("b02_Description");
-const b04_Value = document.getElementById("b04_Value");
+var b01_Name = document.getElementById("b01_Name");
+var b02_Description = document.getElementById("b02_Description");
+var b03_status = document.getElementById("b03_status_sign");
+var b04_Value = document.getElementById("b04_Value");
+var complianceMethodDropdown = document.getElementById("compliance_Method");
+
 
 // Table C Variables
-const c01_Name = document.getElementById("c01_Name");
-const c02_Description = document.getElementById("c02_Description");
-const c03_Value = document.getElementById("c03_Value");
-const c04_Value = document.getElementById("c04_Value");
-const c05_Value = document.getElementById("c05_Value");
-const c06_Value = document.getElementById("c06_Value");
-const c07_Value = document.getElementById("c07_Value");
-const c07_ControlsValue = document.getElementById("c07_ControlsValue");
+var c01_Name = document.getElementById("c01_Name");
+var c02_Description = document.getElementById("c02_Description");
+var c03_Value = document.getElementById("c03_Value");
+c03_Value.value = "NA";
+var c04_Value = document.getElementById("c04_Value");
+c04_Value.value = "NA";
+var c05_Value = document.getElementById("c05_Value");
+c05_Value.value = "NA";
+var c06_Value = document.getElementById("c06_Value");
+c06_Value.value = "NA";
+var c07_Value = document.getElementById("c07_Value");
+var c07_ControlsValue = document.getElementById("c07_ControlsValue");
 
 // Table F Variables
-const tableF = document.getElementById("tableF");
-let tableFCurrentlyApplies = false;
-const tableFDoesNotApplyAttribute = document.querySelector(
+var tableF = document.getElementById("tableF");
+var tableFCurrentlyApplies = false;
+var tableFDoesNotApplyAttribute = document.querySelector(
   ".tableFDoesNotApplyAttribute"
 );
-const tableFAttributes = document.querySelectorAll(".tableFAttributes");
-const tableFOptionalRowAttributes =
-  document.querySelectorAll(".tableFOptionalRow");
-const tableF_StarOptions = document.querySelectorAll(".tableF_StarOptions");
-const reset_TableF = document.getElementById("reset_TableF");
-const f01_Name = document.getElementById("f01_Name");
-const f02_Description = document.getElementById("f02_Description");
-const f03_Method = document.getElementById("f03_Method");
-const f04_Value = document.getElementById("f04_Value");
-const f05_Value = document.getElementById("f05_Value");
-const f06_Value = document.getElementById("f06_Value");
-const f07_Value = document.getElementById("f07_Value");
-const F08a_MandatoryControl = document.getElementById("F08a");
-const F08b_MandatoryControl = document.getElementById("F08b");
-const F08c_MandatoryControl = document.getElementById("F08c");
-const f10_Value = document.getElementById("f10_Value");
-const f11_Value = document.getElementById("f11_Value");
-let f12_Value = document.getElementById("f12_Value");
-const f13_Value = document.getElementById("f13_Value");
-const f14_Value = document.getElementById("f14_Value");
-const FExplanationName = document.getElementById("FExplanationName");
+var tableFAttributes = document.querySelectorAll(".tableFAttributes");
+var tableFOptionalRowAttributes = document.querySelectorAll(".tableFOptionalRow");
+var tableF_StarOptions = document.querySelectorAll(".tableF_StarOptions");
+var reset_TableF = document.getElementById("reset_TableF");
+var f01_Name = document.getElementById("f01_Name");
+var f02_Description = document.getElementById("f02_Description");
+var f03_Method = document.getElementById("f03_Method");
+var f04_Value = document.getElementById("f04_Value");
+var f05_Value = document.getElementById("f05_Value");
+var f06_Value = document.getElementById("f06_Value");
+var f07_Value = document.getElementById("f07_Value");
+var F08a_MandatoryControl = document.getElementById("F08a");
+var F08b_MandatoryControl = document.getElementById("F08b");
+var F08c_MandatoryControl = document.getElementById("F08c");
+var f10_Value = document.getElementById("f10_Value");
+var f11_Value = document.getElementById("f11_Value");
+var f12_Value = document.getElementById("f12_Value");
+var f13_Value = document.getElementById("f13_Value");
+var f14_Value = document.getElementById("f14_Value");
+var FExplanationName = document.getElementById("FExplanationName");
 
 // Table G Variables
-const tableG = document.getElementById("tableG");
-let tableGCurrentlyApplies = false;
-tableGDoesNotApply = document.querySelector(".tableGDoesNotApply");
-const tableGApplies = document.querySelectorAll(".tableGApplies");
-const tableG_StarOptions = document.querySelectorAll(".tableG_StarOptions");
-const reset_tableG = document.getElementById("reset_tableG");
-const g01_Name = document.getElementById("g01_Name");
-const g02_Description = document.getElementById("g02_Description");
-const g03_Method = document.getElementById("g03_Method");
-const g04a_MandatoryControl = document.getElementById("g04a");
-const g04b_MandatoryControl = document.getElementById("g04b");
-const g04c_MandatoryControl = document.getElementById("g04c");
-const GExplanationName = document.getElementById("GExplanationName");
+var tableG = document.getElementById("tableG");
+var tableGCurrentlyApplies = false;
+var tableGDoesNotApply = document.querySelector(".tableGDoesNotApply");
+var tableGApplies = document.querySelectorAll(".tableGApplies");
+var tableG_StarOptions = document.querySelectorAll(".tableG_StarOptions");
+var reset_tableG = document.getElementById("reset_tableG");
+var g01_Name = document.getElementById("g01_Name");
+var g02_Description = document.getElementById("g02_Description");
+var g03_Method = document.getElementById("g03_Method");
+var g04a_MandatoryControl = document.getElementById("g04a");
+var g04b_MandatoryControl = document.getElementById("g04b");
+var g04c_MandatoryControl = document.getElementById("g04c");
+var GExplanationName = document.getElementById("GExplanationName");
 
 // Table H Variables
-const tableH = document.getElementById("tableH");
-let tableHCurrentlyApplies = false;
-const tableHDoesNotApply = document.querySelector(".tableHDoesNotApply");
-const tableHApplies = document.querySelectorAll(".tableHApplies");
-const tableH_StarOptions = document.querySelectorAll(".tableH_StarOptions");
-const reset_tableH = document.getElementById("reset_tableH");
-const h01_Name = document.getElementById("h01_Name");
-const h02_Description = document.getElementById("h02_Description");
-const h03a_MandatoryControl = document.getElementById("h03a");
-const h03b_MandatoryControl = document.getElementById("h03b");
-const h03c_MandatoryControl = document.getElementById("h03c");
-const HExplanationName = document.getElementById("HExplanationName");
+var tableH = document.getElementById("tableH");
+var tableHCurrentlyApplies = false;
+var tableHDoesNotApply = document.querySelector(".tableHDoesNotApply");
+var tableHApplies = document.querySelectorAll(".tableHApplies");
+var tableH_StarOptions = document.querySelectorAll(".tableH_StarOptions");
+var reset_tableH = document.getElementById("reset_tableH");
+var h01_Name = document.getElementById("h01_Name");
+var h02_Description = document.getElementById("h02_Description");
+var h03a_MandatoryControl = document.getElementById("h03a");
+var h03b_MandatoryControl = document.getElementById("h03b");
+var h03c_MandatoryControl = document.getElementById("h03c");
+var HExplanationName = document.getElementById("HExplanationName");
 
 // Table I Variables
-const yes_NRCILTS = document.getElementById("yes_NRCILTS");
-const no_NRCILTS = document.getElementById("no_NRCILTS");
+var yes_NRCILTS = document.getElementById("yes_NRCILTS");
+var no_NRCILTS = document.getElementById("no_NRCILTS");
 
 // Functions
 
 // Table A Functions
 
 // Hide Table F, H and G Control Dropdowns if Table A Health Care Checkbox is Checked
-const healthCareCheckboxChecked = () => {
+var healthCareCheckboxChecked = () => {
   if (healthCareCheckbox.checked) {
     F08a_MandatoryControl.disabled = true;
     F08b_MandatoryControl.disabled = true;
@@ -102,33 +115,64 @@ const healthCareCheckboxChecked = () => {
     g04b_MandatoryControl.disabled = false;
     g04c_MandatoryControl.disabled = false;
     h03a_MandatoryControl.disabled = false;
-    h03b_MandatoryControl.diabled = false;
+    h03b_MandatoryControl.disabled = false;
     h03c_MandatoryControl.disabled = false;
+    F08aValueCalculation();
+    F08bValueCalculation();
+    F08cValueCalculation();
   }
 };
 
 // Table C Functions
 
 const c03_ValueCalculation = () => {
-  let f06_Value_Input = f06_Value.innerText;
-  c03_Value.innerText = f06_Value_Input;
+  if (tableFCurrentlyApplies) {
+    c03_Value.value = "";
+    let f06_Value_Input = f06_Value.value;
+    c03_Value.value = f06_Value_Input;
+  }
+  else{
+    c03_Value.value = "NA";
+  c07_ValueCalculation();
+  }
+};
+
+// Auto-Complete C04 Value Based on F07 Value
+const c04_ValueCalculation = () => {
+  if(tableFCurrentlyApplies){
+    const f07_Value_Input = f07_Value.value;
+    c04_Value.value = f07_Value_Input;
+  }
+  else{
+    c04_Value.value = "NA";
+    c07_ValueCalculation();
+  }
+  
 };
 
 const c05_ValueCalculation = () => {
   // Probably need to add a condition for table G being triggered,
   // maybe with a boolean value to ensure it is currently triggered
   //and not just triggered and untriggered
-  if (g03_Method.value) {
-    c05_Value.textContent = "Yes";
-  } else {
-    c05_Value.textContent = "No";
+  if (tableGCurrentlyApplies){
+    if (g03_Method.value) {
+      c05_Value.value = "Yes";
+    } else {
+      c05_Value.value = "No";
+    }
   }
+  else{
+    c05_Value.value = "NA";
+  }
+  c07_ValueCalculation();
 };
 
-// Auto-Complete C04 Value Based on F07 Value
-const c04_ValueCalculation = () => {
-  const f07_Value_Input = f07_Value.value;
-  c04_Value.textContent = f07_Value_Input;
+const c06_ValueCalculation = () => {
+  if (tableHCurrentlyApplies) {
+    c06_Value.value = "Yes";
+  } else {
+    c06_Value.value = "NA";
+  } 
 };
 
 const c07_ValueCalculation = () => {
@@ -137,13 +181,13 @@ const c07_ValueCalculation = () => {
     !tableGCurrentlyApplies &&
     !tableHCurrentlyApplies
   ) {
-    c07_Value.textContent = "";
+    c07_Value.value = "";
   } else if (tableFCurrentlyApplies && !tableFComplies()) {
-    c07_Value.textContent = "Does Not Comply";
+    c07_Value.value = "Does Not Comply";
   } else if (tableGCurrentlyApplies && !tableGComplies()) {
-    c07_Value.textContent = "Does Not Comply";
+    c07_Value.value = "Does Not Comply";
   } else {
-    c07_Value.textContent = "Complies";
+    c07_Value.value = "Complies";
   }
 };
 
@@ -164,17 +208,17 @@ const ControlsCompliance_Calculation = () => {
   if (tableFCurrentlyApplies) {
     if (
       !F08a_MandatoryControl.disabled &&
-      F08a_MandatoryControl.selectedIndex === 0
+      (F08a_MandatoryControl.selectedIndex === 0 || F08a_MandatoryControl.selectedIndex === -1)
     ) {
       TableFControlsStatus = controlsStatus.false;
     } else if (
       !F08b_MandatoryControl.disabled &&
-      F08b_MandatoryControl.selectedIndex === 0
+      (F08b_MandatoryControl.selectedIndex === 0 || F08b_MandatoryControl.selectedIndex === -1)
     ) {
       TableFControlsStatus = controlsStatus.false;
     } else if (
       !F08c_MandatoryControl.disabled &&
-      F08c_MandatoryControl.selectedIndex === 0
+      (F08c_MandatoryControl.selectedIndex === 0 || F08c_MandatoryControl.selectedIndex === -1)
     ) {
       TableFControlsStatus = controlsStatus.false;
     } else {
@@ -227,30 +271,30 @@ const ControlsCompliance_Calculation = () => {
     TableGControlsStatus === controlsStatus.na &&
     TableHControlsStatus === controlsStatus.na
   ) {
-    c07_ControlsValue.textContent = blank;
+    c07_ControlsValue.value = blank;
   } else if (
     TableFControlsStatus === controlsStatus.false ||
     TableGControlsStatus == controlsStatus.false ||
     TableHControlsStatus == controlsStatus.false
   ) {
-    c07_ControlsValue.textContent = doesNotComply;
+    c07_ControlsValue.value = doesNotComply;
   } else {
-    c07_ControlsValue.textContent = complies;
+    c07_ControlsValue.value = complies;
   }
 };
 
 const tableFComplies = () => {
   if (
-    c03_Value.textContent != "" &&
-    c04_Value.textContent != "" &&
-    c03_Value.textContent >= +c04_Value.textContent
+    c03_Value.value != "" &&
+    c04_Value.value != "" &&
+    c03_Value.value >= +c04_Value.value
   ) {
     return true;
   } else return false;
 };
 
 const tableGComplies = () => {
-  if (c05_Value.textContent === "No") {
+  if (c05_Value.value === "No") {
     return false;
   } else return true;
 };
@@ -273,16 +317,18 @@ const F02ValueCalcuation = () => {
 const f05ValueCalculation = () => {
   let f03_Method_Value = f03_Method.value;
   if (f03_Method_Value === "internally") {
-    f05_Value.textContent = 12;
+    f05_Value.value = 12;
   } else if (f03_Method_Value === "externally") {
-    f05_Value.textContent = 2.3;
+    f05_Value.value = 2.3;
   }
 };
 
 // Calculate and Render Table F Total Allowance
 const f06ValueCalculation = () => {
-  f06_Value.innerText = f04_Value.value * f05_Value.textContent;
-  f06_Value.value = 44;
+  f06_Value.value = f04_Value.value * f05_Value.value;
+  c03_ValueCalculation();
+  console.log("c04 Called it");
+  c04_ValueCalculation();
 };
 
 // Render & Hide Table F Optional Watt Per Luminaire Row
@@ -344,7 +390,6 @@ const F08aValueCalculation = () => {
     F08a_MandatoryControl.options.length = 0;
     F08a_MandatoryControl.disabled = true;
   }
-  healthCareCheckboxChecked();
 };
 
 // Determine Valid Table F08b Control Options
@@ -364,7 +409,6 @@ const F08bValueCalculation = () => {
     F08b_MandatoryControl.add(new Option("NA: Tunnels", "naTunnels"));
     F08b_MandatoryControl.add(new Option("NA: Outdoor 24x7x356", "na247"));
   }
-  healthCareCheckboxChecked();
 };
 
 // Determine Valid Table F08c Control Options
@@ -386,7 +430,6 @@ const F08cValueCalculation = () => {
     );
     F08c_MandatoryControl.add(new Option("NA: &lte15kW", "NA15kW"));
   }
-  healthCareCheckboxChecked();
 };
 
 // Render and Hide Table F Star Option Explanation Row
@@ -707,12 +750,12 @@ const resetTableH_Action = () => {
 
 const C01ValueCalculation = () => {
   const b01_Name_Input = b01_Name.value;
-  c01_Name.textContent = b01_Name_Input;
+  c01_Name.value = b01_Name_Input;
 };
 
 const C02ValueCalculation = () => {
   const b02_Description_Input = b02_Description.value;
-  c02_Description.textContent = b02_Description_Input;
+  c02_Description.value = b02_Description_Input;
 };
 
 //Event Listeners
@@ -756,7 +799,7 @@ complianceMethodDropdown.addEventListener("change", () => {
   // Trigger Table G
   if (complianceMethodSelected === "alternateLightSources") {
     tableGCurrentlyApplies = true;
-    c05_Value.textContent = "No";
+    c05_Value.value = "No";
     for (const element of tableGApplies) {
       element.style.display = "grid";
       element.hidden = false;
@@ -772,7 +815,7 @@ complianceMethodDropdown.addEventListener("change", () => {
     c05_ValueCalculation();
   } else {
     tableGCurrentlyApplies = false;
-    c05_Value.textContent = "";
+    c05_Value.value = "";
     for (const element of tableGApplies) {
       element.hidden = true;
     }
@@ -796,7 +839,7 @@ complianceMethodDropdown.addEventListener("change", () => {
     tableH.style.gridTemplateRows = "repeat(9, 6vh)";
     tableHDoesNotApply.hidden = true;
 
-    c06_Value.textContent = "Yes";
+    c06_Value.value = "Yes";
     ControlsCompliance_Calculation();
   } else {
     tableHCurrentlyApplies = false;
@@ -806,13 +849,14 @@ complianceMethodDropdown.addEventListener("change", () => {
     tableHDoesNotApply.hidden = false;
     tableH.style.gridTemplateRows = "repeat(2, 6vh)";
 
-    c06_Value.textContent = "";
+    c06_Value.value = "NA";
     ControlsCompliance_Calculation();
   }
   healthCareCheckboxChecked();
-});
-
-complianceMethodDropdown.addEventListener("change", () => {
+  c03_ValueCalculation();
+  c04_ValueCalculation();
+  c05_ValueCalculation();
+  c06_ValueCalculation();
   c07_ValueCalculation();
 });
 
@@ -845,28 +889,25 @@ b04_Value.addEventListener("change", () => {
 });
 
 // Table C Event Listeners
-
+// FIX ME - Did we try using the input event listener for this? If this does work, we will need to change logic in ltsImporter 
+// currently it is hacking a mutaion observer to trigger the calculation
 // Mutation Observers for C07 logic because event listener doesn't work to detect text changes
 const config = { attributes: true, childList: true, subtree: true };
 
-const c03_Observer = new MutationObserver(c07_ValueCalculation);
-c03_Observer.observe(c03_Value, config);
-
-const c04_Observer = new MutationObserver(c07_ValueCalculation);
-c04_Observer.observe(c04_Value, config);
-
-const c05_Observer = new MutationObserver(c07_ValueCalculation);
-c05_Observer.observe(c05_Value, config);
-
-const c06_Observer = new MutationObserver(c07_ValueCalculation);
-c06_Observer.observe(c06_Value, config);
+c03_Value.addEventListener("change", c07_ValueCalculation);
+c04_Value.addEventListener("change", c07_ValueCalculation);
+c05_Value.addEventListener("change", c07_ValueCalculation);
+c06_Value.addEventListener("change", c07_ValueCalculation);
 
 // Table F Event Listeners
 
 f03_Method.addEventListener("change", () => {
   f05ValueCalculation();
   f06ValueCalculation();
-  TableF_ExternalExpandRow();
+  if (f03_Method.value === "externally") {
+    TableF_ExternalExpandRow();
+  }
+  
   //c03_ValueCalculation();
 });
 
@@ -875,9 +916,13 @@ f04_Value.addEventListener("change", () => {
   //c03_ValueCalculation();
 });
 
-// Mutation Observer for C06 logic because event listener doesn't work to detect text changes
-const f06_Observer = new MutationObserver(c03_ValueCalculation);
-f06_Observer.observe(f06_Value, config);
+
+//f06_Value.addEventListener('input', c03_ValueCalculation);
+
+f06_Value.addEventListener("change", () => {
+  c03_ValueCalculation();
+  console.log("f06 Called it");
+});
 
 f07_Value.addEventListener("input", () => {
   c04_ValueCalculation();
@@ -898,12 +943,16 @@ F08c_MandatoryControl.addEventListener("change", () => {
 });
 
 f12_Value.addEventListener("change", () => {
-  f07_ValueCalculation();
+  if (f03_Method.value === "externally") {
+    f07_ValueCalculation();
+  }
   c04_ValueCalculation();
 });
 
 f14_Value.addEventListener("change", () => {
-  f07_ValueCalculation();
+  if (f03_Method.value === "externally") {
+    f07_ValueCalculation();
+  }
   c04_ValueCalculation();
 });
 
@@ -967,3 +1016,24 @@ yes_NRCILTS.addEventListener("change", () => {
 no_NRCILTS.addEventListener("change", () => {
   toggleNoCheckbox();
 });
+
+// Submit Button
+function validateForm() {
+  if (!project_name.value || !project_address.value || !date_prepared.value) {
+    alert("Please fill out all required fields.");
+    // Prevent form submission
+    return false;
+  }
+  else{
+    // Allow form submission
+    return true;
+  }
+}
+
+// REMOVE ME -
+const b01_Name_Input = b01_Name.value;
+c01_Name.value = b01_Name_Input;
+
+//project_name.value = projectData.project_name
+
+

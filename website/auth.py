@@ -48,7 +48,7 @@ def signup():
             # FIX ME - Call the function rather than directly rendering the template
             # return render_template("userAlreadyExists.html")
         else:
-            new_user = User(email=email, password = generate_password_hash(password, method="sha256"))
+            new_user = User(email=email, password = generate_password_hash(password))
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember = True)

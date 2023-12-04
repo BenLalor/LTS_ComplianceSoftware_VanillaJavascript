@@ -1,13 +1,7 @@
 {% extends "base.html"%} {% block title%} Home Page {% endblock %} {% block
 content%}
+<form  method="POST" onsubmit="return validateForm()">
 <div class="fakeBody">
-  <!-- Test Submit Button -->
-  <div class="dbTest">
-    <form  method="POST">
-      <input type="text" name="light_name" placeholder="Light Name" />
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-  </div>
   <!-- Header -->
   <div class="signLightingHeader">
     <div class="mainHeader">
@@ -18,7 +12,6 @@ content%}
         <span class="HeaderInlineRight">CALIFORNIA ENERGY COMMISSION</span>
       </div>
     </div>
-    
       <div class="ltsGrid signLightingHeaderTable">
         <div class="tableHeader">Certificate Of Compliance</div>
         <div class="headerDirections">
@@ -29,13 +22,12 @@ content%}
           to 140.8 and do not need to complete this compliance document.
         </div>
         <div class="headerHeader">Project Name:</div>
-        <input type="text" class="headerInput hover" name="projectName" />
+        <input type="text" class="headerInput hover" name="projectName" id="projectName" />
         <div class="headerHeader">Project Address:</div>
-        <input type="text" class="headerInput hover" name="projectAddress" />
+        <input type="text" class="headerInput hover" name="projectAddress" id="projectAddress" />
         <div class="headerHeader">Date Prepared:</div>
-        <input type="date" placeholder="YYYY-MM-DD" class="headerInput ß" name="datePrepared" />
+        <input type="date" placeholder="YYYY-MM-DD" class="headerInput ß" name="datePrepared"  id="datePrepared" />
       </div>
-      <div><button type="submit">Submit</button></div>
     
   </div>
   <!-- JANKY! Remove this -->
@@ -48,10 +40,10 @@ content%}
     <div class="tableHeader">A. General Information</div>
     <div class="headerNum">01</div>
     <div class="headerA">Project Location (city):</div>
-    <input class="hover" type="text" name="location" />
+    <input class="hover" type="text" name="a01_project_location"  id="a01_project_location" />
     <div class="headerNum">02</div>
     <div class="headerA">Climate Zone:</div>
-    <select class="hover italic" name="location">
+    <select class="hover italic" name="climateZone" id="climateZone">
       <option value="" disabled selected>(dropdown)</option>
       <option value="1">1</option>
       <option value="2">2</option>
@@ -77,7 +69,7 @@ content%}
         class="checkBoxA hover"
         type="checkbox"
         id="healthcareCheckbox"
-        value="healthcare"
+        value="1"
         name="healthcare"
       />
       <label for="healthcare">Healthcare Facility</label>
@@ -86,8 +78,9 @@ content%}
       <input
         class="checkBoxA hover"
         type="checkbox"
-        value="multifamily"
-        name="multifamily"
+        id="multifamilyCheckbox"
+        value="1"
+        name="multifamily_GTE4stories"
       />
       <label for="multifamily"
         >Multifamily.MF Mixed-use>=4 stories(including dormitory, senior
@@ -123,7 +116,7 @@ content%}
     <div class="headerB B05">Compliance Method</div>
     <input type="text" id="b01_Name" class="B01 hover" name="nameOrItem_sign" />
     <input type="text" id="b02_Description" class="B02 hover" name="descriptionSign" />
-    <select class="B03 hover italic" name="status_Sign">
+    <select class="B03 hover italic" name="status_Sign" id="b03_status_sign">
       <option value="" disabled selected>(dropdown)</option>
       <option value="new">New</option>
       <option value="altered">Altered</option>
@@ -195,18 +188,18 @@ content%}
     <div class="C-OR2"></div>
     <div class="C06">(See Table H)</div>
     <div class="C07"></div>
-    <div id="c01_Name" class="C01 hover"></div>
-    <div id="c02_Description" class="C02 hover" ></div>
-    <div id="c03_Value" class="C03 hover"></div>
+    <input type="text" id="c01_Name" name="c01_Name" class="C01 hover centered_text" readonly>
+    <input id="c02_Description" class="C02 hover centered_text" name="c02_Description" readonly>
+    <input id="c03_Value" class="C03 hover centered_text" name ="c03_Value" readonly>
     <div class="C-GT">&#8805;</div>
-    <div id="c04_Value" class="C04 hover"></div>
+    <input id="c04_Value" class="C04 hover centered_text" name="c04_Value" readonly>
     <div class="C-OR1">OR</div>
-    <div  id="c05_Value" class="C05 hover"></div>
+    <input  id="c05_Value" class="C05 hover centered_text" name="c05_Value" readonly>
     <div class="C-OR2">OR</div>
-    <div id="c06_Value" class="C06 hover"></div>
-    <div id="c07_Value" class="C07 hover"></div>
+    <input id="c06_Value" class="C06 hover centered_text" name="c06_Value" readonly>
+    <input id="c07_Value" class="C07 hover centered_text" name="c07_Value" readonly>
     <div class="c01_begincap">Controls Compliance (See Tables F/G/H For Details)</div>
-    <div id="c07_ControlsValue" class="C07"></div>
+    <input id="c07_ControlsValue" class="C07 centered_text" name="c07_ControlsValue" readonly>
   </div>
   <!-- JANKY! Remove this -->
   <div class="spaceBetweenTables">
@@ -277,36 +270,38 @@ content%}
     <div class="F08c tableFAttributes">Demand Response</div>
     <div class="F09a tableFAttributes">Pass</div>
     <div class="F09b tableFAttributes">Fail</div>
-    <div id="f01_Name" class="F01 tableFAttributes" ></div>
-    <div id="f02_Description" class="F02  tableFAttributes" ></div>
-    <select id="f03_Method" class="F03 hover tableFAttributes">
+    <div id="f01_Name" class="F01 tableFAttributes" name="f01_name"></div>
+    <div id="f02_Description" class="F02  tableFAttributes" name="f02_Description" ></div>
+    <select id="f03_Method" class="F03 hover tableFAttributes" name="f03_Method">
       <option value="" disabled selected>dropdown</option>
-      <option value="internally">Iternally</option>
+      <option value="internally">Internally</option>
       <option value="externally">Externally</option>
     </select>
-    <input type="text" id="f04_Value" class="F04 hover tableFAttributes" />
-    <div id="f05_Value" class="F05 tableFAttributes"></div>
-    <div id="f06_Value" class="F06 tableFAttributes"></div> 
-    <!--<input type="text" id="f06_Val" class="F06  hover tableFAttributes" /> -->
-    <!-- <div id="f07_Value" class="F07 hover tableFAttributes"></div> -->
-     <input type="text" id="f07_Value" class="F07 hover tableFAttributes" />
+    <input type="text" id="f04_Value" class="F04 hover tableFAttributes" name="f04_Value"/>
+    <input id="f05_Value" class="F05 tableFAttributes" name="f05_Value" readonly>
+    <input id="f06_Value" class="F06 tableFAttributes" name="f06_Value" readonly>
+    <input type="text" id="f07_Value" class="F07 hover tableFAttributes" name="f07_Value">
     <!-- SELECT BELOW NEEDS JS LOGIC. THE OPTIONS BELOW ARE JUST FOR ONE SCENARIO-->
-    <select id ="F08a" class="F08a hover tableFAttributes">
+    <select id ="F08a" class="F08a hover tableFAttributes" name="F08a">
       <option value="" disabled selected>dropdown</option>
       <option value="AutoTimer">Auto Timer</option>
       <option value="Astrn. Timer">Astrn. Timer</option>
       <option value="Other">Other*</option>
     </select>
-    <select id ="F08b" class="F08b hover tableFAttributes">
+    <select id ="F08b" class="F08b hover tableFAttributes" name="F08b">
       <option value="" disabled selected>dropdown</option>
       <option value="NA">NA</option>
     </select>
-    <select id ="F08c" class="F08c hover tableFAttributes">
+    <select id ="F08c" class="F08c hover tableFAttributes" name="F08c">
       <option value="" disabled selected>dropdown</option>
       <option value="NA">NA</option>
     </select>
-    <input type="checkbox" id="f09_YesCheckbox" class="F09a checkBoxF hover tableFAttributes" />
-    <input type="checkbox" id="f09_NoCheckbox" class="F09b checkBoxF tableFAttributes hover" />
+    <div class="F09a tableFAttributes">
+      <input type="checkbox" id="f09_YesCheckbox" class="F09a checkBoxF hover tableFAttributes" />
+    </div>
+    <div class="F09b tableFAttributes">
+      <input type="checkbox" id="f09_NoCheckbox" class="F09b checkBoxF hover tableFAttributes" />
+    </div>
     <div class="F01_begincap tableFAttributes tableFOptionalRow"></div>
     <div class="F03 tableFAttributes tableFOptionalRow">10</div>
     <div class="F04_doublewide tableFAttributes tableFOptionalRow">11</div>
@@ -324,17 +319,17 @@ content%}
     <div class="F07 tableFAttributes tableFOptionalRow">Total number luminaires</div>
     <div class="F08_endcap tableFAttributes tableFOptionalRow"></div>
     <div class="F01_begincap tableFAttributes tableFOptionalRow"></div>
-    <input id="f10_Value" type="text" class="F01 hover tableFAttributes tableFOptionalRow" />
-    <input id="f11_Value" type="text" class="F02 hover tableFAttributes tableFOptionalRow" />
-    <input type="text" id="f12_Value" class="F03 hover tableFAttributes tableFOptionalRow" />
-    <select id="f13_Value" class="F07_doublewide hover tableFAttributes tableFOptionalRow">
+    <input id="f10_Value" type="text" class="F01 hover tableFAttributes tableFOptionalRow" name="f10_Value"/>
+    <input id="f11_Value" type="text" class="F02 hover tableFAttributes tableFOptionalRow" name="f11_Value" />
+    <input type="text" id="f12_Value" class="F03 hover tableFAttributes tableFOptionalRow" name="f12_Value"/>
+    <select id="f13_Value" class="F07_doublewide hover tableFAttributes tableFOptionalRow" name="f13_Value">
       <option value="" disabled selected>(dropdown)</option> 
       <option value="NA8">NA8 Default</option>
       <option value="Mfr">Mfr Spec</option>
       <option value="Alt">Alt Sources per 140.8(b)/170.2(e)</option>
       <option value="Other">Other</option>
     </select>
-    <input type="text" id="f14_Value" class="F06 hover tableFAttributes tableFOptionalRow" />
+    <input type="text" id="f14_Value" class="F06 hover tableFAttributes tableFOptionalRow" name="f14_Value" />
     <div class="F08_endcap tableFAttributes tableFOptionalRow"></div>
     <div class="F01_begincap_extralong tableFAttributes"></div>
     <button type="button" class="button tableFAttributes">Add Row</button>
@@ -383,9 +378,9 @@ content%}
     <div class="G04c tableGApplies">Demand Response</div>
     <div class="G05a tableGApplies">Pass</div>
     <div class="G05b tableGApplies">Fail</div>
-    <div id="g01_Name" class="G01 tableGApplies"></div>
-    <div id="g02_Description" class="G02 tableGApplies"></div>
-    <select id="g03_Method" class="G03 hover tableGApplies">
+    <div id="g01_Name" class="G01 tableGApplies" name="g01_Name"></div>
+    <div id="g02_Description" class="G02 tableGApplies" name="g02_Description"></div>
+    <select id="g03_Method" class="G03 hover tableGApplies" name="g03_Method">
       <option value="" disabled selected>(dropdown)</option>
       <option value="highPressure">High Pressure Sodium Lamps</option>
       <option value="MetalHalide88">
@@ -413,22 +408,26 @@ content%}
         Compact flourescent w/o med screw based sockets
       </option>
     </select>
-    <select id="g04a" class="G04a hover tableGApplies">
+    <select id="g04a" class="G04a hover tableGApplies" name="g04a">
       <option value="" disabled selected>dropdown</option>
       <option value="AutoTimer">Auto Timer</option>
       <option value="Astrn. Timer">Astrn. Timer</option>
       <option value="AutoTimer">Other*</option>
     </select>
-    <select id="g04b" class="G04b hover tableGApplies">
+    <select id="g04b" class="G04b hover tableGApplies" name="g04b">
       <option value="" disabled selected>dropdown</option>
       <option value="NA">NA</option>
     </select>
-    <select id="g04c" class="G04c hover tableGApplies">
+    <select id="g04c" class="G04c hover tableGApplies" name="g04c">
       <option value="" disabled selected>dropdown</option>
       <option value="NA">NA</option>
     </select>
-    <input type="checkbox" id="g05a_YesCheckbox" class="G05a checkBoxF hover tableGApplies" />
-    <input type="checkbox" id="g05a_NoCheckbox" class="G05b checkBoxF hover tableGApplies" />
+    <div class="G05a tableGApplies">
+      <input type="checkbox" id="g05a_YesCheckbox" class="G05a checkBoxF hover tableGApplies" />
+    </div>
+    <div class="G05b tableGApplies">
+      <input type="checkbox" id="g05a_NoCheckbox" class="G05b checkBoxF hover tableGApplies" />
+    </div>
     <div class="G01_begincap tableGApplies"></div>
 
     <button type="button" class="G05a tableGApplies">Add Row</button>
@@ -477,24 +476,28 @@ content%}
     <div class="h03c tableHApplies">Demand Response</div>
     <div class="h04a tableHApplies">Pass</div>
     <div class="h04b tableHApplies">Fail</div>
-    <div id="h01_Name" class="h01 tableHApplies"></div>
-    <div id="h02_Description" class="h02 tableHApplies"></div>
-    <select id="h03a" class="h03a hover tableHApplies">
+    <div id="h01_Name" class="h01 tableHApplies" name="h01_Name"></div>
+    <div id="h02_Description" class="h02 tableHApplies" name="h02_Description"></div>
+    <select id="h03a" class="h03a hover tableHApplies" name="h03a">
       <option value="" disabled selected>dropdown</option>
       <option value="AutoTimer">Auto Timer</option>
       <option value="Astrn. Timer">Astrn. Timer</option>
       <option value="AutoTimer">Other*</option>
     </select>
-    <select id="h03b" class="h03b hover tableHApplies">
+    <select id="h03b" class="h03b hover tableHApplies" name="h03b">
       <option value="" disabled selected>dropdown</option>
       <option value="NA">NA</option>
     </select>
-    <select id="h03c" class="h03c hover tableHApplies">
+    <select id="h03c" class="h03c hover tableHApplies" name="h03c">
       <option value="" disabled selected>dropdown</option>
       <option value="NA">NA</option>
     </select>
-    <input type="checkbox" id="h04a_YesCheckbox" class="h04a hover checkBoxF tableHApplies" />
-    <input type="checkbox" id="h04a_NoCheckbox" class="h04b hover checkBoxF tableHApplies" />
+    <div class="h04a tableHApplies">
+      <input type="checkbox" id="h04a_YesCheckbox" class="h04a hover checkBoxF tableHApplies" />
+    </div>
+    <div class="h04b tableHApplies">
+      <input type="checkbox" id="h04b_NoCheckbox" class="h04b hover checkBoxF tableHApplies" />
+    </div>
     <div class="fullLengthRow tableHApplies tableH_StarOptions">
       * Notes: Controls with a * require a note in the space below explaining
       how compliance is achieved. EX: Sign within a tunnel illuminated day &
@@ -537,11 +540,19 @@ content%}
       <div class="i04">Field Inspector</div>
       <div class="i04a">Pass</div>
       <div class="i04b">Fail</div>
-      <input type="checkbox" id="yes_NRCILTS" class="i01" checked/>
-      <input type="checkbox" id="no_NRCILTS" class="i02" />
+      <div class="i01 ">
+        <input type="checkbox" id="yes_NRCILTS" class="i01 checkBoxI" checked/>
+      </div>
+      <div class="i02">
+        <input type="checkbox" id="no_NRCILTS" class="i02 checkBoxI" />
+      </div>
       <div class="i03">NRCI-LTS-E - Must be submitted for all buildings.</div>
-      <input type="checkbox" id="I_YesCheckbox" class="i04a" />
-      <input type="checkbox" id="I_NoCheckbox" class="i04b" />
+      <div class="i04a">
+        <input type="checkbox" id="I_YesCheckbox" class="i04a checkBoxI" />
+      </div>
+      <div class="i04b">
+        <input type="checkbox" id="I_NoCheckbox" class="i04b checkBoxI" />
+      </div>
     </div>
     <!-- JANKY! Remove this -->
     <div class="spaceBetweenTables">
@@ -564,6 +575,17 @@ content%}
       0 0
     </div>
   </div>
+   <!-- Test Submit Button -->
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
   <script src="../static/javascript/lts.js"></script>
-  > {% endblock %}
+  {% if projectID %}
+  <!-- Pass the lts data to the javascript file -->
+  <script type="text/javascript">
+    let projectData = JSON.parse('{{ ltsInstance | tojson | safe }}');
+  </script>
+  <!-- load the importer script -->
+    <script src="{{ url_for('static', filename='javascript/ltsImporter.js') }}"></script>
+  {% endif %}
+  {% endblock %}
 </div>
