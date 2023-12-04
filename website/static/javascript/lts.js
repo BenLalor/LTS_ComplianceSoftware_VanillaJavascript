@@ -21,7 +21,9 @@ var complianceMethodDropdown = document.getElementById("compliance_Method");
 var c01_Name = document.getElementById("c01_Name");
 var c02_Description = document.getElementById("c02_Description");
 var c03_Value = document.getElementById("c03_Value");
+c03_Value.value = "NA";
 var c04_Value = document.getElementById("c04_Value");
+c04_Value.value = "NA";
 var c05_Value = document.getElementById("c05_Value");
 c05_Value.value = "NA";
 var c06_Value = document.getElementById("c06_Value");
@@ -113,17 +115,39 @@ var healthCareCheckboxChecked = () => {
     g04b_MandatoryControl.disabled = false;
     g04c_MandatoryControl.disabled = false;
     h03a_MandatoryControl.disabled = false;
-    h03b_MandatoryControl.diabled = false;
+    h03b_MandatoryControl.disabled = false;
     h03c_MandatoryControl.disabled = false;
+    F08aValueCalculation();
+    F08bValueCalculation();
+    F08cValueCalculation();
   }
 };
 
 // Table C Functions
 
 const c03_ValueCalculation = () => {
-  let f06_Value_Input = f06_Value.value;
-  c03_Value.value = f06_Value_Input;
-  console.log("It RAN!", c03_Value.value);
+  if (tableFCurrentlyApplies) {
+    c03_Value.value = "";
+    let f06_Value_Input = f06_Value.value;
+    c03_Value.value = f06_Value_Input;
+  }
+  else{
+    c03_Value.value = "NA";
+  c07_ValueCalculation();
+  }
+};
+
+// Auto-Complete C04 Value Based on F07 Value
+const c04_ValueCalculation = () => {
+  if(tableFCurrentlyApplies){
+    const f07_Value_Input = f07_Value.value;
+    c04_Value.value = f07_Value_Input;
+  }
+  else{
+    c04_Value.value = "NA";
+    c07_ValueCalculation();
+  }
+  
 };
 
 const c05_ValueCalculation = () => {
@@ -140,16 +164,18 @@ const c05_ValueCalculation = () => {
   else{
     c05_Value.value = "NA";
   }
+  c07_ValueCalculation();
 };
 
-// Auto-Complete C04 Value Based on F07 Value
-const c04_ValueCalculation = () => {
-  const f07_Value_Input = f07_Value.value;
-  c04_Value.value = f07_Value_Input;
+const c06_ValueCalculation = () => {
+  if (tableHCurrentlyApplies) {
+    c06_Value.value = "Yes";
+  } else {
+    c06_Value.value = "NA";
+  } 
 };
 
 const c07_ValueCalculation = () => {
-  console.log("C07 Value Calculation Ran!")
   if (
     !tableFCurrentlyApplies &&
     !tableGCurrentlyApplies &&
@@ -182,17 +208,17 @@ const ControlsCompliance_Calculation = () => {
   if (tableFCurrentlyApplies) {
     if (
       !F08a_MandatoryControl.disabled &&
-      F08a_MandatoryControl.selectedIndex === 0
+      (F08a_MandatoryControl.selectedIndex === 0 || F08a_MandatoryControl.selectedIndex === -1)
     ) {
       TableFControlsStatus = controlsStatus.false;
     } else if (
       !F08b_MandatoryControl.disabled &&
-      F08b_MandatoryControl.selectedIndex === 0
+      (F08b_MandatoryControl.selectedIndex === 0 || F08b_MandatoryControl.selectedIndex === -1)
     ) {
       TableFControlsStatus = controlsStatus.false;
     } else if (
       !F08c_MandatoryControl.disabled &&
-      F08c_MandatoryControl.selectedIndex === 0
+      (F08c_MandatoryControl.selectedIndex === 0 || F08c_MandatoryControl.selectedIndex === -1)
     ) {
       TableFControlsStatus = controlsStatus.false;
     } else {
@@ -258,7 +284,6 @@ const ControlsCompliance_Calculation = () => {
 };
 
 const tableFComplies = () => {
-  console.log("Table F Complies Ran!")
   if (
     c03_Value.value != "" &&
     c04_Value.value != "" &&
@@ -301,8 +326,9 @@ const f05ValueCalculation = () => {
 // Calculate and Render Table F Total Allowance
 const f06ValueCalculation = () => {
   f06_Value.value = f04_Value.value * f05_Value.value;
-  //f06_Value.value = 44;
-  c03_ValueCalculation()
+  c03_ValueCalculation();
+  console.log("c04 Called it");
+  c04_ValueCalculation();
 };
 
 // Render & Hide Table F Optional Watt Per Luminaire Row
@@ -364,7 +390,6 @@ const F08aValueCalculation = () => {
     F08a_MandatoryControl.options.length = 0;
     F08a_MandatoryControl.disabled = true;
   }
-  healthCareCheckboxChecked();
 };
 
 // Determine Valid Table F08b Control Options
@@ -384,7 +409,6 @@ const F08bValueCalculation = () => {
     F08b_MandatoryControl.add(new Option("NA: Tunnels", "naTunnels"));
     F08b_MandatoryControl.add(new Option("NA: Outdoor 24x7x356", "na247"));
   }
-  healthCareCheckboxChecked();
 };
 
 // Determine Valid Table F08c Control Options
@@ -406,7 +430,6 @@ const F08cValueCalculation = () => {
     );
     F08c_MandatoryControl.add(new Option("NA: &lte15kW", "NA15kW"));
   }
-  healthCareCheckboxChecked();
 };
 
 // Render and Hide Table F Star Option Explanation Row
@@ -829,11 +852,11 @@ complianceMethodDropdown.addEventListener("change", () => {
     c06_Value.value = "NA";
     ControlsCompliance_Calculation();
   }
-  c05_ValueCalculation();
   healthCareCheckboxChecked();
-});
-
-complianceMethodDropdown.addEventListener("change", () => {
+  c03_ValueCalculation();
+  c04_ValueCalculation();
+  c05_ValueCalculation();
+  c06_ValueCalculation();
   c07_ValueCalculation();
 });
 
@@ -871,17 +894,10 @@ b04_Value.addEventListener("change", () => {
 // Mutation Observers for C07 logic because event listener doesn't work to detect text changes
 const config = { attributes: true, childList: true, subtree: true };
 
-const c03_Observer = new MutationObserver(c07_ValueCalculation);
-c03_Observer.observe(c03_Value, config);
-
-const c04_Observer = new MutationObserver(c07_ValueCalculation);
-c04_Observer.observe(c04_Value, config);
-
-const c05_Observer = new MutationObserver(c07_ValueCalculation);
-c05_Observer.observe(c05_Value, config);
-
-const c06_Observer = new MutationObserver(c07_ValueCalculation);
-c06_Observer.observe(c06_Value, config);
+c03_Value.addEventListener("change", c07_ValueCalculation);
+c04_Value.addEventListener("change", c07_ValueCalculation);
+c05_Value.addEventListener("change", c07_ValueCalculation);
+c06_Value.addEventListener("change", c07_ValueCalculation);
 
 // Table F Event Listeners
 
@@ -903,9 +919,10 @@ f04_Value.addEventListener("change", () => {
 
 //f06_Value.addEventListener('input', c03_ValueCalculation);
 
-// Mutation Observer for C06 logic because event listener doesn't work to detect text changes
-const f06_Observer = new MutationObserver(c03_ValueCalculation);
-f06_Observer.observe(f06_Value, config);
+f06_Value.addEventListener("change", () => {
+  c03_ValueCalculation();
+  console.log("f06 Called it");
+});
 
 f07_Value.addEventListener("input", () => {
   c04_ValueCalculation();

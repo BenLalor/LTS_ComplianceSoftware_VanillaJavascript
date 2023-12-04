@@ -12,7 +12,6 @@ content%}
         <span class="HeaderInlineRight">CALIFORNIA ENERGY COMMISSION</span>
       </div>
     </div>
-    
       <div class="ltsGrid signLightingHeaderTable">
         <div class="tableHeader">Certificate Of Compliance</div>
         <div class="headerDirections">
@@ -152,7 +151,7 @@ content%}
   </div>
   <!-- Table C -->
   <div class="ltsGrid ltsGrid_tableC">
-    <div class="tableHeader">C. Compliance Reslts</div>
+    <div class="tableHeader">C. Compliance Results</div>
     <div class="headerDirections">
       Results in this table are automatically calculated from data input and
       calculations in Tables B through H.<br />Note: If any cell on this table
@@ -189,18 +188,18 @@ content%}
     <div class="C-OR2"></div>
     <div class="C06">(See Table H)</div>
     <div class="C07"></div>
-    <input type="text" id="c01_Name" name="c01_Name" class="C01 hover" readonly>
-    <input id="c02_Description" class="C02 hover" name="c02_Description" readonly>
-    <input id="c03_Value" class="C03 hover" name ="c03_Value" readonly>
+    <input type="text" id="c01_Name" name="c01_Name" class="C01 hover centered_text" readonly>
+    <input id="c02_Description" class="C02 hover centered_text" name="c02_Description" readonly>
+    <input id="c03_Value" class="C03 hover centered_text" name ="c03_Value" readonly>
     <div class="C-GT">&#8805;</div>
-    <input id="c04_Value" class="C04 hover" name="c04_Value" readonly>
+    <input id="c04_Value" class="C04 hover centered_text" name="c04_Value" readonly>
     <div class="C-OR1">OR</div>
-    <input  id="c05_Value" class="C05 hover" name="c05_Value" readonly>
+    <input  id="c05_Value" class="C05 hover centered_text" name="c05_Value" readonly>
     <div class="C-OR2">OR</div>
-    <input id="c06_Value" class="C06 hover" name="c06_Value" readonly>
-    <input id="c07_Value" class="C07 hover" name="c07_Value" readonly>
+    <input id="c06_Value" class="C06 hover centered_text" name="c06_Value" readonly>
+    <input id="c07_Value" class="C07 hover centered_text" name="c07_Value" readonly>
     <div class="c01_begincap">Controls Compliance (See Tables F/G/H For Details)</div>
-    <input id="c07_ControlsValue" class="C07" name="c07_ControlsValue" readonly>
+    <input id="c07_ControlsValue" class="C07 centered_text" name="c07_ControlsValue" readonly>
   </div>
   <!-- JANKY! Remove this -->
   <div class="spaceBetweenTables">
@@ -275,7 +274,7 @@ content%}
     <div id="f02_Description" class="F02  tableFAttributes" name="f02_Description" ></div>
     <select id="f03_Method" class="F03 hover tableFAttributes" name="f03_Method">
       <option value="" disabled selected>dropdown</option>
-      <option value="internally">Iternally</option>
+      <option value="internally">Internally</option>
       <option value="externally">Externally</option>
     </select>
     <input type="text" id="f04_Value" class="F04 hover tableFAttributes" name="f04_Value"/>
@@ -297,8 +296,12 @@ content%}
       <option value="" disabled selected>dropdown</option>
       <option value="NA">NA</option>
     </select>
-    <input type="checkbox" id="f09_YesCheckbox" class="F09a checkBoxF hover tableFAttributes" />
-    <input type="checkbox" id="f09_NoCheckbox" class="F09b checkBoxF tableFAttributes hover" />
+    <div class="F09a tableFAttributes">
+      <input type="checkbox" id="f09_YesCheckbox" class="F09a checkBoxF hover tableFAttributes" />
+    </div>
+    <div class="F09b tableFAttributes">
+      <input type="checkbox" id="f09_NoCheckbox" class="F09b checkBoxF hover tableFAttributes" />
+    </div>
     <div class="F01_begincap tableFAttributes tableFOptionalRow"></div>
     <div class="F03 tableFAttributes tableFOptionalRow">10</div>
     <div class="F04_doublewide tableFAttributes tableFOptionalRow">11</div>
@@ -419,8 +422,12 @@ content%}
       <option value="" disabled selected>dropdown</option>
       <option value="NA">NA</option>
     </select>
-    <input type="checkbox" id="g05a_YesCheckbox" class="G05a checkBoxF hover tableGApplies" />
-    <input type="checkbox" id="g05a_NoCheckbox" class="G05b checkBoxF hover tableGApplies" />
+    <div class="G05a tableGApplies">
+      <input type="checkbox" id="g05a_YesCheckbox" class="G05a checkBoxF hover tableGApplies" />
+    </div>
+    <div class="G05b tableGApplies">
+      <input type="checkbox" id="g05a_NoCheckbox" class="G05b checkBoxF hover tableGApplies" />
+    </div>
     <div class="G01_begincap tableGApplies"></div>
 
     <button type="button" class="G05a tableGApplies">Add Row</button>
@@ -485,8 +492,12 @@ content%}
       <option value="" disabled selected>dropdown</option>
       <option value="NA">NA</option>
     </select>
-    <input type="checkbox" id="h04a_YesCheckbox" class="h04a hover checkBoxF tableHApplies" />
-    <input type="checkbox" id="h04a_NoCheckbox" class="h04b hover checkBoxF tableHApplies" />
+    <div class="h04a tableHApplies">
+      <input type="checkbox" id="h04a_YesCheckbox" class="h04a hover checkBoxF tableHApplies" />
+    </div>
+    <div class="h04b tableHApplies">
+      <input type="checkbox" id="h04b_NoCheckbox" class="h04b hover checkBoxF tableHApplies" />
+    </div>
     <div class="fullLengthRow tableHApplies tableH_StarOptions">
       * Notes: Controls with a * require a note in the space below explaining
       how compliance is achieved. EX: Sign within a tunnel illuminated day &
@@ -529,11 +540,19 @@ content%}
       <div class="i04">Field Inspector</div>
       <div class="i04a">Pass</div>
       <div class="i04b">Fail</div>
-      <input type="checkbox" id="yes_NRCILTS" class="i01" checked/>
-      <input type="checkbox" id="no_NRCILTS" class="i02" />
+      <div class="i01 ">
+        <input type="checkbox" id="yes_NRCILTS" class="i01 checkBoxI" checked/>
+      </div>
+      <div class="i02">
+        <input type="checkbox" id="no_NRCILTS" class="i02 checkBoxI" />
+      </div>
       <div class="i03">NRCI-LTS-E - Must be submitted for all buildings.</div>
-      <input type="checkbox" id="I_YesCheckbox" class="i04a" />
-      <input type="checkbox" id="I_NoCheckbox" class="i04b" />
+      <div class="i04a">
+        <input type="checkbox" id="I_YesCheckbox" class="i04a checkBoxI" />
+      </div>
+      <div class="i04b">
+        <input type="checkbox" id="I_NoCheckbox" class="i04b checkBoxI" />
+      </div>
     </div>
     <!-- JANKY! Remove this -->
     <div class="spaceBetweenTables">
@@ -555,7 +574,6 @@ content%}
       0<br />
       0 0
     </div>
-  
   </div>
    <!-- Test Submit Button -->
       <button type="submit" class="btn btn-primary">Submit</button>

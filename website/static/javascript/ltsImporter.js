@@ -56,7 +56,7 @@ window.onload = function() {
     f06_Value.setAttribute('dummy-attribute', 'dummy-value');
     f06_Value.removeAttribute('dummy-attribute');
     f07_Value.value = projectData.f07_designed
-    //f07_Value.dispatchEvent(event);
+    f07_Value.dispatchEvent(event);
     F08a_MandatoryControl.value = projectData.f08a_shut_off
     F08a_MandatoryControl.dispatchEvent(event);
     F08b_MandatoryControl.value = projectData.f08b_dimming
