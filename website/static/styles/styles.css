@@ -6,27 +6,21 @@
 }
 
 .fakeBody {
-    border: 2px;
-  border-style: solid;
-  border-color: black;
+  display: grid;
+
   background-color: lightgray;
   justify-content: center;
   margin: 4vw;
 }
 
 .mainHeader {
-  display: box;
+  display: flexbox;
   padding: 5px;
   justify-content: left;
   font-style: italic;
 }
 
-.ltsGrid {
-  background-color: lightgray;
-}
-
 .signLightingHeader {
-  display: flexbox;
   justify-content: left;
   border: 3px;
 }
@@ -34,7 +28,37 @@
 .signLightingHeaderTable {
   display: grid;
   grid-template-columns: repeat(100, 0.91vw);
-  grid-template-rows: repeat(6, 5vh);
+  grid-template-rows: repeat(3, 5vh);
+}
+
+.mainHeader {
+  display: grid;
+  grid-template-columns: repeat(100, 0.91vw);
+  grid-template-rows: repeat(3, 2.5vh);
+}
+
+.text-field {
+  grid-column: 1;
+  white-space: nowrap;
+}
+
+.text-field.left {
+  text-align: left;
+}
+
+.text-field.right {
+  grid-row: 3;
+  grid-column: 70;
+  text-align: right;
+  white-space: nowrap;
+  border: none;
+}
+
+.ltsGrid {
+  border: 3px;
+  border-style: solid; 
+  border-color: black;
+  background-color: lightgray ;
 }
 
 .ltsGrid_tableA {
@@ -112,7 +136,7 @@
   display: flex;
   align-items: center;
   grid-column: span 100;
-font-weight: bolder;
+  font-weight: bolder;
   font-size: 1.5em;
   background-color: lightgray;
 }
@@ -203,10 +227,9 @@ label {
 }
 
 .spaceBetweenTables {
-  border: 2px;
-  border-color: black;
-  border-style: solid;
-  color: lightgray;
+  border-right: 4px solid black;
+  border-left: 4px solid black;
+  background-color: lightgray;
 }
 
 .headerHeader {
