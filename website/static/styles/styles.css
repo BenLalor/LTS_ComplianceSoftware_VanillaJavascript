@@ -5,54 +5,87 @@
   font-size: 1em;
 }
 
+
+
 .fakeBody {
-    border: 2px;
-  border-style: solid;
-  border-color: black;
+  display: grid;
   background-color: lightgray;
   justify-content: center;
   margin: 4vw;
+  min-width: 300px; 
 }
 
 .mainHeader {
-  display: box;
+  display: flexbox;
   padding: 5px;
   justify-content: left;
   font-style: italic;
 }
 
-.ltsGrid {
-  background-color: lightgray;
-}
-
 .signLightingHeader {
-  display: flexbox;
   justify-content: left;
+  grid-template-columns: repeat(auto-fill, minmax(2, 5vh));
   border: 3px;
 }
 
 .signLightingHeaderTable {
   display: grid;
-  grid-template-columns: repeat(100, 0.91vw);
-  grid-template-rows: repeat(6, 5vh);
+  grid-template-columns: repeat(auto-fill, minmax(2, 5vh));
+  grid-auto-rows: minmax(5vh, auto); /* Rows will be at least 5vh tall, but can expand */
+}
+
+.mainHeader2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(0.91vw, 1fr));
+  grid-auto-rows: minmax(2.5vh, auto); /* Rows will be at least 2.5vh tall, but can expand */
+}
+
+.text-field {
+  grid-column: 1;
+}
+
+.text-field.left {
+  text-align: left;
+  white-space: normal; /* Allows the text to wrap */
+}
+
+.text-field.right {
+  grid-row: 3;
+  grid-column: 80;
+  grid-column-end: span 20; /* The item will span 20 columns */
+  text-align: right;
+  white-space: normal; /* Allows the text to wrap */
+  overflow: visible; /* Ensures the text is not clipped */
+  border: none;
+}
+
+.text-field.left.nowrap {
+  white-space: nowrap; /* Prevents the text from wrapping */
+}
+
+.ltsGrid {
+  border: 3px;
+  border-style: solid; 
+  border-color: black;
+  background-color: lightgray ;
 }
 
 .ltsGrid_tableA {
   display: grid;
-  grid-template-columns: repeat(100, 0.91vw);
-  grid-template-rows: repeat(5, 5vh);
+  grid-template-columns: repeat(auto-fill, minmax(100, 0.91vw));
+  grid-auto-rows: minmax(5vh, auto);
 }
 
 .ltsGrid_tableB {
   display: grid;
-  grid-template-columns: repeat(100, 0.91vw);
-  grid-template-rows: repeat(6, 5vh);
+  grid-template-columns: repeat(auto-fill, minmax(0.91vw, 1fr));
+  grid-auto-rows: minmax(5vh, auto); /* Rows will be at least 5vh tall, but can expand */
 }
 
 .ltsGrid_tableC {
   display: grid;
-  grid-template-columns: repeat(100, 0.91vw);
-  grid-template-rows: repeat(8, 6vh);
+  grid-template-columns: repeat(auto-fill, minmax(0.91vw, 1fr));
+  grid-auto-rows: minmax(6vh, auto); /* Rows will be at least 6vh tall, but can expand */
 }
 
 .ltsGrid_tableD {
@@ -112,7 +145,7 @@
   display: flex;
   align-items: center;
   grid-column: span 100;
-font-weight: bolder;
+  font-weight: bolder;
   font-size: 1.5em;
   background-color: lightgray;
 }
@@ -137,9 +170,9 @@ font-weight: bolder;
 .headerDirections {
   grid-column: span 100;
   grid-row: span 2;
-  display: flex;
-  align-items: center;
   font-style: italic;
+  padding-left: 0.5vw; /* Optional: add some padding to move the text away from the border */
+  text-align: left;
 }
 
 input {
@@ -203,10 +236,10 @@ label {
 }
 
 .spaceBetweenTables {
-  border: 2px;
-  border-color: black;
-  border-style: solid;
-  color: lightgray;
+  border-right: 4px solid black;
+  border-left: 4px solid black;
+  background-color: lightgray;
+  color: transparent; /* Makes the text clear */
 }
 
 .headerHeader {
@@ -626,4 +659,8 @@ label {
 
 .tableHApplies {
   display: none;
+}
+
+button {
+  margin-bottom: 20px; /* Adjust this value as needed */
 }

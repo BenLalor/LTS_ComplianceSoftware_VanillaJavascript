@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from os import path
-from flask_login import LoginManager 
+from flask_login import LoginManager, current_user 
 from flask_migrate import Migrate
 
 db = SQLAlchemy()
@@ -9,6 +9,10 @@ DB_NAME = "database.db"
 
 def create_app():
     app = Flask(__name__)
+
+    @app.context_processor
+    def inject_user():
+            return dict(user=current_user)
     
     app.config['SECRET_KEY'] = 'sdifdsnmyrqfdtla'
     app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
@@ -36,4 +40,7 @@ def create_app():
     migrate = Migrate(app, db)
 
     
+    
     return app
+
+    

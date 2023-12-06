@@ -4,14 +4,12 @@ content%}
 <div class="fakeBody">
   <!-- Header -->
   <div class="signLightingHeader">
-    <div class="mainHeader">
-      <div class="headerHeaderLeft">STATE OF CALIFORNIA</div>
-      <div class="headerHeaderLeft">Sign Lighting</div>
-      <div class="headerHeaderContainer">
-        <span class="HeaderInlineLeft">NRCC-LTS-E</span>
-        <span class="HeaderInlineRight">CALIFORNIA ENERGY COMMISSION</span>
-      </div>
-    </div>
+    <div class="ltsGrid mainHeader2">
+      <div class="text-field left nowrap">STATE OF CALIFORNIA</div>
+      <div class="text-field left nowrap">Sign Lighting</div>
+      <div class="text-field left nowrap">NRCC-LTS-E</div>
+      <div class="text-field right">CALIFORNIA ENERGY COMMISSION</div>
+    </div>    
       <div class="ltsGrid signLightingHeaderTable">
         <div class="tableHeader">Certificate Of Compliance</div>
         <div class="headerDirections">
@@ -31,7 +29,7 @@ content%}
     
   </div>
   <!-- JANKY! Remove this -->
-  <div class="spaceBetweenTables">
+  <div class="spaceBetweenTables"> ltsGrid_tableA
     0<br />
     0 0
   </div>
@@ -570,13 +568,11 @@ content%}
     </div>
 
     <!-- JANKY! Remove this -->
-    <div class="spaceBetweenTables">
-      0<br />
-      0 0
-    </div>
+    
   </div>
    <!-- Test Submit Button -->
       <button type="submit" class="btn btn-primary">Submit</button>
+      <br />
     </form>
   <script src="../static/javascript/lts.js"></script>
   {% if projectID %}
