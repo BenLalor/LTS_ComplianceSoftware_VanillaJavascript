@@ -1,57 +1,56 @@
-from flask import Blueprint, render_template, request, flash, redirect, url_for
-from .models import User
-from werkzeug.security import generate_password_hash, check_password_hash
-from . import db   ##means from __init__.py import db
-from flask_login import login_user, login_required, logout_user, current_user
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from os import path
+from flask_login import LoginManager, current_user 
+from flask_migrate import Migrate
 
-auth = Blueprint("auth", __name__)
+# Initialize SQLAlchemy
+db = SQLAlchemy()
+DB_NAME = "database.db"
 
-@auth.route("/login", methods=["GET", "POST"])
-def login():
-    if request.method == "POST":
-        email = request.form.get("email")
-        password = request.form.get("password")
-        user = User.query.filter_by(email=email).first()
-        if user:
-            if check_password_hash(user.password, password):
-                flash('Logged in successfully!',category="success")
-                login_user(user, remember=True)
-                return redirect(url_for('views.home'))
-            else: 
-                flash('Incorrect password, try again',category="error")
-        else:
-            flash("Email does not exist, try again", category="error") 
+# Function to create a Flask application
+def create_app():
+    # Create an instance of Flask
+    app = Flask(__name__)
 
+    # Context processor to inject the current user into templates
+    @app.context_processor
+    def inject_user():
+        return dict(user=current_user)
+    
+    # Configure the Flask application
+    app.config['SECRET_KEY'] = 'sdifdsnmyrqfdtla'
+    app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
+    # Initialize SQLAlchemy with this Flask app
+    db.init_app(app)
 
-        ## TODO - Figure out what the form is packing and sending in the post request and then grab it. 
-    return render_template("login.html", user=current_user)
+    # Import the blueprints
+    from .views import views
+    from .auth import auth
 
+    # Register the blueprints
+    app.register_blueprint(views, url_prefix='/')
+    app.register_blueprint(auth, url_prefix='/')
 
-# Path to logout page
-@auth.route("/logout")
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for("auth.login"))
+    # Import the models
+    from .models import User, LTS
 
+    # Create all database tables
+    with app.app_context():
+        db.create_all()
 
-# Path to signup page
-@auth.route("/signup", methods=["GET", "POST"])
-def signup():
-    if request.method == "POST":
-        email = request.form.get("email")
-        password = request.form.get("password1")
-        
-        user = User.query.filter_by(email=email).first()
-        if user:
-            flash("Account already exists with that email", category="error")
-            # FIX ME - Call the function rather than directly rendering the template
-            # return render_template("userAlreadyExists.html")
-        else:
-            new_user = User(email=email, password = generate_password_hash(password))
-            db.session.add(new_user)
-            db.session.commit()
-            login_user(new_user, remember = True)
-            flash("Account created!", category="success")
-            return redirect(url_for("views.home"))
-    return render_template("signup.html", user=current_user)
+    # Initialize the LoginManager
+    login_manager = LoginManager()
+    login_manager.login_view = 'auth.login'
+    login_manager.init_app(app)
+
+    # User loader for LoginManager
+    @login_manager.user_loader
+    def load_user(id):
+        return User.query.get(int(id))
+    
+    # Initialize Flask-Migrate
+    migrate = Migrate(app, db)
+
+    # Return the configured Flask app
+    return app
