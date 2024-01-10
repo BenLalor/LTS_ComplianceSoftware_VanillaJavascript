@@ -42,7 +42,7 @@ class LTS(db.Model):
     f10_name = db.Column(db.String(150), default=None)
     f11_description = db.Column(db.String(150), default=None)
     f12_watts_per_luminaire = db.Column(db.Integer, default=None)
-    f13_determined = db.Column(db.String, default=None)
+    f13_determined = db.Column(db.String(150), default=None)
     f14_number_of_luminaires = db.Column(db.Integer, default=None)
 
     g01_name = db.Column(db.String(150), default=None)
@@ -63,5 +63,5 @@ class LTS(db.Model):
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(150), nullable=False, unique=True)
-    password = db.Column(db.String(150), nullable=False)
+    password = db.Column(db.String(255), nullable=False)
     lts = db.relationship("LTS")

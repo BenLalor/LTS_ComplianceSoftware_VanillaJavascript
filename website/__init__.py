@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager, current_user 
 from flask_migrate import Migrate
+import os
+from dotenv import load_dotenv
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
@@ -15,7 +17,10 @@ def create_app():
             return dict(user=current_user)
     
     app.config['SECRET_KEY'] = 'sdifdsnmyrqfdtla'
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
+    #app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
+    #app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:ABC123@localhost/mydatabase"
+    load_dotenv()
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URI")
     db.init_app(app)
 
     from .views import views
