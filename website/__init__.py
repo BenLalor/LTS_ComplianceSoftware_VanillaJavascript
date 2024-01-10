@@ -21,6 +21,9 @@ def create_app():
     #app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:ABC123@localhost/mydatabase"
     load_dotenv()
     app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URI")
+    app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+        'connect_args': {'ssl': {'ca': 'DigiCertGlobalRootG2.crt.pem'}}
+    }
     db.init_app(app)
 
     from .views import views
@@ -44,7 +47,6 @@ def create_app():
     
     migrate = Migrate(app, db)
 
-    
     
     return app
 
