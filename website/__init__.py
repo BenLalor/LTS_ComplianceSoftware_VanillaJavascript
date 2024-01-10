@@ -22,7 +22,7 @@ def create_app():
     load_dotenv()
     app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URI")
     app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
-        'connect_args': {'ssl': {'ca': 'DigiCertGlobalRootG2.crt.pem'}}
+        'connect_args': {'ssl': {'ca': '../DigiCertGlobalRootG2.crt.pem'}}
     }
     db.init_app(app)
 
