@@ -5,7 +5,6 @@ from flask_login import LoginManager, current_user
 from flask_migrate import Migrate
 import os
 from dotenv import load_dotenv
-import base64
 
 db = SQLAlchemy()
 DB_NAME = "database.db"
@@ -18,23 +17,13 @@ def create_app():
             return dict(user=current_user)
     
     app.config['SECRET_KEY'] = 'sdifdsnmyrqfdtla'
+    #app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
+    #app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:ABC123@localhost/mydatabase"
     load_dotenv()
     app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URI")
-
-    # Get the base64 string from the environment variable
-    cert_base64 = os.getenv('CERT_BASE64')
-
-    # Decode the base64 string back into the certificate
-    cert_decoded = base64.b64decode(cert_base64)
-
-    # Write the decoded certificate to a file
-    with open('certificate.pem', 'wb') as f:
-        f.write(cert_decoded)
-
     app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
-        'connect_args': {'ssl': {'ca': 'certificate.pem'}}
+        'connect_args': {'ssl': {'ca': '../DigiCertGlobalRootG2.crt.pem'}}
     }
-
     db.init_app(app)
 
     from .views import views
@@ -58,4 +47,7 @@ def create_app():
     
     migrate = Migrate(app, db)
 
+    
     return app
+
+    
