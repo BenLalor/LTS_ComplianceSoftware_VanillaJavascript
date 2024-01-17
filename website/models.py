@@ -4,14 +4,14 @@ from flask_login import UserMixin
 
 class LTS(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    project_name = db.Column(db.String(150), nullable=False)
-    project_address = db.Column(db.String(150), nullable=False)
-    date = db.Column(db.Date , nullable=True)
+    project_name = db.Column(db.String(150))
+    project_address = db.Column(db.String(150))
+    date = db.Column(db.Date )
     
-    a01_project_location = db.Column(db.String(150), nullable=False)
-    a02_climate_zone = db.Column(db.Integer, nullable=False)
-    a03a_healthcare = db.Column(db.Boolean, nullable=False)
-    a03b_multifamily_GTE4stories = db.Column(db.Boolean, nullable=False)
+    a01_project_location = db.Column(db.String(150))
+    a02_climate_zone = db.Column(db.Integer)
+    a03a_healthcare = db.Column(db.Boolean)
+    a03b_multifamily_GTE4stories = db.Column(db.Boolean)
     
     b01_name = db.Column(db.String(150), default=None)
     b02_description = db.Column(db.String(150), default=None)
