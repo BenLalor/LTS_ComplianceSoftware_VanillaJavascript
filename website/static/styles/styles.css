@@ -655,10 +655,6 @@ label {
 /* THIS IS SUPER JANKY! FIGURE OUT A BETTER WAY TO TAKE UP THE WHOLE SCREEN LIKE A FLEX BOX*/
 .homeHeight {
   min-height: 100vh;
-  display: flex;
-  align-items: center; /* This will center the text vertically */
-  justify-content: center; /* This will center the text horizontally */
-  background-color: #343a40; /* This is the color for .bg-dark in Bootstrap. Replace with your desired color if different */
 }
 
 .tableGApplies {
