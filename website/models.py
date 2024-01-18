@@ -21,8 +21,8 @@ class LTS(db.Model):
 
     c01_name = db.Column(db.String(150), default=None)
     c02_description = db.Column(db.String(150), default=None)
-    c03_allowed = db.Column(db.String, default=None)
-    c04_designed = db.Column(db.String, default=None)
+    c03_allowed = db.Column(db.String(150), default=None)
+    c04_designed = db.Column(db.String(150), default=None)
     # FIX ME - Ideally c05 and c06 would be saved as boolean, not string
     c05_compliant_light_sources = db.Column(db.String(150), default=None)
     c06_EVL = db.Column(db.String(150), default=None)
