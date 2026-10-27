@@ -14,3 +14,7 @@ You will need the following to run this application:
   - https://pypi.org/project/SQLAlchemy/
 - Flask
   - https://pypi.org/project/Flask/
+
+## Secret key
+
+The app signs login cookies with `SECRET_KEY`. Set it as an environment variable in any deployment. If it isn't set, the app creates a random key in `website/.secret_key` on first run (git-ignored) and reuses it, so local logins survive restarts.
