@@ -15,7 +15,9 @@ def create_app():
             return dict(user=current_user)
     
     app.config['SECRET_KEY'] = 'sdifdsnmyrqfdtla'
-    app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{DB_NAME}"
+    # Flask-SQLAlchemy 3 resolves relative SQLite paths against instance/;
+    # keep the database where 2.x put it (website/database.db).
+    app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{path.join(app.root_path, DB_NAME)}"
     db.init_app(app)
 
     from .views import views
@@ -35,7 +37,7 @@ def create_app():
 
     @login_manager.user_loader
     def load_user(id):
-        return User.query.get(int(id))
+        return db.session.get(User, int(id))
     
     migrate = Migrate(app, db)
 
