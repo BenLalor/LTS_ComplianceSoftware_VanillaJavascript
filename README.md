@@ -8,7 +8,7 @@ This repository stores Ben Lalor's 2022 NRCC-LTS Flask web application. The web 
 
 You will need the following to run this application:
 
-- python 3.9.5
+- python 3.10 or newer (3.9 is end-of-life and can't install the patched urllib3/requests)
   - https://www.python.org/downloads/
 - sqlAlchemy
   - https://pypi.org/project/SQLAlchemy/
